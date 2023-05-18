@@ -10,6 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.19.1",
+    "@fontsource/source-sans-pro": "^4.5.11",
+    "@fontsource/space-grotesk": "^4.5.13",
     "astro": "^2.4.1"
   }
 }
