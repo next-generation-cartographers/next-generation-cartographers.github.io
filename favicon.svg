@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1 1" xml:space="preserve">
+	<defs>
+		<linearGradient id="gradient" x1="0" x2="1" y1="0" y2="0" gradientTransform="rotate(45)" gradientUnits="userSpaceOnUse">
+			<stop offset="25%" stop-color="rgb(0, 100, 255)" />
+			<stop offset="100%" stop-color=" #00ff9d" />
+		</linearGradient>
+	</defs>
+	<circle cx=".5" cy=".5" r=".5" fill="url(#gradient)" />
+</svg>
