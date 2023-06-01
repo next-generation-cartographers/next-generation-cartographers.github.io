@@ -70,7 +70,11 @@ blockquote p {
 }
 
 .events .past {
-  color: #ccc;
+  color: #aaa;
+}
+
+ul.link-list {
+  padding-left: 0;
 }
 
 .link-card {
