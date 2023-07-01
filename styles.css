@@ -64,19 +64,15 @@ blockquote {
   border-radius: var(--border-radius-sm);
   color: rgb(var(--accent));
 }
-
 blockquote p {
   margin-top: 0;
 }
-
 .events .past {
   color: #aaa;
 }
-
 ul.link-list {
   padding-left: 0;
 }
-
 .link-card {
   margin-bottom: 1em;
   max-width: 400px;
