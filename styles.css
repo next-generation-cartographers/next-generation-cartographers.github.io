@@ -57,6 +57,11 @@ main {
   max-width: 690px;
   margin: auto;
 }
+p.teaser {
+  font-size: larger;
+  line-height: 1.5em;
+  margin-bottom: 0.5em;
+}
 blockquote {
   border: 1px solid lightgrey;
   padding: 1em;
