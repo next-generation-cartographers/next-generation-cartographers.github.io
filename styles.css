@@ -18,20 +18,27 @@
 
 :root {
   --accent: 0, 100, 255;
+  --grey: 170, 170, 170;
+  --secondary: 0, 255, 157;
+  --background: 245, 245, 245;
   --accent-gradient-white: linear-gradient(
     45deg,
     rgb(var(--accent)),
-    #00ff9d 30%,
+    rgb(var(--secondary)) 30%,
     white 60%
   );
-  --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #00ff9d 60%);
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgb(var(--accent)),
+    rgb(var(--secondary)) 60%
+  );
   --border-radius-sm: 0.5rem;
   --font-family-body: "Source Sans Pro", system-ui, sans-serif;
   --font-family-headline: "Space Grotesk", system-ui, sans-serif;
 }
 html {
   font-family: var(--font-family-body);
-  background-color: #f6f6f6;
+  background-color: rgb(var(--background));
   line-height: 1.5em;
 }
 a {
@@ -57,13 +64,16 @@ main {
   max-width: 690px;
   margin: auto;
 }
+ol ol {
+  list-style: lower-alpha;
+}
 p.teaser {
   font-size: larger;
   line-height: 1.5em;
   margin-bottom: 0.5em;
 }
 blockquote {
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(var(--grey));
   padding: 1em;
   margin-left: 0;
   border-radius: var(--border-radius-sm);
@@ -73,7 +83,25 @@ blockquote p {
   margin-top: 0;
 }
 .events .past {
-  color: #aaa;
+  color: rgb(var(--grey));
+}
+details {
+  border: 1px solid rgb(var(--grey));
+  border-radius: var(--border-radius-sm);
+  padding: 0.5em 2em 0;
+  margin-top: 2em;
+}
+summary {
+  font-weight: bold;
+  margin: -0.5em -2em 0;
+  padding: 0.5em;
+}
+details[open] {
+  padding: 0.5em 2em;
+}
+details[open] summary {
+  border-bottom: 1px solid rgb(var(--grey));
+  margin-bottom: 0.5em;
 }
 ul.link-list {
   padding-left: 0;
