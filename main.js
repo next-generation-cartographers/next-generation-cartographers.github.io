@@ -37,13 +37,6 @@ for (let event of document.querySelectorAll(".events li")) {
       .sort((a, b) => b - a); // latest date first
     if (dates[0].getTime() + TIME_PAST < Date.now()) {
       event.classList.add("past");
-      // move to list of past events, if it is still in the wrong list
-      if (event.parentNode.id !== "past-events") {
-        document
-          .querySelector(".events ul#past-events")
-          .appendChild(event.cloneNode(true));
-        event.remove();
-      }
     }
   }
 }
