@@ -106,6 +106,20 @@ details[open] summary {
 ul.link-list {
   padding-left: 0;
 }
+.disclaimer {
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  font-size: 0.85em;
+  p {
+    margin-top: 0;
+    max-width: 45ch;
+  }
+  img {
+    max-width: 100px;
+  }
+}
 .link-card {
   margin-bottom: 1em;
   max-width: 400px;
