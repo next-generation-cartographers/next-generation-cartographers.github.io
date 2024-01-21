@@ -53,11 +53,21 @@ h4 {
   margin-top: 2em;
 }
 h1 {
-  background-image: var(--accent-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.25em;
+  span {
+    display: block;
+    line-height: 1.25em;
+  }
+  span:first-of-type {
+    background-image: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  span:last-of-type {
+    font-size: 0.75em;
+    font-weight: normal;
+    font-family: var(--font-family-body);
+  }
 }
 main {
   padding: 4em;
@@ -70,7 +80,7 @@ ol ol {
 p.teaser {
   font-size: larger;
   line-height: 1.5em;
-  margin-bottom: 0.5em;
+  margin: 1em 0;
 }
 blockquote {
   border: 1px solid rgb(var(--grey));
