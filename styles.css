@@ -116,6 +116,12 @@ details[open] summary {
 ul.link-list {
   padding-left: 0;
 }
+#news,
+#upcoming-events {
+  & li {
+    margin-top: 0.5em;
+  }
+}
 .disclaimer {
   margin: 2em 0;
   display: flex;
