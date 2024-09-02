@@ -41,6 +41,10 @@ html {
   background-color: rgb(var(--background));
   line-height: 1.5em;
 }
+* {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
 a {
   color: rgb(var(--accent));
 }
@@ -53,6 +57,7 @@ h4 {
   margin-top: 2em;
 }
 h1 {
+  margin-top: 0;
   span {
     display: block;
     line-height: 1.25em;
@@ -70,7 +75,8 @@ h1 {
   }
 }
 main {
-  padding: 4em;
+  padding: 1.5em;
+  padding: 5vmin;
   max-width: 690px;
   margin: auto;
 }
