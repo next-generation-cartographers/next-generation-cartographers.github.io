@@ -28,10 +28,11 @@
     white 60%
   );
   --accent-gradient: linear-gradient(
-    45deg,
+    135deg,
     rgb(var(--accent)),
     rgb(var(--secondary)) 60%
   );
+  --grey-gradient: linear-gradient(135deg, black, rgb(var(--grey)) 80%);
   --border-radius-sm: 0.5rem;
   --font-family-body: "Source Sans Pro", system-ui, sans-serif;
   --font-family-headline: "Space Grotesk", system-ui, sans-serif;
@@ -74,6 +75,15 @@ h1 {
     font-family: var(--font-family-body);
   }
 }
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: #444;
+  max-width: 65ch;
+}
+li {
+  max-width: 65ch;
+}
 main {
   padding: 1.5em;
   padding: 5vmin;
@@ -88,6 +98,9 @@ p.teaser {
   line-height: 1.5em;
   margin: 1em 0;
 }
+.muted {
+  color: rgb(var(--grey));
+}
 blockquote {
   border: 1px solid rgb(var(--grey));
   padding: 1em;
@@ -98,14 +111,12 @@ blockquote {
 blockquote p {
   margin-top: 0;
 }
-
 img.logo {
   max-width: 6em;
   min-width: 100px;
   width: 100%;
   margin-bottom: 1em;
 }
-
 .events .past {
   color: rgb(var(--grey));
 }
@@ -180,15 +191,35 @@ ul.link-list {
   font-size: 1.25rem;
   transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-p {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-  color: #444;
-}
 .link-card:is(:hover, :focus-within) {
   background-position: 0;
   background-image: var(--accent-gradient-white);
 }
 .link-card:is(:hover, :focus-within) h2 {
   color: rgb(var(--accent));
+}
+.inline-logo {
+  font-family: "Space Grotesk";
+  font-weight: bold;
+  font-size: 1.2em;
+  position: relative;
+  top: 0.12em;
+  clip-path: inset(0 0 33% 0);
+}
+.marks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+img.mark {
+  padding: 4em;
+  border: 1px solid rgb(var(--grey));
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s;
+  &.small {
+    padding: 6em;
+  }
+  &:hover {
+    background-color: rgb(var(--grey), 0.1);
+  }
 }
