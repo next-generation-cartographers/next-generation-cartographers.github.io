@@ -36,11 +36,13 @@
   --border-radius-sm: 0.5rem;
   --font-family-body: "Source Sans Pro", system-ui, sans-serif;
   --font-family-headline: "Space Grotesk", system-ui, sans-serif;
+  --width-prose: 65ch;
 }
 html {
   font-family: var(--font-family-body);
   background-color: rgb(var(--background));
   line-height: 1.5em;
+  scroll-behavior: smooth;
 }
 * {
   -webkit-text-size-adjust: none;
@@ -79,10 +81,10 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0;
   color: #444;
-  max-width: 65ch;
+  max-width: var(--width-prose);
 }
 li {
-  max-width: 65ch;
+  max-width: var(--width-prose);
 }
 main {
   padding: 1.5em;
@@ -101,14 +103,15 @@ p.teaser {
 .muted {
   color: rgb(var(--grey));
 }
-blockquote {
+.callout {
+  max-width: var(--width-prose);
   border: 1px solid rgb(var(--grey));
   padding: 1em;
-  margin-left: 0;
+  margin: 1em 0;
   border-radius: var(--border-radius-sm);
   color: rgb(var(--accent));
 }
-blockquote p {
+.callout p {
   margin-top: 0;
 }
 img.logo {
@@ -125,11 +128,12 @@ details {
   border-radius: var(--border-radius-sm);
   padding: 0.5em 2em 0;
   margin-top: 2em;
+  max-width: var(--width-prose);
 }
 summary {
   font-weight: bold;
   margin: -0.5em -2em 0;
-  padding: 0.5em;
+  padding: 0.5em 1.5em;
 }
 details[open] {
   padding: 0.5em 2em;
