@@ -165,6 +165,17 @@ ul.link-list {
     max-width: 100px;
   }
 }
+button {
+  font-family: var(--font-family-headline);
+  padding: 0.5em;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  background: none;
+}
+.button-muted {
+  border: 1px solid rgb(var(--grey));
+}
 .link-card {
   margin-bottom: 1em;
   max-width: 400px;

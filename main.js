@@ -40,3 +40,35 @@ for (let event of document.querySelectorAll(".events li")) {
     }
   }
 }
+
+// put older news items into a separate list
+// this separate list is collapsed by default
+// there is a button to expand this list
+
+const newsList = document.querySelector("ul#news");
+const news = Array.from(newsList.querySelectorAll("& > li"));
+const maximumItems = 2;
+const olderNews = news.slice(maximumItems);
+
+news.forEach((item, i) => {
+  if (i + 1 > maximumItems) item.remove();
+});
+
+const olderNewsList = document.createElement("ul");
+olderNewsList.id = "older-news";
+olderNewsList.style.display = "none";
+
+const button = document.createElement("button");
+button.classList.add("button-muted");
+button.style.display = "block";
+button.style.margin = "0 auto";
+button.textContent = "Show older news";
+button.addEventListener("click", () => {
+  olderNewsList.style.display = "block";
+  button.remove();
+});
+
+olderNewsList.append(...olderNews);
+
+newsList.parentNode.insertBefore(olderNewsList, newsList.nextSibling);
+newsList.parentNode.insertBefore(button, newsList.nextSibling);
