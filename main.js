@@ -24,7 +24,7 @@ for (let wrapper of document.querySelectorAll(".shuffle")) {
 
 // grey out list elements with past events
 
-let DAYS_PAST = 7;
+let DAYS_PAST = 2;
 let TIME_PAST = DAYS_PAST * 24 * 60 * 60 * 1000;
 
 for (let event of document.querySelectorAll(".events li")) {
