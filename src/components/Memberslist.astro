@@ -1,0 +1,32 @@
+---
+import { Content } from "../data/members.md";
+---
+
+<div class="shuffle">
+  <Content />
+</div>
+
+<script>
+  // Fisher-Yates shuffle
+  function shuffle(arr) {
+    let currentIndex = arr.length;
+    let randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex],
+        arr[currentIndex],
+      ];
+    }
+    return arr;
+  }
+
+  // shuffle li's in "shuffle" wrapper
+  for (let wrapper of document.querySelectorAll(".shuffle")) {
+    let lis = shuffle(Array.from(wrapper.querySelectorAll("li")));
+    for (let li of lis) {
+      li.parentElement.appendChild(li);
+    }
+  }
+</script>

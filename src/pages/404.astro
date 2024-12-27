@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<Layout title="Not Found" description="404 Error — this page was not found">
+  <main>
+    <h1>404 Error</h1>
+    <p>Sorry, this page (path <code>{currentPath}</code>) was not found.</p>
+  </main>
+</Layout>

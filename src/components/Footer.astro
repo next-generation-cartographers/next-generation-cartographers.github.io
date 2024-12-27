@@ -1,0 +1,50 @@
+---
+import { navigationLinks } from "../data/navigation.ts";
+
+const currentPath = Astro.url.pathname;
+---
+
+<footer>
+  <div>
+    <h2>Next Generation Cartographers</h2>
+  </div>
+  <nav>
+    <ul>
+      {
+        navigationLinks.map(({ href, label }) => (
+          <li>
+            <a class:list={{ active: href === currentPath }} href={href}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</footer>
+
+<style>
+  footer {
+    margin: 5em auto;
+    max-width: var(--max-width);
+    display: flex;
+    align-items: start;
+  }
+  h2 {
+    font-size: 1em;
+    margin-top: 0;
+  }
+  nav {
+    ul {
+      list-style-type: none;
+      margin-top: 0;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+</style>

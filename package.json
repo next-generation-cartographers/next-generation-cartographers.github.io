@@ -1,0 +1,19 @@
+{
+  "name": "ngc_website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Next Generation Cartographers' website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "author": "Jakob Listabarth",
+  "dependencies": {
+    "@fontsource-variable/source-sans-3": "^5.1.0",
+    "@fontsource-variable/space-grotesk": "^5.1.0",
+    "astro": "^5.1.1"
+  }
+}

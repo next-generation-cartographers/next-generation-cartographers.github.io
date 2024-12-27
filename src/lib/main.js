@@ -1,27 +1,3 @@
-// shuffle li's in "shuffle" wrapper
-
-// Fisher-Yates shuffle
-function shuffle(arr) {
-  let currentIndex = arr.length;
-  let randomIndex;
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [arr[currentIndex], arr[randomIndex]] = [
-      arr[randomIndex],
-      arr[currentIndex],
-    ];
-  }
-  return arr;
-}
-
-for (let wrapper of document.querySelectorAll(".shuffle")) {
-  let lis = shuffle(Array.from(wrapper.querySelectorAll("li")));
-  for (let li of lis) {
-    li.parentElement.appendChild(li);
-  }
-}
-
 // grey out list elements with past events
 
 let DAYS_PAST = 2;
