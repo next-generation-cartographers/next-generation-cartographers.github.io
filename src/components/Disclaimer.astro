@@ -1,6 +1,15 @@
+---
+import { Image } from "astro:assets";
+import icaLogo from "../images/ica_logo.svg";
+---
+
 <div class="disclaimer">
   <a href="https://icaci.org" target="_blank">
-    <img src="/assets/ica_logo.svg" />
+    <Image
+      src={icaLogo}
+      alt="Logo ICA – International Cartographic Association"
+      height={100}
+    />
   </a>
   <p>
     This website is maintained by the Working Group
