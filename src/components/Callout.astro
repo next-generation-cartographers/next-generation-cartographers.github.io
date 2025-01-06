@@ -1,7 +1,9 @@
 ---
 import Card from "./Card.astro";
+
+const { style } = Astro.props;
 ---
 
-<Card>
+<Card style={style}>
   <slot />
 </Card>

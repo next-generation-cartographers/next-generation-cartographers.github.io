@@ -1,0 +1,198 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../public/assets/ngc-marks/ngc-rgb-logomark-black.svg";
+import { navigationLinks } from "../data/navigation";
+---
+
+<nav>
+  <div class="nav-wrapper">
+    <div class="nav-header">
+      <a href="/">
+        <div class="brand">
+          <Image src={logo} alt={"Next Generation Cartographers"} />
+          <span class="inline-logo">NGC</span>
+        </div>
+      </a>
+      <button popovertarget="menu" class="menu-button">Show Menu</button>
+      <div class="frosted-glass-backdrop"></div>
+    </div>
+    <div class="nav-main">
+      <ul id="menu" class="menu" popover>
+        {
+          navigationLinks.map(({ href, label, children }, i) => {
+            const popoverId = `popover-nav-${i}`;
+            return (
+              <li>
+                {children ? (
+                  <div>
+                    <button class="sub-menu-button" popovertarget={popoverId}>
+                      {label}
+                    </button>
+                    <ul id={popoverId} class="sub-menu" popover>
+                      {children.map(({ href, label }) => (
+                        <li>
+                          <a href={href}>{label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <a href={href}>{label}</a>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+      <div class="frosted-glass-backdrop"></div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let isOpen = false;
+  const menuButton = document.querySelector(".menu-button");
+  menuButton?.addEventListener("click", () => {
+    isOpen = !isOpen;
+    menuButton.textContent = isOpen ? "Hide Menu" : "Show Menu";
+  });
+</script>
+
+<style>
+  [popover] {
+    border: none;
+    &:popover-open {
+      inset: unset;
+      padding: var(--spacing-xs) var(--spacing);
+      border-radius: var(--border-radius-xs);
+      border: 1px solid rgb(var(--primary));
+    }
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    container-type: inline-size;
+    color: rgb(var(--primary));
+    .nav-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      width: 100%;
+      @container (min-width: 600px) {
+        max-width: var(--max-width);
+        margin: auto;
+        flex-direction: row;
+        align-items: baseline;
+      }
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 1em;
+      img {
+        align-self: center;
+        filter: invert(0.5) sepia(1) hue-rotate(190deg) saturate(100);
+      }
+    }
+    .nav-header {
+      position: relative;
+      padding: var(--spacing);
+      padding-top: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .frosted-glass-backdrop {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      height: 200%;
+      backdrop-filter: blur(12px);
+      mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      );
+      background: linear-gradient(
+        to bottom,
+        var(--background) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+    }
+    .nav-main {
+      padding: 0 var(--spacing);
+      flex-grow: 1;
+      @container ((min-width: 600px)) {
+        display: block;
+        padding-top: var(--spacing);
+      }
+      .backdrop {
+        display: none;
+        @container ((min-width: 600px)) {
+          display: block;
+        }
+      }
+    }
+    .menu-button {
+      @container ((min-width: 600px)) {
+        display: none;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: rgb(var(--primary));
+    }
+    .sub-menu-button {
+      font-family: var(--font-family-headline);
+      font-weight: bold;
+      font-size: 1rem;
+      color: rgb(var(--primary));
+      padding: 0;
+      @container ((max-width: 600px)) {
+        pointer-events: none;
+      }
+    }
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    ul.menu {
+      display: none;
+      flex-direction: column;
+      gap: 2em;
+      margin: 0;
+      background-color: white;
+      @container (min-width: 600px) {
+        display: flex;
+        position: inherit;
+        flex-direction: row;
+        background: none;
+        justify-content: space-between;
+        padding: 0;
+        border: none;
+      }
+      &:popover-open {
+        display: flex;
+        margin-top: var(--spacing-xs);
+      }
+      [popover] {
+        border: none;
+        margin-top: var(--spacing-xs);
+        @container ((max-width: 600px)) {
+          position: relative;
+          display: block;
+        }
+        &:popover-open {
+          inset: unset;
+          padding: var(--spacing-xs) var(--spacing);
+          border-radius: var(--border-radius-xs);
+          border: 1px solid rgb(var(--primary));
+        }
+      }
+    }
+  }
+</style>

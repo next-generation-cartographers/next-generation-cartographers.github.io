@@ -1,5 +1,5 @@
 ---
-// import Navigation from "../components/Navigation.astro";
+import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import "@fontsource-variable/source-sans-3/wght.css";
@@ -19,7 +19,7 @@ const { pageTitle = "Next Generation Cartographers" } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <!-- <Navigation /> -->
+    <Navigation />
     <slot />
     <Footer />
   </body>

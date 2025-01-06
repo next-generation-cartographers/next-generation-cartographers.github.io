@@ -1,40 +1,56 @@
 :root {
-  --accent: 0, 100, 255;
-  --grey: 170, 170, 170;
+  --primary: 0, 100, 255;
   --secondary: 0, 255, 157;
-  --background: 245, 245, 245;
-  --accent-gradient-white: linear-gradient(
+
+  --muted: color-mix(in srgb, rgb(var(--primary)), white 60%);
+  --background: color-mix(in srgb, rgb(var(--primary)), white 95%);
+
+  --primary-gradient-white: linear-gradient(
     45deg,
-    rgb(var(--accent)),
+    rgb(var(--primary)),
     rgb(var(--secondary)) 30%,
     white 60%
   );
-  --accent-gradient: linear-gradient(
+  --primary-gradient: linear-gradient(
     135deg,
-    rgb(var(--accent)),
+    rgb(var(--primary)),
     rgb(var(--secondary)) 60%
   );
-  --grey-gradient: linear-gradient(135deg, black, rgb(var(--grey)) 80%);
+
+  --spacing: 1.5em;
+  --spacing-xs: 0.5em;
+
   --border-radius-xs: 0.25rem;
   --border-radius-sm: 0.5rem;
+
   --font-family-body: "Source Sans 3 Variable", system-ui, sans-serif;
   --font-family-headline: "Space Grotesk Variable", system-ui, sans-serif;
+
   --width-prose: 65ch;
   --max-width: 690px;
+
+  --sm: 640px;
+
+  --shadow-lg: 0 4px 12px -1px rgba(var(--primary), 0.2),
+    0 2px 10px -2px rgba(var(--primary), 0.2),
+    0 -3px 14px -4px rgba(var(--secondary), 0.2);
 }
 html {
   font-family: var(--font-family-body);
-  background-color: rgb(var(--background));
+  background-color: var(--background);
   line-height: 1.5em;
   scroll-behavior: smooth;
-  color: rgb(50, 50, 50);
+  color: rgb(var(--primary));
+}
+body {
+  margin: 0;
 }
 * {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 a {
-  color: rgb(var(--accent));
+  color: color-mix(in srgb, rgb(var(--primary)), black 20%);
 }
 h1,
 h2,
@@ -51,7 +67,7 @@ h1 {
     line-height: 1.25em;
   }
   span:first-of-type {
-    background-image: var(--accent-gradient);
+    background-image: var(--primary-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -71,8 +87,8 @@ li {
   max-width: var(--width-prose);
 }
 main {
-  padding: 1.5em;
   padding: 5vmin;
+  padding-top: 25vmin;
   max-width: var(--max-width);
   margin: auto;
 }
@@ -91,7 +107,7 @@ p.teaser {
   margin: 1em 0;
 }
 .muted {
-  color: rgb(var(--grey));
+  color: var(--muted);
 }
 img.logo {
   max-width: 6em;
@@ -100,10 +116,10 @@ img.logo {
   margin-bottom: 1em;
 }
 .events .past {
-  color: rgb(var(--grey));
+  color: var(--muted);
 }
 details {
-  border: 1px solid rgb(var(--grey));
+  border: 1px solid var(--muted);
   border-radius: var(--border-radius-sm);
   padding: 0.5em 2em 0;
   margin-top: 2em;
@@ -112,35 +128,41 @@ details {
 summary {
   font-weight: bold;
   margin: -0.5em -2em 0;
-  padding: 0.5em 1.5em;
+  padding: var(--spacing-xs) var(--spacing);
 }
 details[open] {
-  padding: 0.5em 2em;
+  padding: var(--spacing-xs) var(--spacing);
 }
 details[open] summary {
-  border-bottom: 1px solid rgb(var(--grey));
-  margin-bottom: 0.5em;
+  border-bottom: 1px solid var(--muted);
+  margin-bottom: var(--spacing-xs);
 }
 ul.link-list {
   padding-left: 0;
   list-style: none;
+  li {
+    margin-top: var(--spacing);
+  }
 }
 #news,
 #upcoming-events {
   & li {
-    margin-top: 0.5em;
+    margin-top: var(--spacing-xs);
   }
 }
 button {
   font-family: var(--font-family-headline);
+  font-weight: bold;
   padding: 0.5em;
   border: none;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   background: none;
+  color: inherit;
 }
 .button-muted {
-  border: 1px solid rgb(var(--grey));
+  border: 1px solid var(--muted);
+  color: var(--muted);
 }
 .inline-logo {
   font-family: "Space Grotesk";
@@ -157,13 +179,13 @@ button {
 }
 img.mark {
   padding: 4em;
-  border: 1px solid rgb(var(--grey));
+  border: 1px solid var(--muted);
   border-radius: var(--border-radius-sm);
   transition: all 0.3s;
   &.small {
     padding: 6em;
   }
   &:hover {
-    background-color: rgb(var(--grey), 0.1);
+    background-color: var(--muted), 0.1;
   }
 }

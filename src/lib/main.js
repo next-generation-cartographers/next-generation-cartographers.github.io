@@ -35,7 +35,6 @@ olderNewsList.id = "older-news";
 olderNewsList.style.display = "none";
 
 const button = document.createElement("button");
-button.classList.add("button-muted");
 button.style.display = "block";
 button.style.margin = "0 auto";
 button.textContent = "Show older news";
