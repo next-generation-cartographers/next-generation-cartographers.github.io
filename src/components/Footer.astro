@@ -6,16 +6,33 @@ const currentPath = Astro.url.pathname;
 
 <footer>
   <div>
-    <h2>Next Generation Cartographers</h2>
+    <h2>Next Generation<br /> Cartographers</h2>
+    <p>
+      Dedicated to advocacy, support and mentorship for early career
+      cartographers.
+    </p>
   </div>
   <nav>
     <ul>
       {
-        navigationLinks.map(({ href, label }) => (
+        navigationLinks.map(({ href, label, children }) => (
           <li>
-            <a class:list={{ active: href === currentPath }} href={href}>
-              {label}
-            </a>
+            {children ? (
+              <>
+                <strong class="monospace">{label}</strong>
+                <ul>
+                  {children.map(({ href, label }) => (
+                    <li>
+                      <a href={href}>{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a class:list={{ active: href === currentPath }} href={href}>
+                {label}
+              </a>
+            )}
           </li>
         ))
       }
@@ -27,18 +44,30 @@ const currentPath = Astro.url.pathname;
   footer {
     padding: 0 1.5em;
     margin: 5em auto;
-    max-width: var(--max-width);
     display: flex;
-    align-items: start;
+    flex-direction: column;
+    gap: var(--spacing);
+    max-width: var(--max-width);
   }
   h2 {
     font-size: 1em;
     margin-top: 0;
+    line-height: 1em;
   }
   nav {
+    container-type: inline-size;
     ul {
       list-style-type: none;
       margin-top: 0;
+      padding-left: 0;
+    }
+    > ul {
+      display: grid;
+      gap: var(--spacing);
+      grid-template-columns: repeat(2, 1fr);
+      @container (min-width: 550px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
     a {
       text-decoration: none;
