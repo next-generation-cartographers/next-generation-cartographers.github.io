@@ -8,14 +8,20 @@ export const navigationLinks: NavigationItem[] = [
   {
     label: "Aims and Organisation",
     children: [
-      { href: "organisation/terms-of-reference", label: "Terms of Reference" },
-      { href: "organisation/code-of-conduct", label: "Code of Conduct" },
+      {
+        href: "/aims-and-organisation/terms-of-reference",
+        label: "Terms of Reference",
+      },
+      {
+        href: "https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/c93c4b538c1127c7eddd17bf96c7863675d70940/code-of-conduct.pdf",
+        label: "Code of Conduct",
+      },
     ],
   },
   {
     label: "Activities",
     children: [
-      { href: "/activities/icc25", label: "ICC 2025" },
+      { href: "/activities/icc-2025", label: "ICC 2025" },
       {
         href: "/activities/online-community-meet-ups",
         label: "Online Community Meet-Ups",
@@ -25,7 +31,7 @@ export const navigationLinks: NavigationItem[] = [
   },
   {
     label: "Resources",
-    children: [{ href: "resources/branding", label: "Branding" }],
+    children: [{ href: "/resources/branding", label: "Branding" }],
   },
   { label: "Contact", href: "/#contact" },
 ];

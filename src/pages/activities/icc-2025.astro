@@ -1,0 +1,67 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Content } from "../../data/icc-2025.md";
+
+import { getCollection, render } from "astro:content";
+import Card from "../../components/Card.astro";
+import { getEventDuration } from "../../lib/getEventDuration";
+const allEvents = await getCollection("events");
+---
+
+<Layout>
+  <h1 id="next-generation-cartographers">ICC 2025 activities</h1>
+  <Content />
+
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--spacing-lg)",
+      paddingTop: "var(--spacing-lg)",
+    }}
+  >
+    {
+      allEvents
+        .toSorted((a, b) => {
+          const getTime = (d: (typeof allEvents)[number]) =>
+            new Date(d.data.dateTime.start).getTime();
+          return getTime(a) - getTime(b);
+        })
+        .map(async (event, i) => {
+          const { Content } = await render(event);
+          return (
+            <div style={{ position: "relative", overflow: "hidden" }}>
+              <Card>
+                <div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      fontSize: "15em",
+                      fontFamily: "var(--font-family-headline)",
+                      fontVariantNumeric: "tabular-nums",
+                      "-webkit-text-stroke": "1px rgb(var(--secondary))",
+                      color: "white",
+                      top: ".3em",
+                      right: "-.075em",
+                    }}
+                  >
+                    {i + 1}
+                  </div>
+                  <h2 id={event.id}>{event.data.title}</h2>
+                  <div>
+                    <span class="monospace">Datetime</span>
+                    <strong>{getEventDuration(event.data.dateTime)}</strong>
+                  </div>
+                  <div>
+                    <span class="monospace">Type</span>
+                    <strong>{event.data.type}</strong>
+                  </div>
+                </div>
+              </Card>
+              <Content />
+            </div>
+          );
+        })
+    }
+  </div>
+</Layout>

@@ -12,7 +12,7 @@
 - [Ester Scheck](https://cartography.tuwien.ac.at/ester-scheck/) (_TU Wien, AT_)
 - Esther Amoako (_University of Toledo, US, PhD candidate (ABD) Spatially Integrated Social Science_)
 - Narendra Kumar (_Hemwati Nandan Bahuguna Garhwal University, IN_)
-- [Zulfa N Afifah](https://zulfanaa.github.io/portfolio/) (_University of Augsburg, DE_)
+- [Zulfa Nur’aini ‘Afifah](https://zulfanaa.github.io/portfolio/) (_University of Augsburg, DE_)
 - Andrea Miletić (_University of Zagreb, Faculty of Geodesy, HR_)
 - Juliane Cron (_TU Munich, DE_)
 - Dilara Bozkurt

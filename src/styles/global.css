@@ -19,6 +19,7 @@
 
   --spacing: 1.5em;
   --spacing-xs: 0.5em;
+  --spacing-lg: calc(var(--spacing) * 4);
 
   --border-radius-xs: 0.25rem;
   --border-radius-sm: 0.5rem;
@@ -100,6 +101,9 @@ code {
   background-color: rgba(0, 0, 0, 0.05);
   padding: 0.2em;
   border-radius: var(--border-radius-xs);
+}
+.monospace {
+  font-family: var(--font-family-headline), monospace;
 }
 p.teaser {
   font-size: larger;
