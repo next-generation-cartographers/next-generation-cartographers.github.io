@@ -6,7 +6,7 @@ import "@fontsource-variable/source-sans-3/wght.css";
 import "@fontsource-variable/source-sans-3/wght-italic.css";
 import "@fontsource-variable/space-grotesk";
 
-const { pageTitle = "Next Generation Cartographers" } = Astro.props;
+const { pageTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,11 +16,15 @@ const { pageTitle = "Next Generation Cartographers" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>
+      {`${pageTitle ? `${pageTitle} · ` : ""}Next Generation Cartographers`}
+    </title>
   </head>
   <body>
     <Navigation />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
