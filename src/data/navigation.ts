@@ -6,10 +6,10 @@ type NavigationLink = { label: string; href: string };
 
 export const navigationLinks: NavigationItem[] = [
   {
-    label: "Aims and Organisation",
+    label: "About",
     children: [
       {
-        href: "/aims-and-organisation/terms-of-reference",
+        href: "/about/terms-of-reference",
         label: "Terms of Reference",
       },
       {
