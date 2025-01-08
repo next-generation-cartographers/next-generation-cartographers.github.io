@@ -61,8 +61,9 @@ import { navigationLinks } from "../data/navigation";
 <style>
   [popover] {
     border: none;
+    width: auto;
     &:popover-open {
-      inset: unset;
+      inset: auto var(--spacing);
       padding: var(--spacing-xs) var(--spacing);
       border-radius: var(--border-radius-xs);
       border: 1px solid rgb(var(--primary));
@@ -78,9 +79,9 @@ import { navigationLinks } from "../data/navigation";
     .nav-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 1em;
       width: 100%;
       @container (min-width: 600px) {
+        gap: var(--spacing);
         max-width: var(--max-width);
         margin: auto;
         flex-direction: row;
