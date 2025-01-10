@@ -31,7 +31,13 @@ export const navigationLinks: NavigationItem[] = [
   },
   {
     label: "Resources",
-    children: [{ href: "/resources/branding", label: "Branding" }],
+    children: [
+      { href: "/resources/branding", label: "Branding" },
+      {
+        href: "/resources/eurocarto-2024-contributions",
+        label: "Young scholar voices (EuroCarto 24)",
+      },
+    ],
   },
   { label: "Contact", href: "/#contact" },
 ];
