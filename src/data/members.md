@@ -10,6 +10,7 @@
 - [Héctor Ochoa Ortiz](https://odeco-research.eu/?p=3170) (_University of Camerino, IT_)
 - [Tomas Vanicek](https://www.geoinformatics.upol.cz/member/mgr-tomas-vanicek) (_Palacký University Olomouc, Dept. of Geoinformatics, CZ_)
 - [Ester Scheck](https://cartography.tuwien.ac.at/ester-scheck/) (_TU Wien, AT_)
+- [Sacha Schlumpf](https://cartography.tuwien.ac.at/sacha-schlumpf/) (_TU Wien, AT_)
 - Esther Amoako (_University of Toledo, US, PhD candidate (ABD) Spatially Integrated Social Science_)
 - Narendra Kumar (_Hemwati Nandan Bahuguna Garhwal University, IN_)
 - [Zulfa Nur’aini ‘Afifah](https://zulfanaa.github.io/portfolio/) (_University of Augsburg, DE_)
