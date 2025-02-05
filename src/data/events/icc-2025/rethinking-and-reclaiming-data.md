@@ -2,8 +2,8 @@
 title: "Rethinking and Reclaiming Data"
 type: "Workshop"
 dateTime:
-  start: "2025-08-16T15:45:00Z"
-  end: "2025-08-16T18:15:00Z"
+  start: "2025-08-17T15:45:00Z"
+  end: "2025-08-17T18:15:00Z"
 ---
 
 ### Commissions & Working Group responsible
