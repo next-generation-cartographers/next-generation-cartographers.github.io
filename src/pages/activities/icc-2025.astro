@@ -31,22 +31,24 @@ const allEvents = await getCollection("events");
           const { Content } = await render(event);
           return (
             <div style={{ position: "relative", overflow: "hidden" }}>
+              <div
+                style={{
+                  position: "absolute",
+                  fontSize: "15em",
+                  fontFamily: "var(--font-family-headline)",
+                  fontVariantNumeric: "tabular-nums",
+                  "-webkit-text-stroke": "1px rgb(var(--secondary))",
+                  color: "white",
+                  top: ".3em",
+                  lineHeight: 0,
+                  zIndex: 10,
+                  right: "-.075em",
+                }}
+              >
+                {i + 1}
+              </div>
               <Card>
                 <div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      fontSize: "15em",
-                      fontFamily: "var(--font-family-headline)",
-                      fontVariantNumeric: "tabular-nums",
-                      "-webkit-text-stroke": "1px rgb(var(--secondary))",
-                      color: "white",
-                      top: ".3em",
-                      right: "-.075em",
-                    }}
-                  >
-                    {i + 1}
-                  </div>
                   <h2 id={event.id}>{event.data.title}</h2>
                   <div>
                     <span class="monospace">Datetime</span>
