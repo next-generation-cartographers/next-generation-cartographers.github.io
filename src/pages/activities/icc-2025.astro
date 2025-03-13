@@ -5,6 +5,7 @@ import { Content } from "../../data/icc-2025.md";
 import { getCollection, render } from "astro:content";
 import Card from "../../components/Card.astro";
 import { getEventDuration } from "../../lib/getEventDuration";
+
 const allEvents = await getCollection("events");
 ---
 
