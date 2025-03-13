@@ -38,6 +38,22 @@ const currentPath = Astro.url.pathname;
       }
     </ul>
   </nav>
+  <nav>
+    <ul>
+      {
+        [
+          { href: "/legal-notice", label: "Legal notice" },
+          { href: "/privacy-notice", label: "Privacy notice" },
+        ].map(({ href, label }) => (
+          <li>
+            <a href="{href}" class:list={{ active: currentPath === href }}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </footer>
 
 <style>
