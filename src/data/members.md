@@ -20,3 +20,4 @@
 - Ulrike Holfeld (_TU Wien, AT_)
 - Marcin Wereszczyński (_University of Warsaw, PL_)
 - [Samuel Darkwah Manu](https://sammyhawkrad.github.io) (_TU Dresden, DE_)
+- Fei Yang, (_Phd Candidate, School of Geography, Nanjing Normal University, CH_)
