@@ -6,6 +6,12 @@ dateTime:
   end: "2025-08-17T18:15:00Z"
 ---
 
+### Description
+
+Mapping requires data, in whatever form or format. However, data always represents situated knowledge and should be considered in the context of its origin - which can be shaped, amongst others, by (neo)colonialism, exclusion and discrimination. 
+
+Through interactive activities and discussions, we will explore approaches to rethinking and reclaiming data. Although this is a stand-alone event, participation in the previous session "What is Our Narrative?" will be beneficial to our discussion.
+
 ### Commissions & Working Group responsible
 
 1. ICA Working Group Next Generation Cartographers https://next-generation-cartographers.github.io/
@@ -33,4 +39,4 @@ dateTime:
 
 ### Additional information
 
-Registration via ICC 2025 website is required.
+Registration via the ICC 2025 website is required. You can also register for the workshop only if you are not attending the conference. The event is open to the public. If possible, bring your laptop!

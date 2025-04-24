@@ -6,6 +6,12 @@ dateTime:
   end: "2025-08-17T15:00:00Z"
 ---
 
+### Description
+
+What stories have cartographers been telling on this land? What have been missing? More importantly -  what stories do we want our future generations of cartographers to tell? 
+
+Join us to learn, reflect, and rethink how we as a community have been approaching Indigenous Cartography, and how we can reshape these narratives to inspire and empower the next generations of cartographers. A Q&A discussion will follow the knowledge-building session led by Indigenous knowledge-holders.
+
 ### Commissions & Working Group responsible
 
 1. ICA Working Group Next Generation Cartographers https://next-generation-cartographers.github.io/
@@ -36,4 +42,4 @@ dateTime:
 
 ### Additional information
 
-Registration via ICC 2025 website is required.
+Registration via the ICC 2025 website is required. You can also register for the workshop only if you are not attending the conference. The event is open to the public.
