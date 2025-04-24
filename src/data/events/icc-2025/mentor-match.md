@@ -30,7 +30,6 @@ dateTime:
 
 - Merve Keskin: merve.keskin@plus.ac.at
 - Zulfa Nur’aini ‘Afifah: zulfa.afifah@uni-a.de
-- NGC email: nextgenerationcartographers@gmail.com
 
 ### Additional information
 
