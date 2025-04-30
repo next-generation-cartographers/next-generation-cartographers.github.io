@@ -25,7 +25,6 @@ Supported by the Commissions on User Experience, Education and Training, and Geo
 
 - Zulfa Nur’aini ‘Afifah (University of Augsburg, NGC)
 - Merve Keskin (University of Salzburg, UX)
-- Ester Scheck (TU Wien, NGC)
 - Nicole Yeung (University of British Columbia, NGC)
 - Katarzyna Słomska-Przech (Institute of History PAS, NGC)
 - Chelsea Nestel (UW-Milwaukee, NGC)

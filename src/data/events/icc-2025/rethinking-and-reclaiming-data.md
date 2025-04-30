@@ -24,14 +24,15 @@ Through interactive activities and discussions, we will explore approaches to re
 
 - Ester Scheck (TU Wien, NGC)
 - Chelsea Nestel (UW-Milwaukee, NGC)
-- Nicole Yeung (University of British Columbia, NGC)
+- Julia Bristow (Havlik Consulting Group, NGC)
 - Katarzyna Słomska-Przech (Institute of History PAS, NGC)
 - Jakob Listabarth (TU Dresden, NGC)
-- Zulfa Nur’aini ‘Afifah (University of Augsburg, NGC)
 - Juliane Cron (TU Munich, Education)
 - Izabela Gołębiowska (University of Warsaw, Geovisualization)
 - Merve Keskin (University of Salzburg, UX)
 - Pyry Kettunen (Finnish Geospatial Research Institute, FGI NLS, - CogVis)
+- Nicole Yeung (University of British Columbia, NGC)
+- Zulfa Nur’aini ‘Afifah (University of Augsburg, NGC)
 
 ### Contact
 
