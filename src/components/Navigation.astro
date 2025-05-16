@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../../public/assets/ngc-marks/ngc-rgb-logomark-black.svg";
 import { navigationLinks } from "../data/navigation";
+import normalizePath from "../lib/normalizePath";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -25,7 +26,9 @@ const currentPath = Astro.url.pathname;
             const popoverId = `popover-nav-${i}`;
             const isActive =
               currentPath.length > 1 &&
-              children?.some((child) => child.href.includes(currentPath));
+              children?.some((child) =>
+                child.href.includes(normalizePath(currentPath))
+              );
             return (
               <li>
                 {children ? (

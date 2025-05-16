@@ -1,5 +1,6 @@
 ---
 import { navigationLinks } from "../data/navigation.ts";
+import normalizePath from "../lib/normalizePath";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -24,7 +25,9 @@ const currentPath = Astro.url.pathname;
                   {children.map(({ href, label }) => (
                     <li>
                       <a
-                        class:list={{ active: href === currentPath }}
+                        class:list={{
+                          active: href === normalizePath(currentPath),
+                        }}
                         href={href}
                       >
                         {label}
