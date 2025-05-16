@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import logo from "../../public/assets/ngc-marks/ngc-rgb-logomark-black.svg";
 import { navigationLinks } from "../data/navigation";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav>
@@ -21,11 +23,17 @@ import { navigationLinks } from "../data/navigation";
         {
           navigationLinks.map(({ href, label, children }, i) => {
             const popoverId = `popover-nav-${i}`;
+            const isActive =
+              currentPath.length > 1 &&
+              children?.some((child) => child.href.includes(currentPath));
             return (
               <li>
                 {children ? (
                   <div>
-                    <button class="sub-menu-button" popovertarget={popoverId}>
+                    <button
+                      class:list={{ "sub-menu-button": true, active: isActive }}
+                      popovertarget={popoverId}
+                    >
                       {label}
                     </button>
                     <ul
@@ -176,6 +184,15 @@ import { navigationLinks } from "../data/navigation";
       padding: 0;
       @container ((max-width: 600px)) {
         pointer-events: none;
+      }
+      &.active::after {
+        content: " ";
+        display: block;
+        width: 0.25em;
+        height: 0.25em;
+        border-radius: 100%;
+        background: rgb(var(--primary));
+        margin: 0 auto 0 auto;
       }
     }
     ul {
