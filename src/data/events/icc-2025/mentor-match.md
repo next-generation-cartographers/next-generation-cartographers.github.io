@@ -8,11 +8,14 @@ dateTime:
 
 ### Description
 
-MentorMatch is an interactive matchmaking mentoring session at ICC2025 to connect aspiring cartographers with experienced mentors. Limited to 30 participants—15 mentors and 15 peers—this fast-paced event offers a range of exciting formats, including "speed-dating" style 10-15 minute conversations, an "Ask Me Anything" session, and insights on publishing, presenting, and promoting your research. 
+MentorMatch is an interactive matchmaking mentoring session at ICC2025 to connect aspiring cartographers with experienced mentors. Limited to 30 participants—15 mentors and 15 peers—this fast-paced event offers a range of exciting formats, including "speed-dating" style 10-15 minute conversations, an "Ask Me Anything" session, and insights on publishing, presenting, and promoting your research.
 
-Whether you are seeking career development and project management advice or just looking to refine your elevator pitch, this event is the perfect opportunity to gain diverse perspectives and build meaningful professional connections. 
+Whether you are seeking career development and project management advice or just looking to refine your elevator pitch, this event is the perfect opportunity to gain diverse perspectives and build meaningful professional connections.
 
-Supported by the Commissions on User Experience, Education and Training, and Geovisualization and Next Generation Cartographers Working Group, MentorMatch is your gateway to the next step in your cartographic journey! 
+Supported by the Commissions on User Experience, Education and Training, and Geovisualization and Next Generation Cartographers Working Group, MentorMatch is your gateway to the next step in your cartographic journey!
+
+<details>
+  <summary>Event Details</summary>
 
 ### Commissions & Working Group responsible
 
@@ -41,3 +44,5 @@ Supported by the Commissions on User Experience, Education and Training, and Geo
 ### Additional information
 
 Registration via ICC 2025 website is required. Please bring your laptop for this event.
+
+</details>
