@@ -23,15 +23,18 @@ const currentPath = Astro.url.pathname;
                 <ul>
                   {children.map(({ href, label }) => (
                     <li>
-                      <a href={href}>{label}</a>
+                      <a
+                        class:list={{ active: href === currentPath }}
+                        href={href}
+                      >
+                        {label}
+                      </a>
                     </li>
                   ))}
                 </ul>
               </>
             ) : (
-              <a class:list={{ active: href === currentPath }} href={href}>
-                {label}
-              </a>
+              <a href={href}>{label}</a>
             )}
           </li>
         ))
@@ -68,12 +71,24 @@ const currentPath = Astro.url.pathname;
       @container (min-width: 550px) {
         grid-template-columns: repeat(4, 1fr);
       }
+      strong {
+        margin-bottom: 0.5em;
+        display: inline-block;
+      }
     }
     a {
       text-decoration: none;
       color: inherit;
-      &.active {
-        text-decoration: underline;
+      &.active::before {
+        display: inline-block;
+        content: "";
+        width: 0.35em;
+        height: 0.35em;
+        margin-right: 0.1em;
+        border-radius: 100%;
+        background: var(--primary-gradient);
+        pointer-events: none;
+        vertical-align: 0.15em;
       }
     }
   }
