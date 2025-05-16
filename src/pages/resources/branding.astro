@@ -154,3 +154,24 @@ import Layout from "../../layouts/Layout.astro";
     <p class="muted">Source Sans, Regular, 36px</p>
   </ul>
 </Layout>
+
+<style>
+  .marks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+
+  img.mark {
+    padding: 4em;
+    border: 1px solid var(--muted);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s;
+    &.small {
+      padding: 6em;
+    }
+    &:hover {
+      background-color: var(--muted), 0.1;
+    }
+  }
+</style>
