@@ -17,9 +17,11 @@ const { event: eventSlug } = Astro.params;
 
 const allEvents = await getCollection("events");
 const event = allEvents.find((event) => event.id === `icc-2025/${eventSlug}`);
-const index = allEvents.findIndex(
-  (event) => event.id === `icc-2025/${eventSlug}`
-);
+
+if (!event) {
+  return Astro.rewrite("/404");
+}
+
 const { Content } = await render(event);
 ---
 
