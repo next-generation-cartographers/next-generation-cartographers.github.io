@@ -9,10 +9,12 @@ const events = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/events" }),
   schema: z.object({
     title: z.string(),
-    dateTime: z.object({
-      start: z.string(),
-      end: z.string(),
-    }),
+    dateTime: z
+      .object({
+        start: z.string(),
+        end: z.string(),
+      })
+      .optional(),
     type: z.string(),
   }),
 });

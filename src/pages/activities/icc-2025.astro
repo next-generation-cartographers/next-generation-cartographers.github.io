@@ -25,7 +25,7 @@ const allEvents = await getCollection("events");
       allEvents
         .toSorted((a, b) => {
           const getTime = (d: (typeof allEvents)[number]) =>
-            new Date(d.data.dateTime.start).getTime();
+            !d.data.dateTime ? 0 : new Date(d.data.dateTime.start).getTime();
           return getTime(a) - getTime(b);
         })
         .map(async (event, i) => {
@@ -39,7 +39,11 @@ const allEvents = await getCollection("events");
                   <h2 id={event.id}>{event.data.title}</h2>
                   <div>
                     <span class="monospace">Datetime</span>
-                    <strong>{getEventDuration(event.data.dateTime)}</strong>
+                    <strong>
+                      {event.data.dateTime
+                        ? getEventDuration(event.data.dateTime)
+                        : "tba"}
+                    </strong>
                   </div>
                   <div>
                     <span class="monospace">Type</span>

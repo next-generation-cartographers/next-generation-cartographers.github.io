@@ -31,18 +31,19 @@ const { Content } = await render(event);
     <div>
       <h2 id={event.id}>{event.data.title}</h2>
       <div>
-        <h2 id={event.id}>{event.data.title}</h2>
-        <div>
-          <span class="monospace">Datetime</span>
-          <strong>{getEventDuration(event.data.dateTime)}</strong>
-        </div>
-        <div>
-          <span class="monospace">Type</span>
-          <strong>{event.data.type}</strong>
-        </div>
+        <span class="monospace">Datetime</span>
+        <strong>
+          {
+            event.data.dateTime ? getEventDuration(event.data.dateTime) : "tba"
+          }</strong
+        >
       </div>
-    </Card>
-  </div>
+      <div>
+        <span class="monospace">Type</span>
+        <strong>{event.data.type}</strong>
+      </div>
+    </div>
+  </Card>
 
   <Content />
 </Layout>
