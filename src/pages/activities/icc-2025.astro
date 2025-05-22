@@ -6,7 +6,9 @@ import { getCollection } from "astro:content";
 import Card from "../../components/Card.astro";
 import { getEventDuration } from "../../lib/getEventDuration";
 
-const allEvents = await getCollection("events");
+const iccEvents = await getCollection("events", (data) =>
+  data.id.startsWith("icc-2025")
+);
 ---
 
 <Layout>
@@ -15,13 +17,13 @@ const allEvents = await getCollection("events");
 
   <div class="grid">
     {
-      allEvents
+      iccEvents
         .toSorted((a, b) => {
-          const getTime = (d: (typeof allEvents)[number]) =>
+          const getTime = (d: (typeof iccEvents)[number]) =>
             !d.data.dateTime ? 0 : new Date(d.data.dateTime.start).getTime();
           return getTime(a) - getTime(b);
         })
-        .map(async (event, i) => {
+        .map((event) => {
           return (
             <a
               href={`/activities/${event.id}`}

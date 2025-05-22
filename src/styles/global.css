@@ -118,8 +118,13 @@ code {
   padding: 0.2em;
   border-radius: var(--border-radius-xs);
 }
+
 .monospace {
   font-family: var(--font-family-headline), monospace;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 .muted {
