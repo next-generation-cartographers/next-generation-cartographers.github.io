@@ -16,6 +16,8 @@ const events = defineCollection({
       })
       .optional(),
     type: z.string(),
+    index: z.number().optional(),
+    url: z.string().url().optional(),
   }),
 });
 

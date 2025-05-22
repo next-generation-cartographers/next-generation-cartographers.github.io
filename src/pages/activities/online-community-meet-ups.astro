@@ -1,9 +1,42 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Content } from "../../data/online-community-meet-ups.md";
+
+import { getCollection, render } from "astro:content";
+import { getEventDuration } from "../../lib/getEventDuration";
+import Card from "../../components/Card.astro";
+
+const meetUps = await getCollection("events", (data) =>
+  data.id.startsWith("online-community-meet-up")
+);
 ---
 
 <Layout>
   <h1>Online Community Meet-Ups</h1>
   <Content />
+
+  <h2>Upcoming meet-ups</h2>
+
+  <ul class="meetup-list">
+    {
+      meetUps.map((event) => (
+        <Card decoration={`"${event.data.index}"`}>
+          <h3 id={event.id}>{event.data.title}</h3>
+          <spam>{event.data.dateTime?.start ?? "tba"}</spam>
+        </Card>
+      ))
+    }
+  </ul>
 </Layout>
+
+<style>
+  h3 {
+    margin: 0;
+  }
+  ul.meetup-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-left: 0;
+  }
+</style>
