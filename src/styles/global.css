@@ -63,6 +63,9 @@ h4 {
   font-weight: 700;
   margin-top: 2em;
 }
+h1 {
+  margin-top: 0;
+}
 
 p {
   margin-top: 0.5rem;
