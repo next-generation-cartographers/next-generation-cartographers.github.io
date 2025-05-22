@@ -29,7 +29,6 @@ const allEvents = await getCollection("events");
           return getTime(a) - getTime(b);
         })
         .map(async (event, i) => {
-          const { Content } = await render(event);
           return (
             <div style={{ position: "relative", overflow: "hidden" }}>
               <div
@@ -61,7 +60,6 @@ const allEvents = await getCollection("events");
                   </div>
                 </div>
               </Card>
-              <Content />
             </div>
           );
         })

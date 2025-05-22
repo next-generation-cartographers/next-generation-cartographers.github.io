@@ -1,0 +1,66 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Card from "../../../components/Card.astro";
+import { getCollection, render } from "astro:content";
+import { getEventDuration } from "../../../lib/getEventDuration";
+
+export async function getStaticPaths() {
+  const allEvents = await getCollection("events");
+  // remove prefix from id
+  const slugs = allEvents.map((event) => event.id.replace("icc-2025/", ""));
+  return slugs.map((slug) => ({
+    params: { event: slug },
+  }));
+}
+
+const { event: eventSlug } = Astro.params;
+
+const allEvents = await getCollection("events");
+const event = allEvents.find((event) => event.id === `icc-2025/${eventSlug}`);
+const index = allEvents.findIndex(
+  (event) => event.id === `icc-2025/${eventSlug}`
+);
+const { Content } = await render(event);
+---
+
+<Layout>
+  <div
+    style={{
+      position: "relative",
+      overflow: "hidden",
+      marginBottom: "var(--spacing)",
+    }}
+  >
+    <div
+      style={{
+        position: "absolute",
+        fontSize: "15em",
+        fontFamily: "var(--font-family-headline)",
+        fontVariantNumeric: "tabular-nums",
+        "-webkit-text-stroke": "1px rgb(var(--secondary))",
+        color: "white",
+        top: ".3em",
+        lineHeight: 0,
+        zIndex: 10,
+        right: "-.075em",
+      }}
+    >
+      {index + 1}
+    </div>
+    <Card>
+      <div>
+        <h2 id={event.id}>{event.data.title}</h2>
+        <div>
+          <span class="monospace">Datetime</span>
+          <strong>{getEventDuration(event.data.dateTime)}</strong>
+        </div>
+        <div>
+          <span class="monospace">Type</span>
+          <strong>{event.data.type}</strong>
+        </div>
+      </div>
+    </Card>
+  </div>
+
+  <Content />
+</Layout>
