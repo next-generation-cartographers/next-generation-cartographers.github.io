@@ -24,30 +24,12 @@ const { Content } = await render(event);
 ---
 
 <Layout>
-  <div
-    style={{
-      position: "relative",
-      overflow: "hidden",
-      marginBottom: "var(--spacing)",
-    }}
+  <Card
+    decoration={`"${event.data.type.at(0)}"`}
+    style={{ marginBottom: "var(--spacing-lg)" }}
   >
-    <div
-      style={{
-        position: "absolute",
-        fontSize: "15em",
-        fontFamily: "var(--font-family-headline)",
-        fontVariantNumeric: "tabular-nums",
-        "-webkit-text-stroke": "1px rgb(var(--secondary))",
-        color: "white",
-        top: ".3em",
-        lineHeight: 0,
-        zIndex: 10,
-        right: "-.075em",
-      }}
-    >
-      {index + 1}
-    </div>
-    <Card>
+    <div>
+      <h2 id={event.id}>{event.data.title}</h2>
       <div>
         <h2 id={event.id}>{event.data.title}</h2>
         <div>

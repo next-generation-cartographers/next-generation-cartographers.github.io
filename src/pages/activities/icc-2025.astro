@@ -30,24 +30,11 @@ const allEvents = await getCollection("events");
         })
         .map(async (event, i) => {
           return (
-            <div style={{ position: "relative", overflow: "hidden" }}>
-              <div
-                style={{
-                  position: "absolute",
-                  fontSize: "15em",
-                  fontFamily: "var(--font-family-headline)",
-                  fontVariantNumeric: "tabular-nums",
-                  "-webkit-text-stroke": "1px rgb(var(--secondary))",
-                  color: "white",
-                  top: ".3em",
-                  lineHeight: 0,
-                  zIndex: 10,
-                  right: "-.075em",
-                }}
-              >
-                {i + 1}
-              </div>
-              <Card>
+            <a
+              href={`/activities/${event.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <Card isInteractive decoration={`"${event.data.type.at(0)}"`}>
                 <div>
                   <h2 id={event.id}>{event.data.title}</h2>
                   <div>
