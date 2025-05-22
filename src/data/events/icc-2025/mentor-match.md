@@ -1,6 +1,6 @@
 ---
 title: "MentorMatch: Navigating Careers with Next Generation Cartographers"
-type: "Workshop"
+type: Pre-Conference Workshop
 dateTime:
   start: "2025-08-17T09:00:00Z"
   end: "2025-08-17T11:00:00Z"

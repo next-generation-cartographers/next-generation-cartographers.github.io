@@ -1,6 +1,6 @@
 ---
 title: "What Is Our Narrative? Shaping the Future of Indigenous Mapping"
-type: "Workshop"
+type: "Pre-Conference Workshop"
 dateTime:
   start: "2025-08-17T13:00:00Z"
   end: "2025-08-17T15:00:00Z"

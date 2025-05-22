@@ -1,6 +1,6 @@
 ---
 title: "Toward an ICA Code of Conduct: Community Workshop"
-type: "Panel"
+type: "Workshop"
 ---
 
 Adopting a Code of Conduct can increase safety and respect within the International Cartographic Association (ICA) community by establishing clear rules for expected behavior. A well-defined Code of Conduct helps provide a universal framework that transcends cultural boundaries and facilitates effective communication and collaboration among participants from diverse backgrounds, fostering a community environment where people feel valued. Thus, developing and implementing a Code of Conduct is a priority for the ICA.
