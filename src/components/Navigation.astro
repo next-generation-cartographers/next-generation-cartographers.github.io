@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 import logo from "../../public/assets/ngc-marks/ngc-rgb-logomark-black.svg";
 import { navigationLinks } from "../data/navigation";
+import normalizePath from "../lib/normalizePath";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav>
@@ -21,14 +24,31 @@ import { navigationLinks } from "../data/navigation";
         {
           navigationLinks.map(({ href, label, children }, i) => {
             const popoverId = `popover-nav-${i}`;
+            const isActive =
+              currentPath.length > 1 &&
+              children?.some((child) =>
+                child.href.includes(normalizePath(currentPath))
+              );
             return (
               <li>
                 {children ? (
                   <div>
-                    <button class="sub-menu-button" popovertarget={popoverId}>
+                    <button
+                      class:list={{ "sub-menu-button": true, active: isActive }}
+                      popovertarget={popoverId}
+                    >
                       {label}
                     </button>
-                    <ul id={popoverId} class="sub-menu" popover>
+                    <ul
+                      id={popoverId}
+                      class="sub-menu"
+                      popover
+                      style={{
+                        positionAnchor: `--${popoverId}`,
+                        top: "anchor(bottom)",
+                        left: "anchor(left)",
+                      }}
+                    >
                       {children.map(({ href, label }) => (
                         <li>
                           <a href={href}>{label}</a>
@@ -50,11 +70,24 @@ import { navigationLinks } from "../data/navigation";
 </nav>
 
 <script>
+  // Adjust text of menu button based on menu state
+  // Set the initial state of the menu button
   let isOpen = false;
   const menuButton = document.querySelector(".menu-button");
   menuButton?.addEventListener("click", () => {
     isOpen = !isOpen;
     menuButton.textContent = isOpen ? "Hide Menu" : "Show Menu";
+  });
+
+  // Set the anchor name for each sub-menu button
+  // Workaround for not being able to use dynamic css
+  document.querySelectorAll(".sub-menu-button").forEach((btn) => {
+    const element = btn as HTMLElement;
+    // const anchorName = "--" + element.id.replace("button-", "");
+    element.style.setProperty(
+      "anchor-name",
+      "--" + element.getAttribute("popovertarget")
+    );
   });
 </script>
 
@@ -154,6 +187,15 @@ import { navigationLinks } from "../data/navigation";
       padding: 0;
       @container ((max-width: 600px)) {
         pointer-events: none;
+      }
+      &.active::after {
+        content: " ";
+        display: block;
+        width: 0.25em;
+        height: 0.25em;
+        border-radius: 100%;
+        background: rgb(var(--primary));
+        margin: 0 auto 0 auto;
       }
     }
     ul {

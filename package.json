@@ -12,9 +12,11 @@
   },
   "author": "Jakob Listabarth",
   "dependencies": {
-    "@fontsource-variable/source-sans-3": "^5.1.0",
-    "@fontsource-variable/space-grotesk": "^5.1.0",
-    "astro": "^5.1.1",
-    "sharp": "^0.33.5"
+    "@astrojs/check": "^0.9.4",
+    "@fontsource-variable/source-sans-3": "^5.2.7",
+    "@fontsource-variable/space-grotesk": "^5.2.7",
+    "astro": "^5.7.13",
+    "sharp": "^0.34.1",
+    "typescript": "^5.8.3"
   }
 }
