@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Content } from "../../data/icc-2025.md";
 
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Card from "../../components/Card.astro";
 import { getEventDuration } from "../../lib/getEventDuration";
 
@@ -13,14 +13,7 @@ const allEvents = await getCollection("events");
   <h1 id="next-generation-cartographers">ICC 2025 activities</h1>
   <Content />
 
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "var(--spacing-lg)",
-      paddingTop: "var(--spacing-lg)",
-    }}
-  >
+  <div class="grid">
     {
       allEvents
         .toSorted((a, b) => {
@@ -51,9 +44,28 @@ const allEvents = await getCollection("events");
                   </div>
                 </div>
               </Card>
-            </div>
+            </a>
           );
         })
     }
   </div>
 </Layout>
+
+<style>
+  .grid {
+    display: grid;
+    gap: var(--spacing);
+    grid-template-columns: 1fr;
+    padding-top: var(--spacing-lg);
+
+    > a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  @media (min-width: 550px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
