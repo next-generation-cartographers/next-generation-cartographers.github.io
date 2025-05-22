@@ -1,8 +1,8 @@
 ---
 import { navigationLinks } from "../data/navigation.ts";
-import normalizePath from "../lib/normalizePath";
 
 const currentPath = Astro.url.pathname;
+const secondLevelSlug = currentPath.split("/").at(2);
 ---
 
 <footer>
@@ -26,7 +26,10 @@ const currentPath = Astro.url.pathname;
                     <li>
                       <a
                         class:list={{
-                          active: href === normalizePath(currentPath),
+                          active:
+                            (secondLevelSlug &&
+                              href.includes(secondLevelSlug)) ||
+                            currentPath === href,
                         }}
                         href={href}
                       >
