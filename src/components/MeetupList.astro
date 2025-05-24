@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import Card from "./Card.astro";
+import formatDateTime from "../lib/formatDateTime";
+
+interface Props {
+  filter?: "upcoming" | "past" | "all";
+}
+const { filter } = Astro.props;
+
+const meetUps = (
+  await getCollection("events", (data) =>
+    data.id.startsWith("online-community-meet-up")
+  )
+).toSorted((a, b) => {
+  const aDate = new Date(a.data.dateTime?.start ?? "");
+  const bDate = new Date(b.data.dateTime?.start ?? "");
+  return bDate.getTime() - aDate.getTime();
+});
+
+const filteredMeetUps =
+  filter === "upcoming"
+    ? meetUps.filter(
+        (event) => new Date(event.data.dateTime?.start ?? "") > new Date()
+      )
+    : filter === "past"
+      ? meetUps.filter(
+          (event) => new Date(event.data.dateTime?.start ?? "") < new Date()
+        )
+      : meetUps;
+---
+
+<ul>
+  {
+    filteredMeetUps.map((event) => (
+      <Card
+        decoration={`"${event.data.index}"`}
+        isInteractive={filter === "upcoming"}
+      >
+        <div>
+          <h3 id={event.id}>{event.data.title}</h3>
+          <time datetime={event.data.dateTime?.start}>
+            {event.data.dateTime?.start
+              ? formatDateTime(event.data.dateTime.start)
+              : "tba"}
+          </time>
+          {filter === "upcoming" && (
+            <a href={event.data.url} target="_blank" rel="noopener">
+              <button>Register</button>
+            </a>
+          )}
+        </div>
+      </Card>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-left: 0;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  a:has(button) {
+    text-decoration: none;
+  }
+  button {
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgb(var(--primary));
+    margin-top: var(--spacing-xs);
+    transition: background 0.3s ease-in-out;
+    &:hover {
+      background: var(--background);
+    }
+    color: rgb(var(--primary));
+  }
+</style>
