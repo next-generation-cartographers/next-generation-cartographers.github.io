@@ -1,0 +1,51 @@
+---
+import NewsList from "../components/NewsList.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <h2>News around Next Generation Cartographers</h2>
+  <p>
+    On this page you can find news articles about the Next Generation
+    Cartographers. If you want to stay up to date, please subscribe to our
+    <a href="/#join-the-community"> LinkedIn or join our Discord </a>.
+  </p>
+
+  <NewsList />
+</Layout>
+
+<style>
+  header {
+    margin-bottom: var(--spacing-lg);
+  }
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing);
+    padding-left: 0;
+    list-style-type: none;
+    align-items: stretch;
+    justify-items: stretch;
+    li {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      h3 {
+        margin: 0;
+      }
+      time {
+        display: block;
+        font-family: var(--font-family-headline);
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+  @media screen and (min-width: 600px) {
+    ul {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .more-news {
+    margin-top: var(--spacing-lg);
+  }
+</style>
