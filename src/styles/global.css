@@ -163,7 +163,7 @@ button {
   font-weight: bold;
   padding: 0.5em;
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-xs);
   cursor: pointer;
   background: none;
   color: inherit;

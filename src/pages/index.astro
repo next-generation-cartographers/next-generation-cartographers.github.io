@@ -4,6 +4,7 @@ import Callout from "../components/Callout.astro";
 import Memberslist from "../components/Memberslist.astro";
 import LinkCard from "../components/LinkCard.astro";
 import Disclaimer from "../components/Disclaimer.astro";
+import NewsList from "../components/NewsList.astro";
 ---
 
 <Layout>
@@ -64,125 +65,7 @@ import Disclaimer from "../components/Disclaimer.astro";
   </div>
 
   <h2 id="past-activities-and-media">Past activities &amp; Media</h2>
-  <ul id="news">
-    <li>
-      16.02.2025 <br />
-      <em> 45<sup>th</sup> Polish National Cartographic Conference </em> (20.–23.09.2023)
-      resulted in: <br />
-      Słomska-Przech, K., Zawadzki, M., Stadnicka, M., Wabiński, J., Adolf, A., Róg,
-      M. & Sompolski, M. <strong
-        >Condition of young scientists of cartography in Poland: searching for a
-        diagnosis (2016–2022)</strong
-      >. Polish Cartographical Review, 2024, Sciendo, vol. 56 no. 1, pp. 91-114. <a
-        href="https://doi.org/10.2478/pcr-2024-0007"
-        >https://doi.org/10.2478/pcr-2024-0007</a
-      >
-    </li>
-    <li>
-      03.02.2025 <br />
-      <em>EuroCarto</em> (September 2022) resulted in: <br />
-      Nestel, C., Słomska-Przech, K., Ledermann, F., Bogucka, E. P., Vörös, F., Meier,
-      S., & Roth, R. E. (2025). <strong
-        >Opportunities and Challenges for the Next Generation of Cartographers:
-        An Inclusive Workshop Study with Early-Career Cartography Professionals</strong
-      >. The Cartographic Journal, 61(3), 218–226. <a
-        href="https://doi.org/10.1080/00087041.2024.2439720"
-        >https://doi.org/10.1080/00087041.2024.2439720</a
-      >
-    </li>
-    <li>
-      09.–11.09.2024 <br />
-      <strong>EuroCarto 2024</strong>
-      (Vienna, Austria)
-      <a href="https://eurocarto2024.org/" target="_blank"
-        >https://eurocarto2024.org/</a
-      >. Besides many talks given by young academics, Next Generation
-      Cartographers was involved in the following activities:
-      <ul>
-        <li>
-          <a
-            href="https://eurocarto2024.org/side-events/#NextGeneration"
-            target="_blank">Next Generation Cartographers Meet-up</a
-          >
-          <br />
-          Over 60 people attended our EuroCarto
-          <span class="inline-logo">NGC</span> meet-up at the bar “Ponint of Sale”
-          in Vienna!
-        </li>
-        <li>
-          <a
-            href="https://ica-abs.copernicus.org/articles/7/116/2024/"
-            target="_blank">Panel: Towards an ICA Code of Conduct</a
-          ><br />
-          Moderation: Chelsea Nestel<br />
-          NGC members participated as panelists as well as audience members, in a
-          panel discussion that drew a lot of attention.
-        </li>
-        <li>
-          <span class="inline-logo">NGC</span>
-          <a href="/assets/NGCEuroCarto24-Reflection-Miro-board.pdf"
-            >Reflection on Eurocarto 2024</a
-          >
-        </li>
-      </ul>
-    </li>
-    <li>
-      07.09.2024 <br />
-      <strong>
-        <a href="http://carto-vis-workshop.uw.edu.pl/"
-          >Workshop on AI, Geovisualization, and Analytical Reasoning</a
-        >
-      </strong>
-      (Warsaw, Poland). Organization: University of Warsaw Department of Geoinformatics,
-      Cartography, and Remote Sensing in collaboration with the International Cartographic
-      Association Commissions on Cognitive Issues in Geographic Information Visualization,
-      Geovisualization, and User Experience (UX), as well as <span
-        class="inline-logo">NGC</span
-      >. See
-      <a href="https://ica-abs.copernicus.org/articles/8/"
-        >Abstracts of the ICA (Internation Cartographic Association), Volume 8</a
-      >.
-    </li>
-    <li>
-      20.–23.09.2023<br />
-      45<sup>th</sup> Polish National Cartographic Conference (Lublin &amp; Janów
-      Lubelski, Poland),
-      <a href="https://www.umcs.pl/pl/program,26346.htm"
-        >Panel discussion “The future of Polish academic cartography - state and
-        prospects - an attempt at diagnosis”</a
-      >
-      [“Przyszłość polskiej kartografii akademickiej - stan i perspektywy - próba
-      diagnozy”], organisers: Katarzyna Słomska-Przech, Maria Stadnicka, Mateusz
-      Zawadzki.
-    </li>
-    <li>
-      13.–18.08.2023<br />
-      <a href="https://icc2023.org/" target="_blank"
-        >International Cartographic Conference</a
-      >
-      (ICC’23, Cape Town, South Africa): Next Generation Cartographers meeting on
-      Wednesday, 16.8., 12:40 (Session 28F);
-      <a href="https://ica-abs.copernicus.org/articles/6/162/2023/">Paper</a>
-      presentation on the results of the Vienna Workshop and the current state of
-      the initiative on Friday, 18.8., 11:30 (Session 45D).
-    </li>
-    <li>
-      19.06.2023<br />
-      <a href="https://thegeomob.com/podcast/episode-186"
-        >Podcast with NGC member Merve Keskin</a
-      >
-      on map usability and <span class="inline-logo">NGC</span>.
-    </li>
-    <li>
-      20.09.2022<br />
-      EuroCarto 2022 (Vienna, Austria)
-      <a href="https://visualisierung.dgfk.net/en/events/eurocarto2022/"
-        >Workshop Next Generation Cartographers: A cartographic colloquium</a
-      ><br />
-      Workshop Commission: Edyta Paulina Bogucka, Florian Ledermann, Sebastian Meier,
-      Robert Roth, Katarzyna Słomska-Przech
-    </li>
-  </ul>
+  <NewsList n={3} />
 
   <h2 id="contact">Contact us</h2>
   <ul>
@@ -224,7 +107,10 @@ import Disclaimer from "../components/Disclaimer.astro";
   </ul>
 
   <h2 id="members">Members</h2>
-  <Callout>
+  <p>The members are shown in randomized order on every page load.</p>
+  <Memberslist />
+
+  <Callout style={{ marginTop: "2em" }}>
     <span class="monospace text-bold">Note</span>
     <p>
       If you want to be added to the this section please contact us or create a
@@ -235,11 +121,7 @@ import Disclaimer from "../components/Disclaimer.astro";
       >.
     </p>
   </Callout>
-  <p>(in randomized order on every page load)</p>
-  <Memberslist />
 </Layout>
-
-<script src="../lib/news-events.js"></script>
 
 <style>
   p.teaser {

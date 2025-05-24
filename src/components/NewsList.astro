@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import formatDate from "../lib/formatDate";
+import Card from "./Card.astro";
+
+interface Props {
+  n?: number;
+}
+const { n } = Astro.props;
+
+const news = (await getCollection("news")).toSorted((a, b) => {
+  const aDate = new Date(a.data.date);
+  const bDate = new Date(b.data.date);
+  return bDate.getTime() - aDate.getTime();
+});
+---
+
+<ul>
+  {
+    news.slice(0, n).map((entry) => (
+      <li>
+        <Card style={{ width: "100%" }}>
+          <time datetime={entry.data.date.toISOString()}>
+            {formatDate(entry.data.date.toISOString())}
+          </time>
+          <h3 id={entry.id}>{entry.data.title}</h3>
+          <p>{entry.data.summary}</p>
+          <a href={`/news/${entry.id}`}>
+            <button>Read more</button>
+          </a>
+        </Card>
+      </li>
+    ))
+  }
+</ul>
+
+{
+  n && (
+    <a href="/news" class="more-news">
+      <button>More news</button>
+    </a>
+  )
+}
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing);
+    padding-left: 0;
+    list-style-type: none;
+    align-items: stretch;
+    justify-items: stretch;
+    li {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      time {
+        display: block;
+        font-family: var(--font-family-headline);
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+  @media screen and (min-width: 600px) {
+    ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  a:has(button) {
+    text-decoration: none;
+  }
+  button {
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgb(var(--primary));
+    margin-top: var(--spacing-xs);
+    transition: background 0.3s ease-in-out;
+    &:hover {
+      background: var(--background);
+    }
+    color: rgb(var(--primary));
+  }
+</style>

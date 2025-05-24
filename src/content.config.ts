@@ -20,6 +20,14 @@ const events = defineCollection({
     url: z.string().url().optional(),
   }),
 });
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/news" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    summary: z.string(),
+  }),
+});
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { events };
+export const collections = { events, news };
