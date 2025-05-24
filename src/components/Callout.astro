@@ -1,9 +1,12 @@
 ---
 import Card from "./Card.astro";
 
+interface Props {
+  style?: Record<string, string>;
+}
 const { style } = Astro.props;
 ---
 
-<Card style={style}>
+<Card style={{ ...style }}>
   <slot />
 </Card>
