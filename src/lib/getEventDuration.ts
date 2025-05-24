@@ -5,8 +5,13 @@ type EventDateTime = Awaited<
 >[number]["data"]["dateTime"];
 
 export const getEventDuration = (eventDateTime: EventDateTime) => {
+  if (!eventDateTime) {
+    throw new Error("No date available");
+  }
+
   const timeZone = "UTC";
   const locale = "en-US";
+
   const [start, end] = Object.values(eventDateTime).map((d) => new Date(d));
   const startString = start.toLocaleString(locale, {
     timeZone,
