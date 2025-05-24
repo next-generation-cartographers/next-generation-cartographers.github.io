@@ -1,6 +1,11 @@
 ---
 import Card from "./Card.astro";
 
+interface Props {
+  url: string;
+  title: string;
+  text: string;
+}
 const { url, title, text } = Astro.props;
 ---
 

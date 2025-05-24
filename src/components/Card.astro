@@ -1,4 +1,9 @@
 ---
+interface Props {
+  isInteractive?: boolean;
+  decoration?: string;
+  style?: Record<string, string>;
+}
 const { isInteractive = false, decoration = "", style = {} } = Astro.props;
 ---
 
