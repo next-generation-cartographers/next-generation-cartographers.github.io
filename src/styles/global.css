@@ -98,10 +98,7 @@ sup {
 }
 
 main {
-  padding: 5vmin;
   padding-top: 25vmin;
-  max-width: var(--max-width);
-  margin: auto;
 }
 
 li {
