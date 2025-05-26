@@ -6,23 +6,15 @@ import formatDate from "../../lib/formatDate";
 
 export async function getStaticPaths() {
   const newsCollection = await getCollection("news");
-  // remove prefix from id
-  const slugs = newsCollection.map((entry) => entry.id.replace("news/", ""));
-  return slugs.map((slug) => ({
-    params: { news: slug },
+  return newsCollection.map((news) => ({
+    params: { news: news.id.replace("news/", "") },
+    props: { news },
   }));
 }
 
-const { news: newsSlug } = Astro.params;
-
-const newsCollection = await getCollection("news");
-const news = newsCollection.find((news) => news.id === newsSlug);
-
-if (!news) {
-  return Astro.rewrite("/404");
-}
-
+const { news } = Astro.props;
 const { Content } = await render(news);
+const newsCollection = await getCollection("news");
 ---
 
 <Layout>
