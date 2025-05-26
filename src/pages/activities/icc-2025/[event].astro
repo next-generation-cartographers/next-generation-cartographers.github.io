@@ -17,26 +17,30 @@ const { Content } = await render(event);
 ---
 
 <Layout>
-  <Card
-    decoration={`"${event.data.type.at(0)}"`}
-    style={{ marginBottom: "var(--spacing-lg)" }}
-  >
-    <div>
-      <h2 id={event.id}>{event.data.title}</h2>
+  <div class="feature">
+    <Card
+      decoration={`"${event.data.type.at(0)}"`}
+      style={{ marginBottom: "var(--spacing-lg)" }}
+    >
       <div>
-        <span class="monospace">Datetime</span>
-        <strong>
-          {
-            event.data.dateTime ? getEventDuration(event.data.dateTime) : "tba"
-          }</strong
-        >
+        <h2 id={event.id}>{event.data.title}</h2>
+        <div>
+          <span class="monospace">Datetime</span>
+          <strong>
+            {
+              event.data.dateTime
+                ? getEventDuration(event.data.dateTime)
+                : "tba"
+            }</strong
+          >
+        </div>
+        <div>
+          <span class="monospace">Type</span>
+          <strong>{event.data.type}</strong>
+        </div>
       </div>
-      <div>
-        <span class="monospace">Type</span>
-        <strong>{event.data.type}</strong>
-      </div>
-    </div>
-  </Card>
+    </Card>
+  </div>
 
   <Content />
 </Layout>
