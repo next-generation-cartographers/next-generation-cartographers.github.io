@@ -2,13 +2,16 @@
 import { getCollection } from "astro:content";
 import formatDate from "../lib/formatDate";
 import Card from "./Card.astro";
+import Link from "./Link.astro";
 
 interface Props {
-  n?: number;
+  newsEntries: Awaited<ReturnType<typeof getCollection<"news">>>;
+  showSummary?: boolean;
+  showMoreCard?: boolean;
 }
-const { n } = Astro.props;
+const { showSummary = false, newsEntries, showMoreCard = true } = Astro.props;
 
-const news = (await getCollection("news")).toSorted((a, b) => {
+const news = newsEntries.toSorted((a, b) => {
   const aDate = new Date(a.data.date);
   const bDate = new Date(b.data.date);
   return bDate.getTime() - aDate.getTime();
@@ -17,30 +20,44 @@ const news = (await getCollection("news")).toSorted((a, b) => {
 
 <ul>
   {
-    news.slice(0, n).map((entry) => (
+    news.map((entry) => (
       <li>
         <Card style={{ width: "100%" }}>
-          <time datetime={entry.data.date.toISOString()}>
-            {formatDate(entry.data.date.toISOString())}
-          </time>
-          <h3 id={entry.id}>{entry.data.title}</h3>
-          <p>{entry.data.summary}</p>
-          <a href={`/news/${entry.id}`}>
-            <button>Read more</button>
-          </a>
+          <div class="content">
+            <time datetime={entry.data.date.toISOString()}>
+              {formatDate(entry.data.date.toISOString())}
+            </time>
+            <h3 id={entry.id}>{entry.data.title}</h3>
+            {showSummary && <p>{entry.data.summary}</p>}
+            <div style="margin-top: auto;">
+              <Link href={`/news/${entry.id}`}>Read more</Link>
+            </div>
+          </div>
         </Card>
       </li>
     ))
   }
+  {
+    showMoreCard && (
+      <li>
+        <Card
+          style={{
+            width: "100%",
+            backgroundColor: "rgb(var(--secondary))",
+          }}
+        >
+          <div class="content">
+            <h3>News overview</h3>
+            <p>Check out our news section for more updates.</p>
+            <div style="margin-top: auto;">
+              <Link href="/news">All news</Link>
+            </div>
+          </div>
+        </Card>
+      </li>
+    )
+  }
 </ul>
-
-{
-  n && (
-    <a href="/news" class="more-news">
-      <button>More news</button>
-    </a>
-  )
-}
 
 <style>
   ul {
@@ -67,22 +84,15 @@ const news = (await getCollection("news")).toSorted((a, b) => {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: start;
+    height: 100%;
+  }
   h3 {
     margin: 0;
     font-size: 1.2em;
-  }
-  a:has(button) {
-    text-decoration: none;
-  }
-  button {
-    display: block;
-    text-decoration: none;
-    border: 1px solid rgb(var(--primary));
-    margin-top: var(--spacing-xs);
-    transition: background 0.3s ease-in-out;
-    &:hover {
-      background: var(--background);
-    }
-    color: rgb(var(--primary));
   }
 </style>

@@ -1,0 +1,31 @@
+---
+interface Props {
+  href: string;
+  style?: Record<string, string>;
+}
+const { href, style } = Astro.props;
+---
+
+<a href={href} style={style}><span>↗</span> <slot /></a>
+
+<style>
+  a {
+    display: inline-block;
+    font-family: var(--font-family-headline);
+    border-radius: var(--border-radius-xs);
+    text-decoration: none;
+    color: rgb(var(--primary));
+    padding: 0.25em 0.5em;
+    border: 1px solid rgb(var(--primary));
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+    &:hover {
+      background-color: rgb(var(--primary));
+      color: white;
+    }
+  }
+  span {
+    margin-right: 0.25em;
+  }
+</style>

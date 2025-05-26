@@ -5,6 +5,11 @@ import Memberslist from "../components/Memberslist.astro";
 import LinkCard from "../components/LinkCard.astro";
 import Disclaimer from "../components/Disclaimer.astro";
 import NewsList from "../components/NewsList.astro";
+import { getCollection } from "astro:content";
+
+const news = (await getCollection("news")).toSorted(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
 <Layout>
@@ -64,8 +69,8 @@ import NewsList from "../components/NewsList.astro";
     </Callout>
   </div>
 
-  <h2 id="past-activities-and-media">Past activities &amp; Media</h2>
-  <NewsList n={3} />
+  <h2 id="news">News</h2>
+  <NewsList newsEntries={news.slice(0, 3)} showSummary={true} />
 
   <h2 id="contact">Contact us</h2>
   <ul>
