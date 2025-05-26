@@ -1,7 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
 import { getCollection, render } from "astro:content";
+import NewsList from "../../components/NewsList.astro";
+import Layout from "../../layouts/Layout.astro";
 import formatDate from "../../lib/formatDate";
 
 export async function getStaticPaths() {
@@ -31,61 +31,21 @@ const newsCollection = await getCollection("news");
 
   <h3 class="more-news">More news</h3>
   <div class="feature">
-    <ul>
-      {
-        newsCollection
-          .filter((entry) => entry.id !== news.id)
-          .slice(0, 3)
-          .map((entry) => (
-            <li>
-              <Card style={{ width: "100%" }}>
-                <time datetime={entry.data.date.toISOString()}>
-                  {formatDate(entry.data.date.toISOString())}
-                </time>
-                <h3 id={entry.id}>{entry.data.title}</h3>
-                <a href={`/news/${entry.id}`}>
-                  <button>Read more</button>
-                </a>
-              </Card>
-            </li>
-          ))
-      }
-    </ul>
+    <NewsList
+      newsEntries={newsCollection
+        .toSorted((a, b) => {
+          const aDate = new Date(a.data.date);
+          const bDate = new Date(b.data.date);
+          return bDate.getTime() - aDate.getTime();
+        })
+        .slice(0, 3)}
+      showSummary={false}
+    />
   </div>
-</Layout>
 
-<style>
-  header {
-    margin-bottom: var(--spacing-lg);
-  }
-  ul {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing);
-    padding-left: 0;
-    list-style-type: none;
-    align-items: stretch;
-    justify-items: stretch;
-    li {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      h3 {
-        margin: 0;
-      }
-      time {
-        display: block;
-        font-family: var(--font-family-headline);
-        margin-bottom: 0.5em;
-      }
+  <style>
+    header {
+      margin-bottom: var(--spacing-lg);
     }
-  }
-  @media screen and (min-width: 600px) {
-    ul {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .more-news {
-    margin-top: var(--spacing-lg);
-  }
-</style>
+  </style>
+</Layout>
