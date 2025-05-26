@@ -12,7 +12,7 @@ We think the resulting contributions offer interesting, diverse and multimedial 
 
 The order of the contributions is the same as at the opening ceremony.
 
-![Youg scholar voices at EuroCarto 2024 opening ceremony](../../images/young-voices-group-photo.jpg)
+![Young scholar voices at EuroCarto 2024 opening ceremony](../../images/young-voices-group-photo.jpg)
 
 In the photo from back left to front left: Luka Laval, Merve Keskin, Eliezer Fajardo Figueroa, Markéta Beitlová, Lily Houtman, Danai-Maria Kontou and Ester Scheck (_local organizing team_)
 
