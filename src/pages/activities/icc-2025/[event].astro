@@ -5,23 +5,14 @@ import { getCollection, render } from "astro:content";
 import { getEventDuration } from "../../../lib/getEventDuration";
 
 export async function getStaticPaths() {
-  const allEvents = await getCollection("events");
-  // remove prefix from id
-  const slugs = allEvents.map((event) => event.id.replace("icc-2025/", ""));
-  return slugs.map((slug) => ({
-    params: { event: slug },
+  const events = await getCollection("events");
+  return events.map((event) => ({
+    params: { event: event.id.replace("icc-2025/", "") },
+    props: { event },
   }));
 }
 
-const { event: eventSlug } = Astro.params;
-
-const allEvents = await getCollection("events");
-const event = allEvents.find((event) => event.id === `icc-2025/${eventSlug}`);
-
-if (!event) {
-  return Astro.rewrite("/404");
-}
-
+const { event } = Astro.props;
 const { Content } = await render(event);
 ---
 
