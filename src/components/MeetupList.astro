@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Card from "./Card.astro";
 import formatDateTime from "../lib/formatDateTime";
+import Link from "./Link.astro";
 
 interface Props {
   filter?: "upcoming" | "past" | "all";
@@ -37,7 +38,7 @@ const filteredMeetUps =
         decoration={`"${event.data.index}"`}
         isInteractive={filter === "upcoming"}
       >
-        <div>
+        <div class="card-content">
           <h3 id={event.id}>{event.data.title}</h3>
           <time datetime={event.data.dateTime?.start}>
             {event.data.dateTime?.start
@@ -45,9 +46,9 @@ const filteredMeetUps =
               : "tba"}
           </time>
           {filter === "upcoming" && (
-            <a href={event.data.url} target="_blank" rel="noopener">
-              <button>Register</button>
-            </a>
+            <Link href={event.data.url ?? ""} external>
+              Register
+            </Link>
           )}
         </div>
       </Card>
@@ -66,18 +67,10 @@ const filteredMeetUps =
     margin: 0;
     font-size: 1.2em;
   }
-  a:has(button) {
-    text-decoration: none;
-  }
-  button {
-    display: block;
-    text-decoration: none;
-    border: 1px solid rgb(var(--primary));
-    margin-top: var(--spacing-xs);
-    transition: background 0.3s ease-in-out;
-    color: rgb(var(--primary));
-    &:hover {
-      background: var(--background);
-    }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--spacing-xs);
   }
 </style>
