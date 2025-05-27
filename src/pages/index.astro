@@ -5,6 +5,8 @@ import Memberslist from "../components/Memberslist.astro";
 import LinkCard from "../components/LinkCard.astro";
 import Disclaimer from "../components/Disclaimer.astro";
 import NewsList from "../components/NewsList.astro";
+import MeetUpList from "../components/MeetupList.astro";
+
 import { getCollection } from "astro:content";
 
 const news = (await getCollection("news")).toSorted(
@@ -55,6 +57,15 @@ const news = (await getCollection("news")).toSorted(
     </p>
 
     <p>
+      In the meantime we organize frequent online community meet-ups:
+    </p>
+
+  <MeetUpList filter="upcoming" /> 
+  
+  <!-- in case no upcoming meet-up there should be a comment like "new dates to be announced soon" -->
+
+
+  <!--  <p>
       In the meantime, we frequently organize
       <a href="/activities/online-community-meet-ups"
         ><strong>online meetings and meet-ups</strong></a
