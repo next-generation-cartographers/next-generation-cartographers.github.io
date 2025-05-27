@@ -2,8 +2,8 @@
 title: "Online Community Meet-up No. 7"
 type: "Online Meet-up"
 dateTime:
-  start: "2025-06-03T10:30:00Z"
-  end: "2025-06-03T11:30:00Z"
+  start: "2025-06-03T17:30:00"
+  end: "2025-06-03T18:30:00"
 url: "https://tuwien.zoom.us/meeting/register/HvmaY1YnTC2-paYn_ysllg"
 index: 7
 ---
