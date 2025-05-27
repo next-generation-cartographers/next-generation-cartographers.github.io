@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import NewsList from "../../components/NewsList.astro";
 import Layout from "../../layouts/Layout.astro";
 import formatDate from "../../lib/formatDate";
+import Link from "../../components/Link.astro";
+import { getEntries } from "astro:content";
 
 export async function getStaticPaths() {
   const newsCollection = await getCollection("news");
@@ -15,6 +17,7 @@ export async function getStaticPaths() {
 const { news } = Astro.props;
 const { Content } = await render(news);
 const newsCollection = await getCollection("news");
+const relatedPapers = await getEntries(news.data.papers ?? []);
 ---
 
 <Layout>
@@ -27,25 +30,45 @@ const newsCollection = await getCollection("news");
     </header>
 
     <Content />
-  </article>
 
-  <h3 class="more-news">More news</h3>
-  <div class="feature">
-    <NewsList
-      newsEntries={newsCollection
-        .toSorted((a, b) => {
-          const aDate = new Date(a.data.date);
-          const bDate = new Date(b.data.date);
-          return bDate.getTime() - aDate.getTime();
-        })
-        .slice(0, 3)}
-      showSummary={false}
-    />
-  </div>
-
-  <style>
-    header {
-      margin-bottom: var(--spacing-lg);
+    {
+      relatedPapers.length > 0 && (
+        <div>
+          <h3>Related Papers</h3>
+          <ul>
+            {relatedPapers?.map((paper) => (
+              <li>
+                <em>{paper.data.title}</em>
+                <br />
+                <Link href={`/resources/papers/${paper.id}`}>See details</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
     }
-  </style>
+
+    <h3 class="more-news">More news</h3>
+    <div class="feature">
+      <NewsList
+        newsEntries={newsCollection
+          .toSorted((a, b) => {
+            const aDate = new Date(a.data.date);
+            const bDate = new Date(b.data.date);
+            return bDate.getTime() - aDate.getTime();
+          })
+          .slice(0, 3)}
+        showSummary={false}
+      />
+    </div>
+
+    <style>
+      header {
+        margin-bottom: var(--spacing-lg);
+      }
+      .more-news {
+        margin-top: var(--spacing-lg);
+      }
+    </style>
+  </article>
 </Layout>

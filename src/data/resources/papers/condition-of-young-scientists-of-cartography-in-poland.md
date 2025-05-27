@@ -1,9 +1,15 @@
 ---
-title: "Paper published: Condition of young scientists of cartography in Poland"
+title: "Condition of young scientists of cartography in Poland"
 summary: "Publication as a result from the 45th Polish National Cartographic Conference"
-date: 2025-02-16
-papers:
-  - "condition-of-young-scientists-of-cartography-in-poland"
+publicationDate: 2025-02-16
+authors:
+  - Słomska-Przech, K.
+  - Zawadzki, M.
+  - Stadnicka, M.
+  - Wabiński, J.
+  - Adolf, A.
+  - Róg, M.
+  - Sompolski, M.
 ---
 
 _45<sup>th</sup> Polish National Cartographic Conference_ (20.–23.09.2023) resulted in:

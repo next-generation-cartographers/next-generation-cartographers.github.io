@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import Link from "../../components/Link.astro";
+import formatDate from "../../lib/formatDate";
+
+const papers = await getCollection("papers");
+---
+
+<Layout>
+  <h2>Papers</h2>
+  <p>
+    On this page you can find papers published by former and current <span
+      class="inline-logo">NGC</span
+    > members.
+  </p>
+  <ul class="feature">
+    {
+      papers.map((d) => (
+        <li>
+          <Card>
+            <div class="card-content">
+              <div>
+                <h3>{d.data.title}</h3>
+                <time datetime="{d.data.publicationDate}">
+                  {formatDate(d.data.publicationDate.toISOString())}
+                </time>
+              </div>
+              <Link href={`/resources/papers/${d.id}`}>Read more</Link>
+            </div>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    display: grid;
+    list-style-type: none;
+    padding-left: 0;
+    gap: var(--spacing-xs);
+  }
+  li {
+    max-width: unset;
+  }
+  .card-content {
+    gap: var(--spacing);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    &:last-child {
+      justify-content: space-between;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .card-content {
+      flex-direction: row;
+    }
+  }
+  h3 {
+    margin: 0;
+  }
+</style>
