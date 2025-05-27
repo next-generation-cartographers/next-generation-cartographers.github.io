@@ -21,15 +21,28 @@ const meetUps = (
 
 const filteredMeetUps =
   filter === "upcoming"
-    ? meetUps.filter(
-        (event) => new Date(event.data.dateTime?.start ?? "") > new Date()
-      )
+    ? meetUps
+        .filter(
+          (event) => new Date(event.data.dateTime?.start ?? "") > new Date()
+        )
+        .toReversed()
     : filter === "past"
       ? meetUps.filter(
           (event) => new Date(event.data.dateTime?.start ?? "") < new Date()
         )
       : meetUps;
 ---
+
+{
+  filter === "upcoming" && filteredMeetUps.length === 0 && (
+    <div class="empty-list">
+      <p>
+        No upcoming online community meet-ups are scheduled at the moment.
+        Please check back later, new dates will be announced soon.
+      </p>
+    </div>
+  )
+}
 
 <ul>
   {
@@ -72,5 +85,10 @@ const filteredMeetUps =
     flex-direction: column;
     align-items: start;
     gap: var(--spacing-xs);
+  }
+  .empty-list {
+    padding: var(--spacing);
+    border: 1px dashed rgb(var(--primary));
+    border-radius: var(--border-radius-sm);
   }
 </style>
