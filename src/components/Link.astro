@@ -2,11 +2,20 @@
 interface Props {
   href: string;
   style?: Record<string, string>;
+  external?: boolean;
 }
-const { href, style } = Astro.props;
+const { href, style, external = false } = Astro.props;
 ---
 
-<a href={href} style={style}><span>↗</span> <slot /></a>
+<a
+  href={href}
+  style={style}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <span>↗</span>
+  <slot />
+</a>
 
 <style>
   a {

@@ -2,8 +2,12 @@
 title: "Paper published: Opportunities and Challenges for the Next Generation of Cartographers"
 summary: "EuroCarto 2022 resulted in a publication on the opportunities and challenges for the next generation of cartographers"
 date: 2025-02-03
+papers:
+  - "opportunities-and-challenges-for-the-next-generation-cartographers"
 ---
 
-_EuroCarto_ (September 2022) resulted in:
+<span class="inline-logo">NGC</span> is happy to announce the publication of a paper resulting from a workshop at _EuroCarto 2022_ in Vienna. The paper is based on the workshop _Next Generation Cartographers: A cartographic colloquium_ organized by Edyta Paulina Bogucka, Florian Ledermann, Sebastian Meier, Robert Roth, and Katarzyna Słomska-Przech. The workshop was held on September 20, 2022, in Vienna, Austria, as part of the EuroCarto 2022 conference.
 
-Nestel, C., Słomska-Przech, K., Ledermann, F., Bogucka, E. P., Vörös, F., Meier, S., & Roth, R. E. (2025). **Opportunities and Challenges for the Next Generation of Cartographers: An Inclusive Workshop Study with Early-Career Cartography Professionals**. The Cartographic Journal, 61(3), 218–226. [https://doi.org/10.1080/00087041.2024.2439720](https://doi.org/10.1080/00087041.2024.2439720)
+The paper is special to us as it is the first publication with _Next Generation Cartographers_ in the title. It marks the very beginning of our journey to establish a community of early-career cartographers.
+
+The paper is open access.
