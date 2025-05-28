@@ -1,13 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Callout from "../components/Callout.astro";
-import Memberslist from "../components/Memberslist.astro";
-import LinkCard from "../components/LinkCard.astro";
-import Disclaimer from "../components/Disclaimer.astro";
-import NewsList from "../components/NewsList.astro";
-import MeetUpList from "../components/MeetupList.astro";
-
 import { getCollection } from "astro:content";
+import Callout from "../components/Callout.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+import LinkCard from "../components/LinkCard.astro";
+import MeetUpList from "../components/MeetupList.astro";
+import Memberslist from "../components/Memberslist.astro";
+import NewsList from "../components/NewsList.astro";
+import NgcLogo from "../components/NgcLogo.astro";
+import Layout from "../layouts/Layout.astro";
 
 const news = (await getCollection("news")).toSorted(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
@@ -39,8 +39,7 @@ const news = (await getCollection("news")).toSorted(
     stages of their education and early career academics, professionals, and
     cartography enthusiasts. Not an early career cartographer? More senior
     scholars and cartographic professionals are most welcome in
-    <span class="inline-logo">NGC</span> as advocates for and mentors to the next
-    generation of cartographers.
+    <NgcLogo /> as advocates for and mentors to the next generation of cartographers.
   </p>
 
   <Disclaimer />

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../../public/assets/ngc-marks/ngc-rgb-logomark-black.svg";
 import { navigationLinks } from "../data/navigation";
+import NgcLogo from "./NgcLogo.astro";
 
 const currentPath = Astro.url.pathname;
 const topLevelSlug = currentPath.split("/").at(1);
@@ -13,7 +14,7 @@ const topLevelSlug = currentPath.split("/").at(1);
       <a href="/">
         <div class="brand">
           <Image src={logo} alt={"Next Generation Cartographers"} />
-          <span class="inline-logo">NGC</span>
+          <NgcLogo />
         </div>
       </a>
       <button popovertarget="menu" class="menu-button">Show Menu</button>
