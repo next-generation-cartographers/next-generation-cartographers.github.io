@@ -2,8 +2,8 @@
 title: "Rethinking and Reclaiming Data"
 type: "Pre-Conference Workshop"
 dateTime:
-  start: "2025-08-17T15:45:00Z"
-  end: "2025-08-17T18:15:00Z"
+  start: "2025-08-17T15:45:00-07:00"
+  end: "2025-08-17T18:15:00-07:00"
 ---
 
 Mapping requires data, in whatever form or format. However, data always represents situated knowledge and should be considered in the context of its origin - which can be shaped, amongst others, by (neo)colonialism, exclusion and discrimination.

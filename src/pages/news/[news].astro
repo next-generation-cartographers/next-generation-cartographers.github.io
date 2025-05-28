@@ -2,9 +2,9 @@
 import { getCollection, render } from "astro:content";
 import NewsList from "../../components/NewsList.astro";
 import Layout from "../../layouts/Layout.astro";
-import formatDate from "../../lib/formatDate";
 import Link from "../../components/Link.astro";
 import { getEntries } from "astro:content";
+import Time from "../../components/Time.astro";
 
 export async function getStaticPaths() {
   const newsCollection = await getCollection("news");
@@ -24,9 +24,11 @@ const relatedPapers = await getEntries(news.data.papers ?? []);
   <article>
     <header>
       <h2 id={news.id}>{news.data.title}</h2>
-      <time class="monospace" datetime={news.data.date.toISOString()}
-        >{formatDate(news.data.date.toISOString())}</time
-      >
+      <Time
+        class="monospace"
+        datetime={news.data.date.toISOString()}
+        format="date"
+      />
     </header>
 
     <Content />

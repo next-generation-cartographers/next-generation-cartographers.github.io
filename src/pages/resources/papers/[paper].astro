@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
-import formatDate from "../../../lib/formatDate";
+import Time from "../../../components/Time.astro";
 
 export async function getStaticPaths() {
   const papers = await getCollection("papers");
@@ -19,11 +19,11 @@ const { Content } = await render(paper);
   <article>
     <header>
       <h2 id={paper.id}>{paper.data.title}</h2>
-      <time
+      <Time
         class="monospace"
         datetime={paper.data.publicationDate.toISOString()}
-        >{formatDate(paper.data.publicationDate.toISOString())}</time
-      >
+        format="date"
+      />
     </header>
 
     <Content />

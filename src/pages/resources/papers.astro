@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 import Link from "../../components/Link.astro";
-import formatDate from "../../lib/formatDate";
+import Time from "../../components/Time.astro";
 
 const papers = await getCollection("papers");
 ---
@@ -23,9 +23,10 @@ const papers = await getCollection("papers");
             <div class="card-content">
               <div>
                 <h3>{d.data.title}</h3>
-                <time datetime="{d.data.publicationDate}">
-                  {formatDate(d.data.publicationDate.toISOString())}
-                </time>
+                <Time
+                  datetime={d.data.publicationDate.toISOString()}
+                  format="date"
+                />
               </div>
               <Link href={`/resources/papers/${d.id}`}>Read more</Link>
             </div>

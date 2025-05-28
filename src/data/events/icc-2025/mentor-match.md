@@ -2,8 +2,8 @@
 title: "MentorMatch: Navigating Careers with Next Generation Cartographers"
 type: Pre-Conference Workshop
 dateTime:
-  start: "2025-08-17T09:00:00Z"
-  end: "2025-08-17T11:00:00Z"
+  start: "2025-08-17T09:00:00-07:00"
+  end: "2025-08-17T11:00:00-07:00"
 ---
 
 MentorMatch is an interactive matchmaking mentoring session at ICC2025 to connect aspiring cartographers with experienced mentors. Limited to 30 participants—15 mentors and 15 peers—this fast-paced event offers a range of exciting formats, including "speed-dating" style 10-15 minute conversations, an "Ask Me Anything" session, and insights on publishing, presenting, and promoting your research.

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import formatDate from "../lib/formatDate";
 import Card from "./Card.astro";
 import Link from "./Link.astro";
+import Time from "./Time.astro";
 
 interface Props {
   newsEntries: Awaited<ReturnType<typeof getCollection<"news">>>;
@@ -23,10 +23,8 @@ const news = newsEntries.toSorted((a, b) => {
     news.map((entry) => (
       <li>
         <Card style={{ width: "100%" }}>
-          <div class="content">
-            <time datetime={entry.data.date.toISOString()}>
-              {formatDate(entry.data.date.toISOString())}
-            </time>
+          <div class="card-content">
+            <Time datetime={entry.data.date.toISOString()} format="date" />
             <h3 id={entry.id}>{entry.data.title}</h3>
             {showSummary && <p>{entry.data.summary}</p>}
             <div style="margin-top: auto;">
@@ -46,7 +44,7 @@ const news = newsEntries.toSorted((a, b) => {
             backgroundColor: "rgb(var(--secondary))",
           }}
         >
-          <div class="content">
+          <div class="card-content">
             <h3>News overview</h3>
             <p>Check out our news section for more updates.</p>
             <div style="margin-top: auto;">
@@ -84,7 +82,7 @@ const news = newsEntries.toSorted((a, b) => {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  .content {
+  .card-content {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);

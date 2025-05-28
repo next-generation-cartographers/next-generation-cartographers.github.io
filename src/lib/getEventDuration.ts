@@ -9,11 +9,10 @@ export const getEventDuration = (eventDateTime: EventDateTime) => {
     throw new Error("No date available");
   }
 
-  const timeZone = "UTC";
-  const locale = "en-US";
+  const timeZone = "PST"; // Pacific Standard Time
 
   const [start, end] = Object.values(eventDateTime).map((d) => new Date(d));
-  const startString = start.toLocaleString(locale, {
+  const startString = start.toLocaleString(undefined, {
     timeZone,
     month: "long",
     day: "numeric",
@@ -21,10 +20,11 @@ export const getEventDuration = (eventDateTime: EventDateTime) => {
     hour: "numeric",
     minute: "numeric",
   });
-  const endString = end.toLocaleString(locale, {
+  const endString = end.toLocaleString(undefined, {
     timeZone,
     hour: "numeric",
     minute: "numeric",
+    timeZoneName: "short",
   });
   return `${startString}-${endString}`;
 };
