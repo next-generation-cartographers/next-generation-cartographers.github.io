@@ -1,0 +1,61 @@
+---
+interface Props {
+  datetime: string;
+  format?: "short" | "long" | "date" | "time";
+  class?: string;
+  [key: string]: any; // Allow other attributes to be spread onto the <time> element
+}
+
+const {
+  datetime,
+  format = "long",
+  class: className = "",
+  ...rest
+} = Astro.props;
+---
+
+<time datetime={datetime} class={className} data-format={format} {...rest}>
+  <span id="localtime">{datetime}</span>
+</time>
+
+<script type="module" is:inline>
+  const timeElements = document.querySelectorAll("time[data-format]");
+  timeElements.forEach((element) => {
+    const span = element.querySelector("#localtime");
+    const dt = element.getAttribute("datetime");
+    const format = element.getAttribute("data-format") || "long";
+    if (dt && span) {
+      try {
+        const date = new Date(dt);
+        let options;
+        switch (format) {
+          case "short":
+            options = {
+              timeZoneName: "short",
+            };
+            break;
+          case "date":
+            options = { dateStyle: "medium" };
+            break;
+          case "time":
+            options = { timeZoneName: "short" };
+            break;
+          case "long":
+          default:
+            options = {
+              day: "numeric",
+              year: "numeric",
+              minute: "2-digit",
+              hour: "2-digit",
+              hour12: true,
+              month: "short",
+              timeZoneName: "short",
+            };
+        }
+        span.textContent = date.toLocaleString(undefined, options);
+      } catch (error) {
+        console.error("Error formatting date:", error);
+      }
+    }
+  });
+</script>

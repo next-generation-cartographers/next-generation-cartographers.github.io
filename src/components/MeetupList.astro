@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Card from "./Card.astro";
-import formatDateTime from "../lib/formatDateTime";
 import Link from "./Link.astro";
+import Time from "./Time.astro";
 
 interface Props {
   filter?: "upcoming" | "past" | "all";
@@ -53,11 +53,11 @@ const filteredMeetUps =
       >
         <div class="card-content">
           <h3 id={event.id}>{event.data.title}</h3>
-          <time datetime={event.data.dateTime?.start}>
-            {event.data.dateTime?.start
-              ? formatDateTime(event.data.dateTime.start)
-              : "tba"}
-          </time>
+          {event.data.dateTime?.start ? (
+            <Time datetime={event.data.dateTime?.start ?? ""} format="long" />
+          ) : (
+            "tba"
+          )}
           {filter === "upcoming" && (
             <Link href={event.data.url ?? ""} external>
               Register

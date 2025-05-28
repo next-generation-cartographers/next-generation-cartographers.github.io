@@ -2,8 +2,8 @@
 title: "What Is Our Narrative? Shaping the Future of Indigenous Mapping"
 type: "Pre-Conference Workshop"
 dateTime:
-  start: "2025-08-17T13:00:00Z"
-  end: "2025-08-17T15:00:00Z"
+  start: "2025-08-17T13:00:00-07:00"
+  end: "2025-08-17T15:00:00-07:00"
 ---
 
 What stories have cartographers been telling on this land? What have been missing? More importantly - what stories do we want our future generations of cartographers to tell?
