@@ -5,7 +5,9 @@ import { getCollection, render } from "astro:content";
 import { getEventDuration } from "../../../lib/getEventDuration";
 
 export async function getStaticPaths() {
-  const events = await getCollection("events");
+  const events = await getCollection("events", (event) =>
+    event.id.startsWith("icc-2025/")
+  );
   return events.map((event) => ({
     params: { event: event.id.replace("icc-2025/", "") },
     props: { event },
