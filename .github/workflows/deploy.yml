@@ -5,6 +5,8 @@ on:
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   schedule:
     - cron: "0 2 * * *" # Runs every day at 2:00 AM UTC
   # Allows you to run this workflow manually from the Actions tab on GitHub.
@@ -27,6 +29,10 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name == 'push' ||
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     environment:
       name: github-pages
