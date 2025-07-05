@@ -38,6 +38,10 @@ export const navigationLinks: NavigationItem[] = [
         href: "/resources/eurocarto-2024-contributions",
         label: "Young scholar voices (EuroCarto 24)",
       },
+      {
+        href: "/resources/padlet-cartographic-networks",
+        label: "Padlet Cartographic Networks",
+      },
     ],
   },
   { label: "Contact", href: "/#contact" },
