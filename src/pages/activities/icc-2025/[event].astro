@@ -31,7 +31,7 @@ const { Content } = await render(event);
           <strong>
             {
               event.data.dateTime
-                ? getEventDuration(event.data.dateTime)
+                ? getEventDuration(event.data.dateTime, "PST")
                 : "tba"
             }</strong
           >
