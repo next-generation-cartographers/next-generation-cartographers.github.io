@@ -10,6 +10,8 @@ Mapping requires data, in whatever form or format. However, data always represen
 
 Through interactive activities and discussions, we will explore approaches to rethinking and reclaiming data. Although this is a stand-alone event, participation in the previous session "What is Our Narrative?" will be beneficial to our discussion.
 
+**Workshop material can be [accessed online](https://github.com/ester-t-s/ICC-2025-Workshop-Rethinking-Data).**
+
 ## Commissions & Working Group responsible
 
 1. ICA Working Group Next Generation Cartographers https://next-generation-cartographers.github.io/
