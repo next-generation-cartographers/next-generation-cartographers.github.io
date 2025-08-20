@@ -2,8 +2,8 @@
 title: "Working Group Business Meeting"
 type: "Meeting"
 dateTime:
-  start: "2025-08-21T12:00:00-07:00"
+  start: "2025-08-21T12:05:00-07:00"
   end: "2025-08-21T13:30:00-07:00"
 ---
 
-During ICC each ICA Commission and Working Group will meet at the Vancouver Convention Center during lunch hours, Monday through Friday, 12:05 – 13:20. The purpose of these meetings is to discuss ongoing projects and initiatives and challenges within the commissions and working groups with the aim of fostering collaboration and sharing insights among participants.
+During our NGC Business Meeting on Thursday noon, we will give some insights into our work and how you can get involved. After our short presentation, we'd like to invite you to stay around, chat and connect, so bring your lunch! We will meet in room MR 8|15.
