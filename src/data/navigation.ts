@@ -21,12 +21,11 @@ export const navigationLinks: NavigationItem[] = [
   {
     label: "Activities",
     children: [
-      { href: "/activities/icc-2025", label: "ICC 2025" },
       {
         href: "/activities/online-community-meet-ups",
         label: "Online Community Meet-Ups",
       },
-      { href: "/activities/archive", label: "Archive" },
+      { href: "/past-activities", label: "Past Activities" },
     ],
   },
   {
