@@ -5,11 +5,11 @@ import Disclaimer from "../components/Disclaimer.astro";
 import LinkCard from "../components/LinkCard.astro";
 import MeetUpList from "../components/MeetupList.astro";
 import Memberslist from "../components/Memberslist.astro";
-import NewsList from "../components/NewsList.astro";
+import UpdatesList from "../components/UpdatesList.astro";
 import NgcLogo from "../components/NgcLogo.astro";
 import Layout from "../layouts/Layout.astro";
 
-const news = (await getCollection("news")).toSorted(
+const updates = (await getCollection("updates")).toSorted(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
@@ -53,8 +53,8 @@ const news = (await getCollection("news")).toSorted(
         class="inline-logo">NGC</span
       > community will be at
       <a href="https://icc2025.com/">ICC 2025 in Vancouver, CA</a> (August 16–22,
-      2025). 
-     </p>
+      2025).
+    </p>
     <ul class="link-list">
       {
         [
@@ -75,8 +75,8 @@ const news = (await getCollection("news")).toSorted(
 
     <MeetUpList filter="upcoming" />
 
-    <h2 id="news">News</h2>
-    <NewsList newsEntries={news.slice(0, 3)} showSummary={true} />
+    <h2 id="updates">Updates</h2>
+    <UpdatesList updatesEntries={updates.slice(0, 3)} showSummary={true} />
 
     <h2 id="contact">Contact us</h2>
     <ul>

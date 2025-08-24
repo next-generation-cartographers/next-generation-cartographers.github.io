@@ -33,8 +33,8 @@ const papers = defineCollection({
   }),
 });
 
-const news = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/data/news" }),
+const updates = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/updates" }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -44,4 +44,4 @@ const news = defineCollection({
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { events, news, papers };
+export const collections = { events, updates, papers };

@@ -1,32 +1,32 @@
 ---
 import { getCollection, render } from "astro:content";
-import NewsList from "../../components/NewsList.astro";
+import UpdatesList from "../../components/UpdatesList.astro";
 import Layout from "../../layouts/Layout.astro";
 import Link from "../../components/Link.astro";
 import { getEntries } from "astro:content";
 import Time from "../../components/Time.astro";
 
 export async function getStaticPaths() {
-  const newsCollection = await getCollection("news");
-  return newsCollection.map((news) => ({
-    params: { news: news.id.replace("news/", "") },
-    props: { news },
+  const updates = await getCollection("updates");
+  return updates.map((updates) => ({
+    params: { updates: updates.id.replace("updates/", "") },
+    props: { updates },
   }));
 }
 
-const { news } = Astro.props;
-const { Content } = await render(news);
-const newsCollection = await getCollection("news");
-const relatedPapers = await getEntries(news.data.papers ?? []);
+const { updates } = Astro.props;
+const { Content } = await render(updates);
+const updatesCollection = await getCollection("updates");
+const relatedPapers = await getEntries(updates.data.papers ?? []);
 ---
 
 <Layout>
   <article>
     <header>
-      <h2 id={news.id}>{news.data.title}</h2>
+      <h2 id={updates.id}>{updates.data.title}</h2>
       <Time
         class="monospace"
-        datetime={news.data.date.toISOString()}
+        datetime={updates.data.date.toISOString()}
         format="date"
       />
     </header>
@@ -50,10 +50,10 @@ const relatedPapers = await getEntries(news.data.papers ?? []);
       )
     }
 
-    <h3 class="more-news">More news</h3>
+    <h3 class="more-updates">More updates</h3>
     <div class="feature">
-      <NewsList
-        newsEntries={newsCollection
+      <UpdatesList
+        updatesEntries={updatesCollection
           .toSorted((a, b) => {
             const aDate = new Date(a.data.date);
             const bDate = new Date(b.data.date);
@@ -68,7 +68,7 @@ const relatedPapers = await getEntries(news.data.papers ?? []);
       header {
         margin-bottom: var(--spacing-lg);
       }
-      .more-news {
+      .more-updates {
         margin-top: var(--spacing-lg);
       }
     </style>

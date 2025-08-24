@@ -3,15 +3,20 @@ import { getCollection } from "astro:content";
 import Card from "./Card.astro";
 import Link from "./Link.astro";
 import Time from "./Time.astro";
+import NgcLogo from "./NgcLogo.astro";
 
 interface Props {
-  newsEntries: Awaited<ReturnType<typeof getCollection<"news">>>;
+  updatesEntries: Awaited<ReturnType<typeof getCollection<"updates">>>;
   showSummary?: boolean;
   showMoreCard?: boolean;
 }
-const { showSummary = false, newsEntries, showMoreCard = true } = Astro.props;
+const {
+  showSummary = false,
+  updatesEntries,
+  showMoreCard = true,
+} = Astro.props;
 
-const news = newsEntries.toSorted((a, b) => {
+const updates = updatesEntries.toSorted((a, b) => {
   const aDate = new Date(a.data.date);
   const bDate = new Date(b.data.date);
   return bDate.getTime() - aDate.getTime();
@@ -20,7 +25,7 @@ const news = newsEntries.toSorted((a, b) => {
 
 <ul>
   {
-    news.map((entry) => (
+    updates.map((entry) => (
       <li>
         <Card style={{ width: "100%" }}>
           <div class="card-content">
@@ -28,7 +33,7 @@ const news = newsEntries.toSorted((a, b) => {
             <h3 id={entry.id}>{entry.data.title}</h3>
             {showSummary && <p>{entry.data.summary}</p>}
             <div style="margin-top: auto;">
-              <Link href={`/news/${entry.id}`}>Read more</Link>
+              <Link href={`/updates/${entry.id}`}>Read more</Link>
             </div>
           </div>
         </Card>
@@ -45,10 +50,12 @@ const news = newsEntries.toSorted((a, b) => {
           }}
         >
           <div class="card-content">
-            <h3>News overview</h3>
-            <p>Check out our news section for more updates.</p>
+            <h3>Updates overview</h3>
+            <p>
+              Check out our updates section for more <NgcLogo /> updates.
+            </p>
             <div style="margin-top: auto;">
-              <Link href="/news">All news</Link>
+              <Link href="/updates">All updates</Link>
             </div>
           </div>
         </Card>

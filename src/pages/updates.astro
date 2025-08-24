@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import UpdatesList from "../components/UpdatesList.astro";
+import Layout from "../layouts/Layout.astro";
+import NgcLogo from "../components/NgcLogo.astro";
+
+const updates = await getCollection("updates");
+---
+
+<Layout>
+  <h2>Updates</h2>
+  <p>
+    On this page you can find updates about <NgcLogo />. If you want to stay up
+    to date, please subscribe to our
+    <a href="/#join-the-community"> LinkedIn or join our Discord </a>.
+  </p>
+
+  <UpdatesList updatesEntries={updates} showMoreCard={false} />
+</Layout>
