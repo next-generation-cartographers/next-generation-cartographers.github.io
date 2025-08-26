@@ -48,30 +48,7 @@ const updates = (await getCollection("updates")).toSorted(
     Upcoming events and networking opportunities
   </h2>
   <div class="events">
-    <p>
-      The next real-world meeting opportunities for the broader <span
-        class="inline-logo">NGC</span
-      > community will be at
-      <a href="https://icc2025.com/">ICC 2025 in Vancouver, CA</a> (August 16–22,
-      2025).
-    </p>
-    <ul class="link-list">
-      {
-        [
-          {
-            url: "/activities/icc-2025",
-            title: "ICC 2025 Activities",
-            text: "All info about our activities at ICC",
-          },
-        ].map(({ url, title, text }) => (
-          <li>
-            <LinkCard url={url} title={title} text={text} />
-          </li>
-        ))
-      }
-    </ul>
-
-    <p>In the meantime we organize frequent online community meet-ups:</p>
+    <p>Currently, no in-person meeting opportunities are planned. In the meantime we organize frequent online community meet-ups:</p>
 
     <MeetUpList filter="upcoming" />
 
