@@ -13,10 +13,10 @@
   "author": "Jakob Listabarth",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@fontsource-variable/source-sans-3": "^5.2.8",
-    "@fontsource-variable/space-grotesk": "^5.2.8",
+    "@fontsource-variable/source-sans-3": "^5.2.9",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
     "astro": "^5.14.0",
-    "sharp": "^0.34.3",
+    "sharp": "^0.34.4",
     "typescript": "^5.9.2"
   },
   "packageManager": "pnpm@10.11.0"
