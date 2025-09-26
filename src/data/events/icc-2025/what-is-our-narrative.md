@@ -38,7 +38,7 @@ Join us to learn, reflect, and rethink how we as a community have been approachi
 
 ## Contact
 
-- Chelsea Nestel nestel@wisc.edu
+- Chelsea Nestel nestel@uoregon.edu
 
 ## Additional information
 

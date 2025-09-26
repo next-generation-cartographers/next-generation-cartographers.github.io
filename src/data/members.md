@@ -1,7 +1,7 @@
 - [Merve Keskin](https://drmervekeskin.com)
 - [Jakub Wabiński](https://www.linkedin.com/in/jakub-wabi%C5%84ski-40a5b7a9/) (_Military University of Technology, PL_)
 - Olesia Ignateva (_TU Wien, AT_)
-- Chelsea Nestel (**Co-chair**; _UW Madison, US_)
+- [Chelsea Nestel](https://library.uoregon.edu/directory/nestel) (**Co-chair**; _University of Oregon, US_)
 - [Katarzyna Słomska-Przech](https://ihpan.edu.pl/en/employees/researcher/katarzyna-slomska-przech-2/) (**Co-chair**; _Polska Akademia Nauk, PL_)
 - [Jakob Listabarth](<https://fis.tu-dresden.de/portal/de/researchers/jakob-listabarth(a6ce5107-8ec5-4fa1-82bc-f05f6d72bb14).html>) (_TU Dresden, DE_)
 - [Florian Ledermann](https://cartography.tuwien.ac.at/florian-ledermann/) (TU Wien, AT)

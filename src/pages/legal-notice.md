@@ -6,7 +6,7 @@ layout: ../layouts/Layout.astro
 
 ## Website Owner
 
-This website is maintained by the Next Generation Cartographers (NGC) working group of the International Cartographic Association (ICA), represented by the co-chairs [Chelsea Nestel](mailto:nestel@wisc.edu) and [Katarzyna Słomska-Przech](mailto:kslomska@ihpan.edu.pl).
+This website is maintained by the Next Generation Cartographers (NGC) working group of the International Cartographic Association (ICA), represented by the co-chairs [Chelsea Nestel](mailto:nestel@uoregon.edu) and [Katarzyna Słomska-Przech](mailto:kslomska@ihpan.edu.pl).
 
 ## Legal Disclaimer
 
