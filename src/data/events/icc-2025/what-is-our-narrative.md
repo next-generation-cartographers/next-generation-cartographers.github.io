@@ -6,7 +6,7 @@ dateTime:
   end: "2025-08-17T15:00:00-07:00"
 ---
 
-*Unfortunately we had to cancel this workshop due to external circumstances. We are sad we are missing out on this learning opportunity.*
+_Unfortunately we had to cancel this workshop due to external circumstances. We are sad we are missing out on this learning opportunity._
 
 What stories have cartographers been telling on this land? What have been missing? More importantly - what stories do we want our future generations of cartographers to tell?
 
