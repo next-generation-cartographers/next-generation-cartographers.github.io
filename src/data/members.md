@@ -1,23 +1,29 @@
-- [Merve Keskin](https://drmervekeskin.com)
-- [Jakub Wabiński](https://www.linkedin.com/in/jakub-wabi%C5%84ski-40a5b7a9/) (_Military University of Technology, PL_)
-- Olesia Ignateva (_TU Wien, AT_)
-- [Chelsea Nestel](https://library.uoregon.edu/directory/nestel) (**Co-chair**; _University of Oregon, US_)
-- [Katarzyna Słomska-Przech](https://ihpan.edu.pl/en/employees/researcher/katarzyna-slomska-przech-2/) (**Co-chair**; _Polska Akademia Nauk, PL_)
-- [Jakob Listabarth](<https://fis.tu-dresden.de/portal/de/researchers/jakob-listabarth(a6ce5107-8ec5-4fa1-82bc-f05f6d72bb14).html>) (_TU Dresden, DE_)
-- [Florian Ledermann](https://cartography.tuwien.ac.at/florian-ledermann/) (TU Wien, AT)
-- [Sebastian Meier](https://www.fh-potsdam.de/hochschule-netzwerk/personen/sebastian-meier) (_FH Potsdam, DE_)
-- [Nianhua Liu](https://www.asg.ed.tum.de/en/lfk/team/members/nianhua-liu/) (_TU Munich, DE_)
-- [Héctor Ochoa Ortiz](https://odeco-research.eu/?p=3170) (_University of Camerino, IT_)
-- [Tomas Vanicek](https://www.geoinformatics.upol.cz/member/mgr-tomas-vanicek) (_Palacký University Olomouc, Dept. of Geoinformatics, CZ_)
-- [Ester Scheck](https://cartography.tuwien.ac.at/ester-scheck/) (_TU Wien, AT_)
-- [Sacha Schlumpf](https://cartography.tuwien.ac.at/sacha-schlumpf/) (_TU Wien, AT_)
-- Esther Amoako (_University of Toledo, US, PhD candidate (ABD) Spatially Integrated Social Science_)
-- Narendra Kumar (_Hemwati Nandan Bahuguna Garhwal University, IN_)
-- [Zulfa Nur’aini ‘Afifah](https://zulfanaa.github.io/portfolio/) (_University of Augsburg, DE_)
-- Andrea Miletić (_University of Zagreb, Faculty of Geodesy, HR_)
-- Juliane Cron (_TU Munich, DE_)
-- Dilara Bozkurt
-- Ulrike Holfeld (_TU Wien, AT_)
-- Marcin Wereszczyński (_University of Warsaw, PL_)
-- [Samuel Darkwah Manu](https://sammyhawkrad.github.io) (_TU Dresden, DE_)
-- Fei Yang, (_Phd Candidate, School of Geography, Nanjing Normal University, CH_)
+- [Chelsea Nestel](https://library.uoregon.edu/directory/nestel) _(**Co-chair**; University of Oregon,&nbsp;US)_
+- [Katarzyna Słomska-Przech](https://ihpan.edu.pl/en/employees/researcher/katarzyna-slomska-przech-2/) _(**Co-chair**; Polska Akademia Nauk,&nbsp;PL)_
+- [Merve Keskin](https://drmervekeskin.com) _(University of Salzburg,&nbsp;AT)_
+- [Jakob Listabarth](<https://fis.tu-dresden.de/portal/de/researchers/jakob-listabarth(a6ce5107-8ec5-4fa1-82bc-f05f6d72bb14).html>) _(TU Dresden,&nbsp;DE)_
+- [Florian Ledermann](https://cartography.tuwien.ac.at/florian-ledermann/) _(TU Wien,&nbsp;AT)_
+- [Nianhua Liu](https://www.asg.ed.tum.de/en/lfk/team/members/nianhua-liu/) _(TU Munich,&nbsp;DE)_
+- [Héctor Ochoa Ortiz](https://odeco-research.eu/?p=3170) _(University of Camerino,&nbsp;IT)_
+- [Ester Scheck](https://cartography.tuwien.ac.at/ester-scheck/) _(TU Wien,&nbsp;AT)_
+- [Sacha Schlumpf](https://sacha-schlumpf.ch/) _(TU Wien,&nbsp;AT)_
+- [Zulfa Nur’aini ‘Afifah](https://zulfanaa.github.io/portfolio/) _(University of Augsburg,&nbsp;DE)_
+- [Juliane Cron](https://www.asg.ed.tum.de/lfk/team/members/juliane-cron/) _(TU Munich,&nbsp;DE)_
+- Andrea Miletić _(Faculty of Geodesy, University of Zagreb,&nbsp;HR)_
+- [Bella Mironova](https://github.com/bella-mir) _(National Research University HSE,&nbsp;RU)_
+- [Camila Narbaitz Sarsur](https://www.cnscartography.com/) _(AR)_
+- Dajana Snopková _(Department of Geography, Masaryk University,&nbsp;CZ)_
+- [Estelle Sérèmes](https://es1010.github.io/Prive/?v=2) _(Agroparistech,&nbsp;FR)_
+- [Iga Ajdacka](http://geoinformatics.uw.edu.pl/iga-ajdacka/) _(University of Warsaw,&nbsp;PL)_
+- [Jakub Wabiński](https://www.linkedin.com/in/jakub-wabi%C5%84ski-engd-40a5b7a9/) _(Military University of Technology,&nbsp;PL)_
+- [Lydia Yoder](https://www.yodermapping.com/) _(US)_
+- [Mert Turunç](https://blog.atr0p.dev) _(Istanbul Technical University,&nbsp;TR)_
+- Nat Slaughter
+- Natalia Ipatow
+- [Nicolás Martínez Heredia](https://cartography.tuwien.ac.at/staff/nicolas-martinez-heredia/) _(TU Wien,&nbsp;AT)_
+- Nina Polous _(Uni Graz,&nbsp;AT)_
+- Sagnik Mukherjee _(GeoSN,&nbsp;DE)_
+- [Samuel Darkwah Manu](https://sammyhawkrad.github.io) _(TU Dresden,&nbsp;DE)_
+- [Tatiana Pozdnyakova](https://readymag.website/u1754210549/tanyapozdniakova/)
+- Wangshu Wang _(TU Munich,&nbsp;DE)_
+- [Zihan Liu](https://www.asg.ed.tum.de/lfk/team/members/zihan-liu/) _(TU Munich,&nbsp;DE)_
