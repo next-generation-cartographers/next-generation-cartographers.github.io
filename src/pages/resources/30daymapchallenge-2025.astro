@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  frontmatter,
+  Content,
+} from "../../data/30daymapchallenge/2025/maps.md";
+---
+
+<Layout>
+  <Content />
+  <div class="maps-gallery">
+    {
+      frontmatter.map((map) => (
+        <div class="map-item">
+          <a href={map.linkedInUrl} target="_blank" rel="noopener noreferrer">
+            <img
+              src={`/src/data/30daymapchallenge/2025/${map.imageFileName}`}
+              alt={`Map for day ${map.day}: ${map.topic} by ${map.author}`}
+            />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <style></style>
+</Layout>
