@@ -1,6 +1,6 @@
 :root {
   --primary: 0, 100, 255;
-  --secondary: 0, 255, 157;
+  --secondary: 0, 255, 0;
 
   --muted: color-mix(in srgb, rgb(var(--primary)), white 60%);
   --background: color-mix(in srgb, rgb(var(--primary)), white 95%);
