@@ -9,9 +9,9 @@ import Layout from "../../layouts/Layout.astro";
 
   <p>
     We try to keep the branding for
-    <NgcLogo /> light to make it easy to use. If you have questions, comments or
-    ideas on how we can improve the branding we are happy to hear them. Please reach
-    out to us via
+    <NgcLogo /> light to make it easy to use. If you have questions, comments or ideas
+    on how we can improve the branding we are happy to hear them. Please reach out
+    to us via
     <a href="https://discord.gg/3vbDshHjf3">discord</a>.
   </p>
 
@@ -160,18 +160,25 @@ import Layout from "../../layouts/Layout.astro";
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
+    container-type: inline-size;
   }
 
   img.mark {
-    padding: 4em;
+    padding: 1em;
     border: 1px solid var(--muted);
     border-radius: var(--border-radius-sm);
     transition: all 0.3s;
     &.small {
-      padding: 6em;
+      max-width: 200px;
     }
     &:hover {
       background-color: var(--muted), 0.1;
+    }
+  }
+
+  @container (min-width: 600px) {
+    img.mark {
+      padding: 4em;
     }
   }
 </style>
