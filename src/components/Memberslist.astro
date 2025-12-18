@@ -6,6 +6,16 @@ import { Content } from "../data/members.md";
   <Content />
 </div>
 
+<!-- TODO: find out how to style Content without using is:global -->
+<style is:global>
+  @media screen and (min-width: 680px) {
+    .shuffle ul {
+      columns: 2;
+      gap: 4em;
+    }
+  }
+</style>
+
 <script>
   // Fisher-Yates shuffle
   function shuffle(arr: HTMLElement[]) {
