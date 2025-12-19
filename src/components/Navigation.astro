@@ -167,6 +167,9 @@ const topLevelSlug = currentPath.split("/").at(1);
         display: block;
         padding-top: var(--spacing);
       }
+      ul.menu {
+        transform: translateY(0.15em);
+      }
       .backdrop {
         display: none;
         @container ((min-width: 600px)) {
@@ -180,13 +183,14 @@ const topLevelSlug = currentPath.split("/").at(1);
       }
     }
     a {
+      font-family: var(--font-family-headline);
       text-decoration: none;
       color: rgb(var(--primary));
     }
     .sub-menu-button {
       font-family: var(--font-family-headline);
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1em;
       color: rgb(var(--primary));
       padding: 0;
       @container ((max-width: 600px)) {
@@ -236,7 +240,7 @@ const topLevelSlug = currentPath.split("/").at(1);
         }
         &:popover-open {
           inset: unset;
-          padding: var(--spacing-xs) var(--spacing);
+          padding: var(--spacing-sm) var(--spacing);
           border-radius: var(--border-radius-xs);
           border: 1px solid rgb(var(--primary));
         }

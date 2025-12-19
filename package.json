@@ -14,10 +14,9 @@
   "author": "Jakob Listabarth",
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@fontsource-variable/source-sans-3": "^5.2.9",
-    "@fontsource-variable/space-grotesk": "^5.2.10",
     "@turf/centroid": "^7.3.1",
     "@turf/helpers": "^7.3.1",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
     "astro": "^5.16.6",
     "maplibre-gl": "^5.15.0",
     "photoswipe": "^5.4.4",
