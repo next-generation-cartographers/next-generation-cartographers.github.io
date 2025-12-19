@@ -46,12 +46,13 @@ const { isInteractive = false, decoration = "", style = {} } = Astro.props;
       &::before {
         content: var(--decoration);
         position: absolute;
+        font-weight: 900;
         font-size: 10em;
         font-family: var(--font-family-headline);
         -webkit-text-stroke: 1px rgb(var(--secondary));
         color: transparent;
-        top: -0.3em;
-        right: -0.15em;
+        top: -0.35em;
+        right: -0.075em;
         z-index: -1;
         pointer-events: none;
       }

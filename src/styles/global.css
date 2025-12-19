@@ -18,16 +18,17 @@
   );
 
   --spacing: 1.5em;
-  --spacing-xs: 0.5em;
+  --spacing-sm: calc(var(--spacing) * 0.5);
+  --spacing-xs: calc(var(--spacing) * 0.25);
   --spacing-lg: calc(var(--spacing) * 4);
 
   --border-radius-xs: 0.25rem;
   --border-radius-sm: 0.5rem;
 
-  --font-family-body: "Source Sans 3 Variable", system-ui, sans-serif;
-  --font-family-headline: "Space Grotesk Variable", system-ui, sans-serif;
+  --font-family-body: "Plus Jakarta Sans Variable", sans-serif;
+  --font-family-headline: "Cabinet Grotesk Variable", system-ui, sans-serif;
 
-  --width-prose: 65ch;
+  --width-prose: 50ch;
   --max-width: 690px;
 
   --shadow-lg: 0 4px 12px -1px rgba(var(--primary), 0.2),
@@ -60,7 +61,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-family-headline), sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   margin-top: 2em;
 }
 
@@ -68,7 +69,7 @@ p {
   margin-top: 0.5rem;
   margin-bottom: 0;
   max-width: var(--width-prose);
-  line-height: 1.5em;
+  line-height: 1.65em;
 }
 
 blockquote {
@@ -118,7 +119,7 @@ code {
 }
 
 .text-bold {
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .muted {
@@ -147,9 +148,9 @@ details[open] summary {
 ul.link-list {
   padding-left: 0;
   list-style: none;
-  li {
-    margin-top: var(--spacing);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
 button {

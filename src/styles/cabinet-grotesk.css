@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Cabinet Grotesk Variable";
+  src: url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2"),
+    url("/fonts/CabinetGrotesk-Variable.ttf") format("truetype"),
+    url("/fonts/CabinetGrotesk-Variable.woff") format("woff"),
+    url("/fonts/CabinetGrotesk-Variable.eot") format("embedded-opentype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

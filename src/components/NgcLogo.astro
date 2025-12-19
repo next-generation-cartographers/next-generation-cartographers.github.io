@@ -1,12 +1,22 @@
-<span class="inline-logo">NGC</span>
+<span>NGC</span>
 
-<style is:global>
-  .inline-logo {
+<style>
+  span {
     font-family: var(--font-family-headline);
-    font-weight: bold;
-    font-size: 1.2em;
-    position: relative;
-    top: 0.12em;
-    clip-path: inset(0 0 33% 0);
+    font-weight: 900;
+    font-size: 1.39em;
+    line-height: 0.85em;
+    display: inline-block;
+    overflow: hidden;
+    transform: translateY(0.3em); /* use transform instead of top */
+    margin: 0 0.05em;
+    clip-path: inset(0 0 35.7% 0);
+    background: linear-gradient(
+      160deg,
+      rgb(var(--primary)) 50%,
+      rgb(var(--secondary)) 80%
+    );
+    background-clip: text;
+    color: transparent;
   }
 </style>

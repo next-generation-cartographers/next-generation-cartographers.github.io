@@ -16,17 +16,17 @@ const updates = (await getCollection("updates")).toSorted(
 
 <Layout>
   <h1 id="next-generation-cartographers">
-    <img
-      src="/assets/ngc-marks/ngc-rgb-logotype-4c.svg"
-      class="logo"
-      alt="Next Generation Cartographers"
-    />
-    <span style="display: none">Next Generation Cartographers</span>
+    <div style="font-size: 3em; text-indent: -.075em; margin-bottom: -0.2em;">
+      <NgcLogo />
+    </div>
+    <div style="font-size: 1.5em; font-weight: 400; line-height: .8em;">
+      Next Generation<br /> Cartographers
+    </div>
   </h1>
   <p class="teaser">
-    Welcome to Next Generation Cartographers, a group dedicated to advocacy,
-    support and mentorship for early career cartographers within academic and
-    professional cartography.
+    Next Generation Cartographers are dedicated to advocacy, support and
+    mentorship for early career cartographers within academic and professional
+    cartography.
   </p>
 
   <p>
@@ -55,7 +55,6 @@ const updates = (await getCollection("updates")).toSorted(
   <div class="feature">
     <MeetUpList filter="upcoming" />
   </div>
-
   <h2 id="updates">Updates</h2>
   <UpdatesList updatesEntries={updates.slice(0, 3)} showSummary={true} />
 
@@ -128,10 +127,14 @@ const updates = (await getCollection("updates")).toSorted(
       margin-bottom: 1em;
     }
 
-    #updates,
-    #upcoming-events {
-      & li {
-        margin-top: var(--spacing-xs);
+    ul.link-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      > li {
+        max-width: none;
+        &:first-child {
+          grid-column: 1 / -1;
+        }
       }
     }
   </style>

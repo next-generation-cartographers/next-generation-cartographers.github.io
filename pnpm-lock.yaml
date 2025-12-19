@@ -11,12 +11,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.6
         version: 0.9.6(prettier@3.7.4)(typescript@5.9.2)
-      '@fontsource-variable/source-sans-3':
-        specifier: ^5.2.9
-        version: 5.2.9
-      '@fontsource-variable/space-grotesk':
-        specifier: ^5.2.10
-        version: 5.2.10
+      '@fontsource-variable/plus-jakarta-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
       astro:
         specifier: ^5.16.6
         version: 5.16.6(@types/node@24.0.15)(jiti@2.4.2)(rollup@4.45.1)(typescript@5.9.2)(yaml@2.8.0)
@@ -271,11 +268,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource-variable/source-sans-3@5.2.9':
-    resolution: {integrity: sha512-K9fkQbb0BNnRmmaU+Gpr6U4IaYKpNzA8t07J6aam2i+6v84RT72MVpar8OBr3yYAEznj4riKivPQ2nAF2fPKsw==}
-
-  '@fontsource-variable/space-grotesk@5.2.10':
-    resolution: {integrity: sha512-yJQO/o35/hAP3CFnpdFTwQku2yzJOae2HIpBmqkOVoxhhXJaQP3g+b6Jrz7u+eI7A5ZdCIf88uMWpBJdFiGr5w==}
+  '@fontsource-variable/plus-jakarta-sans@5.2.8':
+    resolution: {integrity: sha512-iQecBizIdZxezODNHzOn4SvvRMrZL/S8k4MEXGDynCmUrImVW0VmX+tIAMqnADwH4haXlHSXqMgU6+kcfBQJdw==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -2084,9 +2078,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.8':
     optional: true
 
-  '@fontsource-variable/source-sans-3@5.2.9': {}
-
-  '@fontsource-variable/space-grotesk@5.2.10': {}
+  '@fontsource-variable/plus-jakarta-sans@5.2.8': {}
 
   '@img/colour@1.0.0': {}
 
