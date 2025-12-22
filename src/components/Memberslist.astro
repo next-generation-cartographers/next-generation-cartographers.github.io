@@ -1,9 +1,42 @@
 ---
-import { Content } from "../data/members.md";
+import { frontmatter, Content } from "../data/members.md";
+import Callout from "./Callout.astro";
+
+const members = frontmatter.members as {
+  name: string;
+  website?: string;
+  affiliation?: string;
+  country?: string;
+}[];
 ---
 
 <div class="shuffle">
   <Content />
+  <Callout style={{ margin: "2em 0 3em" }}>
+    <span class="monospace text-bold">Note</span>
+    <p>
+      If you want to be added to the this section please contact us or create a
+      pull request on our
+      <a
+        href="https://github.com/next-generation-cartographers/next-generation-cartographers.github.io"
+        >github repository</a
+      >.
+    </p>
+  </Callout>
+  <ul class="shuffle">
+    {
+      members.map((member) => {
+        const { name, website, affiliation, country } = member;
+        const info = `${affiliation ? affiliation + ",\u00A0" : ""}${country ? country : ""}`;
+        return (
+          <li>
+            {website ? <a href={website}>{name}</a> : name}{" "}
+            {info ? <em>({info})</em> : null}
+          </li>
+        );
+      })
+    }
+  </ul>
 </div>
 
 <!-- TODO: find out how to style Content without using is:global -->
