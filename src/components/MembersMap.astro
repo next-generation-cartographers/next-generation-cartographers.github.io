@@ -44,8 +44,16 @@ const centroids = featureCollection(
 );
 ---
 
-<members-map data-members={JSON.stringify(centroids)}>
-  <div id="members-map" style="width: 100%; height: 400px;"></div>
+<members-map
+  id="members-map-container"
+  data-members={JSON.stringify(centroids)}
+>
+  <div id="members-map"></div>
+  <!-- show only if selectedCountry -->
+  <div id="info" style="display: none;">
+    <button id="close-info">×</button>
+    <div id="info-content"></div>
+  </div>
 </members-map>
 
 <script>
@@ -53,8 +61,20 @@ const centroids = featureCollection(
   import { style } from "../lib/map-style";
 
   class MembersMap extends HTMLElement {
+    selectedCountry: string | null = null;
+
     connectedCallback() {
       const members = this.dataset.members;
+
+      const infoElement = this.querySelector<HTMLDivElement>("#info");
+      const closeButton =
+        infoElement?.querySelector<HTMLButtonElement>("#close-info");
+      const infoContent =
+        infoElement?.querySelector<HTMLDivElement>("#info-content");
+      closeButton?.addEventListener("click", () => {
+        console.log("close info");
+        infoElement!.style.display = "none";
+      });
 
       const map = new maplibregl.Map({
         container: "members-map",
@@ -113,13 +133,16 @@ const centroids = featureCollection(
           const [lng, lat] = coords;
           const center = new LngLat(lng, lat);
 
-          new maplibregl.Popup()
-            .setLngLat(center)
-            .setHTML(
-              `<strong>${countryName} (${countryCode})</strong>
-              <ul style="margin: 0; padding-left: 0em; list-style-type: none;">${membersList}</ul>`
-            )
-            .addTo(map);
+          if (!infoContent || !infoElement) return;
+          infoContent.innerHTML = `
+            <h3>${countryName} (${countryCode})</h3>
+            <div class="marquee">
+              <ul class="members">
+                ${membersList}
+              </ul>
+            </div>
+          `;
+          infoElement.style.display = "flex";
 
           map.flyTo({
             center,
@@ -134,6 +157,92 @@ const centroids = featureCollection(
 </script>
 
 <style>
+  #members-map-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+  }
+  #members-map {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 400px;
+  }
+  #info {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    overflow: hidden;
+    gap: 0.5em;
+    align-items: center;
+
+    #info-content {
+      display: flex;
+      gap: 0.5em;
+    }
+
+    #close-info {
+      margin: 0;
+      padding: 0.1em;
+      background: white;
+      aspect-ratio: 1/1;
+      height: 1.25em;
+      border-radius: 100%;
+      font-size: 1.25em;
+      align-self: start;
+    }
+
+    h3 {
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .marquee {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 2em;
+        height: 100%;
+        z-index: 100;
+        background: linear-gradient(
+          to right,
+          var(--background) 0%,
+          transparent 100%
+        );
+      }
+    }
+
+    ul.members {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0 1em 0 2em;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+      align-items: center;
+    }
+  }
+
+  /* reduce motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    ul.members {
+      animation: none;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
   .maplibregl-map {
     font-family: var(--font-family-body);
   }
