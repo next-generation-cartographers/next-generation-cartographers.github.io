@@ -16,7 +16,7 @@ const secondLevelSlug = currentPath.split("/").at(2);
   <nav>
     <ul>
       {
-        navigationLinks.map(({ href, label, children }) => (
+        navigationLinks.slice(0, -1).map(({ href, label, children }) => (
           <li>
             {children ? (
               <>
@@ -45,22 +45,23 @@ const secondLevelSlug = currentPath.split("/").at(2);
           </li>
         ))
       }
-    </ul>
-  </nav>
-  <nav>
-    <ul>
-      {
-        [
-          { href: "/legal-notice", label: "Legal notice" },
-          { href: "/privacy-notice", label: "Privacy notice" },
-        ].map(({ href, label }) => (
-          <li>
-            <a href={href} class:list={{ active: currentPath === href }}>
-              {label}
-            </a>
-          </li>
-        ))
-      }
+      <li>
+        <ul>
+          {
+            [
+              { href: "/#contact", label: "Contact" },
+              { href: "/legal-notice", label: "Legal notice" },
+              { href: "/privacy-notice", label: "Privacy notice" },
+            ].map(({ href, label }) => (
+              <li>
+                <a href={href} class:list={{ active: currentPath === href }}>
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
     </ul>
   </nav>
 </footer>
@@ -75,7 +76,6 @@ const secondLevelSlug = currentPath.split("/").at(2);
     max-width: var(--max-width);
   }
   h2 {
-    font-size: 1em;
     margin-top: 0;
     line-height: 1em;
   }
@@ -96,6 +96,8 @@ const secondLevelSlug = currentPath.split("/").at(2);
       strong {
         margin-bottom: 0.5em;
         display: inline-block;
+        font-weight: 800;
+        font-size: 1.2em;
       }
     }
     a {
