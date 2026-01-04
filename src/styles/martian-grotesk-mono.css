@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Martian Grotesk";
+  src: url("/fonts/MartianGrotesk-VFVF.woff2") format("woff2"),
+    url("/fonts/Martian.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/MartianMono[wdth,wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
