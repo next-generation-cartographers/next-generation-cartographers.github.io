@@ -16,10 +16,10 @@ const updates = (await getCollection("updates")).toSorted(
 
 <Layout>
   <h1 id="next-generation-cartographers">
-    <div style="font-size: 3em; text-indent: -.075em; margin-bottom: -0.2em;">
+    <div style="font-size: 3em; text-indent: -.05em; margin-bottom: -0.1em;">
       <NgcLogo />
     </div>
-    <div style="font-size: 1.5em; font-weight: 400; line-height: .8em;">
+    <div style="font-size: 1.5em; font-weight: 400; line-height: 1.1em;">
       Next Generation<br /> Cartographers
     </div>
   </h1>
@@ -87,7 +87,7 @@ const updates = (await getCollection("updates")).toSorted(
         {
           url: "https://list.tuwien.ac.at/sympa/subscribe/nextgencarto",
           title: "Mailing list",
-          text: "Stay in the loop via our mailing list.",
+          text: "Stay in the loop via email.",
         },
       ].map(({ url, title, text }) => (
         <li>
@@ -116,7 +116,8 @@ const updates = (await getCollection("updates")).toSorted(
   <style>
     p.teaser {
       font-size: larger;
-      line-height: 1.5em;
+      font-weight: 300;
+      font-stretch: 125%;
       margin: 1em 0;
     }
 
@@ -131,6 +132,7 @@ const updates = (await getCollection("updates")).toSorted(
       display: grid;
       grid-template-columns: 1fr 1fr;
       > li {
+        margin-bottom: 0;
         max-width: none;
         &:first-child {
           grid-column: 1 / -1;
