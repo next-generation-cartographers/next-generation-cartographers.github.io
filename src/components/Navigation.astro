@@ -138,6 +138,9 @@ const topLevelSlug = currentPath.split("/").at(1);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @container (min-width: 600px) {
+        padding-left: 0;
+      }
     }
     .frosted-glass-backdrop {
       position: absolute;
