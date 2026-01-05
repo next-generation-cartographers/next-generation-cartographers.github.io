@@ -32,7 +32,7 @@ const updates = updatesEntries.toSorted((a, b) => {
             <Time datetime={entry.data.date.toISOString()} format="date" />
             <h3 id={entry.id}>{entry.data.title}</h3>
             {showSummary && <p>{entry.data.summary}</p>}
-            <div style="margin-top: auto;">
+            <div style="margin-top: 1em;">
               <Link href={`/updates/${entry.id}`}>Read more</Link>
             </div>
           </div>

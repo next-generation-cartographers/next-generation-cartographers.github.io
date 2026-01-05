@@ -47,72 +47,72 @@ const updates = (await getCollection("updates")).toSorted(
   <h2 id="upcoming-events-and-networking-opportunities">
     Upcoming events and networking opportunities
   </h2>
-  <div class="events">
-    <p>
-      Currently, no in-person meeting opportunities are planned. In the meantime
-      we organize frequent online community meet-ups:
-    </p>
+  <p>
+    Currently, no in-person meeting opportunities are planned. In the meantime
+    we organize frequent online community meet-ups:
+  </p>
 
+  <div class="feature">
     <MeetUpList filter="upcoming" />
-
-    <h2 id="updates">Updates</h2>
-    <UpdatesList updatesEntries={updates.slice(0, 3)} showSummary={true} />
-
-    <h2 id="contact">Contact us</h2>
-    <ul>
-      <li>
-        Chelsea Nestel <em>(USA)</em>
-        <a href="mailto:nestel@uoregon.edu">nestel@uoregon.edu</a>
-      </li>
-      <li>
-        Katarzyna Słomska-Przech <em>(Poland)</em>
-        <a href="mailto:kslomska@ihpan.edu.pl">kslomska@ihpan.edu.pl</a>
-      </li>
-    </ul>
-
-    <h3 id="join-the-community">Join the community</h3>
-    <ul class="link-list">
-      {
-        [
-          {
-            url: "https://discord.gg/Ta2uaAJBV2",
-            title: "Discord",
-            text: "Join the discord channel.",
-          },
-          {
-            url: "https://www.linkedin.com/company/next-generation-cartographers/",
-            title: "LinkedIn",
-            text: "Follow us on LinkedIn.",
-          },
-          {
-            url: "https://list.tuwien.ac.at/sympa/subscribe/nextgencarto",
-            title: "Mailing list",
-            text: "Stay in the loop via our mailing list.",
-          },
-        ].map(({ url, title, text }) => (
-          <li>
-            <LinkCard url={url} title={title} text={text} />
-          </li>
-        ))
-      }
-    </ul>
-
-    <h2 id="members">Members</h2>
-    <p>The members are shown in randomized order on every page load.</p>
-    <Memberslist />
-
-    <Callout style={{ marginTop: "2em" }}>
-      <span class="monospace text-bold">Note</span>
-      <p>
-        If you want to be added to the this section please contact us or create
-        a pull request on our
-        <a
-          href="https://github.com/next-generation-cartographers/next-generation-cartographers.github.io"
-          >github repository</a
-        >.
-      </p>
-    </Callout>
   </div>
+
+  <h2 id="updates">Updates</h2>
+  <UpdatesList updatesEntries={updates.slice(0, 3)} showSummary={true} />
+
+  <h2 id="contact">Contact us</h2>
+  <ul>
+    <li>
+      Chelsea Nestel <em>(USA)</em>
+      <a href="mailto:nestel@uoregon.edu">nestel@uoregon.edu</a>
+    </li>
+    <li>
+      Katarzyna Słomska-Przech <em>(Poland)</em>
+      <a href="mailto:kslomska@ihpan.edu.pl">kslomska@ihpan.edu.pl</a>
+    </li>
+  </ul>
+
+  <h3 id="join-the-community">Join the community</h3>
+  <ul class="link-list">
+    {
+      [
+        {
+          url: "https://discord.gg/Ta2uaAJBV2",
+          title: "Discord",
+          text: "Join the discord channel.",
+        },
+        {
+          url: "https://www.linkedin.com/company/next-generation-cartographers/",
+          title: "LinkedIn",
+          text: "Follow us on LinkedIn.",
+        },
+        {
+          url: "https://list.tuwien.ac.at/sympa/subscribe/nextgencarto",
+          title: "Mailing list",
+          text: "Stay in the loop via our mailing list.",
+        },
+      ].map(({ url, title, text }) => (
+        <li>
+          <LinkCard url={url} title={title} text={text} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 id="members">Members</h2>
+  <p>The members are shown in randomized order on every page load.</p>
+  <Memberslist />
+
+  <Callout style={{ marginTop: "2em" }}>
+    <span class="monospace text-bold">Note</span>
+    <p>
+      If you want to be added to the this section please contact us or create a
+      pull request on our
+      <a
+        href="https://github.com/next-generation-cartographers/next-generation-cartographers.github.io"
+        >github repository</a
+      >.
+    </p>
+  </Callout>
 
   <style>
     p.teaser {
@@ -133,10 +133,6 @@ const updates = (await getCollection("updates")).toSorted(
       & li {
         margin-top: var(--spacing-xs);
       }
-    }
-
-    .events .past {
-      color: var(--muted);
     }
   </style>
 </Layout>
