@@ -120,4 +120,4 @@ members:
 
 ## Members
 
-The members are shown in randomized order on every page load.
+As NGC we advocate for young cartographers across the globe. Here is a list of our current members. We would love to expand our network even further, so please don't hesitate to reach out if you are interested in joining!
