@@ -120,6 +120,14 @@ const centroids = featureCollection(
           },
         });
 
+        map.on("mouseenter", "members-points", (e) => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "members-points", () => {
+          map.getCanvas().style.cursor = "";
+        });
+
         map.on("click", "members-points", (e) => {
           const feature = e.features?.[0];
           const { properties, geometry } = feature!;
