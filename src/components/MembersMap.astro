@@ -3,6 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { Member } from "./Memberslist.astro";
 import centroid from "@turf/centroid";
 import { featureCollection } from "@turf/helpers";
+import { getLargestPolygon } from "../lib/get-largest-polygon";
 
 interface Props {
   members: Member[];
@@ -31,12 +32,12 @@ const membersPerCountry = members.reduce(
 
 const centroids = featureCollection(
   world.features.flatMap((d) => {
-    const { properties, geometry } = d;
-    const countryCode = properties?.iso_a2;
-    const countryName = properties?.admin;
+    const { properties } = d;
+    const { iso_a2: countryCode, admin: countryName } = properties ?? {};
     const members = membersPerCountry.get(countryCode);
     if (!countryCode || !members) return [];
-    const feature = centroid(geometry, {
+    const largestPolygon = getLargestPolygon(d);
+    const feature = centroid(largestPolygon, {
       properties: { countryCode, countryName, members },
     });
     return feature;
