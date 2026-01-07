@@ -31,6 +31,7 @@ export const navigationLinks: NavigationItem[] = [
   {
     label: "Resources",
     children: [
+      { href: "/resources/map-tutorials", label: "NGC Map Tutorials" },
       { href: "/resources/papers", label: "Papers and Publications" },
       { href: "/resources/branding", label: "Branding" },
       {

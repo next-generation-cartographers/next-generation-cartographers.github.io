@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import Link from "../../components/Link.astro";
+import Time from "../../components/Time.astro";
+import { getEntries } from "astro:content";
+
+const tutorials = await getCollection("tutorials");
+---
+
+<Layout>
+  <h2>Map Tutorials</h2>
+  <p>
+    On this page you can find tutorials published by <span class="inline-logo"
+      >NGC</span
+    >'s network of map makers.
+  </p>
+  <ul class="feature">
+    {
+      tutorials.map(async (d) => {
+        const authors = await getEntries(d.data.authors);
+        return (
+          <li>
+            <Card>
+              <div class="card-content">
+                <div class="thumbnail">
+                  {d.data.bannerImage ? (
+                    <img
+                      src={d.data.bannerImage}
+                      alt={`Banner image for ${d.data.title}`}
+                    />
+                  ) : (
+                    <div class="placeholder" />
+                  )}
+                </div>
+                <div class="tutorial-info">
+                  <h3>{d.data.title}</h3>
+                  <div>
+                    <Time
+                      datetime={d.data.publicationDate.toISOString()}
+                      format="date"
+                    />{" "}
+                    · <span>{authors.map((a) => a.data.name).join(", ")}</span>
+                  </div>
+                  <Link href={`/resources/map-tutorials/${d.id}`}>
+                    Read more
+                  </Link>
+                </div>
+              </div>
+            </Card>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    display: grid;
+    list-style-type: none;
+    padding-left: 0;
+    gap: var(--spacing-xs);
+  }
+  li {
+    max-width: unset;
+  }
+  .card-content {
+    gap: var(--spacing);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .thumbnail {
+      aspect-ratio: 16 / 9;
+      width: 50%;
+      height: auto;
+      > div {
+        background-color: var(--muted);
+        border-radius: var(--border-radius-xs);
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .tutorial-info {
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: var(--spacing-xs);
+
+      h3 {
+        font-size: x-large;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .card-content {
+      flex-direction: row;
+    }
+  }
+  h3 {
+    margin: 0;
+  }
+</style>

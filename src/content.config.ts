@@ -43,5 +43,33 @@ const updates = defineCollection({
   }),
 });
 
+const tutorials = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/data/resources/tutorials",
+  }),
+  schema: z.object({
+    title: z.string(),
+    authors: z.array(reference("authors")),
+    keywords: z.array(z.string()).optional(),
+    publicationDate: z.date(),
+    summary: z.string(),
+    bannerImage: z.string().optional(),
+  }),
+});
+
+const authors = defineCollection({
+  loader: glob({ pattern: "**/*.yml", base: "./src/data/authors" }),
+  schema: z.object({
+    name: z.string(),
+    pronouns: z.string().optional(),
+    affiliation: z.string().optional(),
+    avatar: z.string().optional(),
+    bio: z.string().optional(),
+    website: z.string().url().optional(),
+    socials: z.array(z.string().url()).optional(),
+  }),
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { events, updates, papers };
+export const collections = { events, updates, papers, tutorials, authors };
