@@ -109,6 +109,7 @@ main {
 
 li {
   max-width: var(--width-prose);
+  line-height: 1.65em;
 }
 
 ol ol {
