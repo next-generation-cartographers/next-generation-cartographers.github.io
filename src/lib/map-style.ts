@@ -1,7 +1,7 @@
 import type { StyleSpecification } from "maplibre-gl";
 
-const waterColor = "rgb(0, 100, 255)";
-const landmassColor = "rgb(255,255,255)";
+const waterColor = "rgb(255, 255, 255)";
+const landmassColor = "hsla(216, 100%, 90%, 1.00)";
 
 // based on the style "Libeerty" by OpenFreeMap (https://openfreemap.org)
 // licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
