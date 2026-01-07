@@ -93,6 +93,7 @@ const centroids = featureCollection(
         map.addSource("members", {
           type: "geojson",
           data: membersPerCountry,
+          promoteId: "countryCode",
           attribution:
             "<a href='https://www.naturalearthdata.com'>Natural Earth Data</a>",
         });
@@ -115,9 +116,37 @@ const centroids = featureCollection(
               9,
             ],
             "circle-color": "rgb(0, 100, 255)",
-            "circle-stroke-color": "white",
-            "circle-stroke-width": 1,
+            "circle-stroke-color": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              "rgb(0, 255, 100)",
+              "white",
+            ],
+            "circle-stroke-width": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              3,
+              1,
+            ],
           },
+        });
+
+        let hoveredCountryId: string | number | undefined | null = null;
+
+        map.on("mousemove", "members-points", (e) => {
+          if (e.features && e.features?.length > 0) {
+            if (hoveredCountryId) {
+              map.setFeatureState(
+                { source: "members", id: hoveredCountryId },
+                { hover: false }
+              );
+            }
+            hoveredCountryId = e.features[0].id;
+            map.setFeatureState(
+              { source: "members", id: hoveredCountryId },
+              { hover: true }
+            );
+          }
         });
 
         map.on("mouseenter", "members-points", (e) => {
@@ -126,6 +155,13 @@ const centroids = featureCollection(
 
         map.on("mouseleave", "members-points", () => {
           map.getCanvas().style.cursor = "";
+          if (hoveredCountryId) {
+            map.setFeatureState(
+              { source: "members", id: hoveredCountryId },
+              { hover: false }
+            );
+          }
+          hoveredCountryId = null;
         });
 
         map.on("click", "members-points", (e) => {
