@@ -80,7 +80,8 @@ const centroids = featureCollection(
       const map = new maplibregl.Map({
         container: "members-map",
         style: style,
-        center: [0, 20],
+        center: [-40, 30],
+        bearing: 180,
         zoom: 1.5,
         scrollZoom: false,
         boxZoom: false,
@@ -203,6 +204,7 @@ const centroids = featureCollection(
 
 <style>
   #members-map-container {
+    margin: var(--spacing) 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;

@@ -1,7 +1,7 @@
 import type { StyleSpecification } from "maplibre-gl";
 
-const waterColor = "rgb(255, 255, 255)";
-const landmassColor = "hsla(216, 100%, 90%, 1.00)";
+const waterColor = "hsl(216, 100%, 90%)";
+const landmassColor = "rgb(255, 255, 255)";
 
 // based on the style "Libeerty" by OpenFreeMap (https://openfreemap.org)
 // licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
@@ -27,6 +27,22 @@ export const style: StyleSpecification = {
       id: "background",
       type: "background",
       paint: { "background-color": landmassColor },
+    },
+    {
+      id: "water-shadow",
+      type: "fill",
+      source: "openmaptiles",
+      "source-layer": "water",
+      filter: ["!=", ["get", "brunnel"], "tunnel"],
+      paint: { "fill-color": "rgb(0, 100, 255)", "fill-translate": [0, 0.5] },
+    },
+    {
+      id: "water-reflection",
+      type: "fill",
+      source: "openmaptiles",
+      "source-layer": "water",
+      filter: ["!=", ["get", "brunnel"], "tunnel"],
+      paint: { "fill-color": "hsl(216, 100%, 95%)", "fill-translate": [0, -1] },
     },
     {
       id: "water",
