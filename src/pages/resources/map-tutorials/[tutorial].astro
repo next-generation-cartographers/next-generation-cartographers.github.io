@@ -1,0 +1,111 @@
+---
+import { getCollection, getEntries, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import Time from "../../../components/Time.astro";
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection("tutorials");
+  return tutorials.map((tutorial) => ({
+    params: { tutorial: tutorial.id.replace("resources/tutorials/", "") },
+    props: { tutorial },
+  }));
+}
+
+const { tutorial } = Astro.props;
+const authors = await getEntries(tutorial.data.authors);
+const { Content } = await render(tutorial);
+---
+
+<Layout>
+  <article class="full">
+    <header class="full">
+      <h2 id={tutorial.id}>{tutorial.data.title}</h2>
+      <div class="tutorial-info">
+        <div>
+          <div>{authors.map((a) => a.data.name).join(", ")}</div>
+          <Time
+            datetime={tutorial.data.publicationDate.toISOString()}
+            format="date"
+          />
+        </div>
+        <hr />
+        <div>
+          Topcis
+          <ul class="keywords">
+            {tutorial.data.keywords?.map((keyword) => <li>{keyword}</li>)}
+          </ul>
+        </div>
+      </div>
+      <p class="summary">
+        {tutorial.data.summary}
+      </p>
+    </header>
+  </article>
+
+  <div class="content">
+    <Content />
+  </div>
+</Layout>
+
+<style is:global>
+  .content {
+    padding-top: 0;
+  }
+</style>
+<style>
+  header {
+    margin-bottom: var(--spacing-lg);
+    padding: 15vmin 0 var(--spacing);
+    font-family: var(--font-family-headline);
+  }
+
+  @media screen and (min-width: 768px) {
+    header {
+      padding: 15vmin 10% 3em 10%;
+      container-type: inline-size;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 6em;
+    line-height: 1.1em;
+  }
+
+  .tutorial-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    margin: var(--spacing) 0;
+    @container (min-width: 600px) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    hr {
+      border: 0;
+      width: 1px;
+      background-color: var(--muted);
+      margin: 0 var(--spacing);
+    }
+  }
+
+  ul.keywords {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-xs);
+    padding-left: 0;
+    margin: 0;
+    font-size: small;
+    li {
+      padding: 0.2em 0.4em;
+      border-radius: var(--border-radius-xs);
+      background-color: rgb(var(--secondary));
+    }
+  }
+
+  .summary {
+    font-size: 1.5em;
+  }
+</style>
