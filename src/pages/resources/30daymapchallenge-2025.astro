@@ -4,13 +4,24 @@ import {
   frontmatter,
   Content,
 } from "../../data/30daymapchallenge/2025/maps.md";
+
+// TODO: switch to a collection for proper typing
+// in combination with a dynamic slug for potential
+// upcoming challenges?
+type MapContribution = {
+  day: number;
+  author: string;
+  linkedInUrl: string;
+  imageFileName: string;
+  topic: string;
+};
 ---
 
 <Layout>
   <Content />
   <div class="maps-gallery">
     {
-      frontmatter.map((map) => (
+      frontmatter.map((map: MapContribution) => (
         <div class="map-item">
           <a href={map.linkedInUrl} target="_blank" rel="noopener noreferrer">
             <p class="map-title">
