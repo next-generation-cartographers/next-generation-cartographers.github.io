@@ -1,0 +1,307 @@
+---
+import "maplibre-gl/dist/maplibre-gl.css";
+import type { Member } from "./Memberslist.astro";
+import centroid from "@turf/centroid";
+import { featureCollection } from "@turf/helpers";
+import { getLargestPolygon } from "../lib/get-largest-polygon";
+
+interface Props {
+  members: Member[];
+}
+
+const response = await fetch(
+  "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_0_countries.geojson"
+);
+const world: Awaited<GeoJSON.FeatureCollection<GeoJSON.MultiPolygon>> =
+  await response.json();
+
+const { members } = Astro.props;
+
+const membersPerCountry = members.reduce(
+  (acc: Map<string, Member[]>, member) => {
+    const country = member.country;
+    if (!country) return acc;
+    if (!acc.get(country)) {
+      acc.set(country, []);
+    }
+    acc.get(country)!.push(member);
+    return acc;
+  },
+  new Map<string, Member[]>()
+);
+
+const centroids = featureCollection(
+  world.features.flatMap((d) => {
+    const { properties } = d;
+    const { iso_a2: countryCode, admin: countryName } = properties ?? {};
+    const members = membersPerCountry.get(countryCode);
+    if (!countryCode || !members) return [];
+    const largestPolygon = getLargestPolygon(d);
+    const feature = centroid(largestPolygon, {
+      properties: { countryCode, countryName, members },
+    });
+    return feature;
+  })
+);
+---
+
+<members-map
+  id="members-map-container"
+  data-members={JSON.stringify(centroids)}
+>
+  <div id="members-map"></div>
+  <!-- show only if selectedCountry -->
+  <div id="info" style="display: none;">
+    <button id="close-info">×</button>
+    <div id="info-content"></div>
+  </div>
+</members-map>
+
+<script>
+  import maplibregl, { LngLat, type LngLatLike } from "maplibre-gl";
+  import { style } from "../lib/map-style";
+
+  class MembersMap extends HTMLElement {
+    selectedCountry: string | null = null;
+
+    connectedCallback() {
+      const members = this.dataset.members;
+
+      const infoElement = this.querySelector<HTMLDivElement>("#info");
+      const closeButton =
+        infoElement?.querySelector<HTMLButtonElement>("#close-info");
+      const infoContent =
+        infoElement?.querySelector<HTMLDivElement>("#info-content");
+      closeButton?.addEventListener("click", () => {
+        console.log("close info");
+        infoElement!.style.display = "none";
+      });
+
+      const initialViewCandidates = [
+        { center: [-40, 30], zoom: 1.5 },
+        { center: [96, 20], zoom: 1.6 },
+        { center: [-71, 0], zoom: 1.7 },
+      ] satisfies { center: LngLatLike; zoom: number }[];
+
+      const initialView =
+        initialViewCandidates[
+          Math.floor(Math.random() * initialViewCandidates.length)
+        ];
+      const map = new maplibregl.Map({
+        container: "members-map",
+        style: style,
+        center: initialView.center,
+        bearing: 180,
+        zoom: initialView.zoom,
+        scrollZoom: false,
+        boxZoom: false,
+        doubleClickZoom: false,
+      });
+
+      map.on("load", () => {
+        const membersPerCountry = JSON.parse(members ?? "");
+
+        map.addSource("members", {
+          type: "geojson",
+          data: membersPerCountry,
+          promoteId: "countryCode",
+          attribution:
+            "<a href='https://www.naturalearthdata.com'>Natural Earth Data</a>",
+        });
+        map.addLayer({
+          id: "members-points",
+          type: "circle",
+          source: "members",
+          paint: {
+            "circle-radius": [
+              "step",
+              ["length", ["get", "members"]],
+              0,
+              1,
+              3,
+              2,
+              5,
+              3,
+              7,
+              4,
+              9,
+            ],
+            "circle-color": "rgb(0, 100, 255)",
+            "circle-stroke-color": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              "rgb(0, 255, 100)",
+              "white",
+            ],
+            "circle-stroke-width": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              3,
+              1,
+            ],
+          },
+        });
+
+        let hoveredCountryId: string | number | undefined | null = null;
+
+        map.on("mousemove", "members-points", (e) => {
+          if (e.features && e.features?.length > 0) {
+            if (hoveredCountryId) {
+              map.setFeatureState(
+                { source: "members", id: hoveredCountryId },
+                { hover: false }
+              );
+            }
+            hoveredCountryId = e.features[0].id;
+            map.setFeatureState(
+              { source: "members", id: hoveredCountryId },
+              { hover: true }
+            );
+          }
+        });
+
+        map.on("mouseenter", "members-points", (e) => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "members-points", () => {
+          map.getCanvas().style.cursor = "";
+          if (hoveredCountryId) {
+            map.setFeatureState(
+              { source: "members", id: hoveredCountryId },
+              { hover: false }
+            );
+          }
+          hoveredCountryId = null;
+        });
+
+        map.on("click", "members-points", (e) => {
+          const feature = e.features?.[0];
+          const { properties, geometry } = feature!;
+          const { members, countryName, countryCode } = properties;
+          const membersList = JSON.parse(members)
+            .map((m: { name: string }) => `<li>${m.name}</li>`)
+            .join("");
+
+          // guard and narrow to Point before accessing coordinates
+          if (!geometry || geometry.type !== "Point") return;
+          const coords = (geometry as GeoJSON.Point).coordinates;
+          const [lng, lat] = coords;
+          const center = new LngLat(lng, lat);
+
+          if (!infoContent || !infoElement) return;
+          infoContent.innerHTML = `
+            <h3>${countryName} (${countryCode})</h3>
+            <div class="marquee">
+              <ul class="members">
+                ${membersList}
+              </ul>
+            </div>
+          `;
+          infoElement.style.display = "flex";
+
+          map.flyTo({
+            center,
+            essential: true,
+          });
+        });
+      });
+    }
+  }
+
+  customElements.define("members-map", MembersMap);
+</script>
+
+<style>
+  #members-map-container {
+    margin: var(--spacing) 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    overflow: hidden;
+  }
+  #members-map {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 400px;
+  }
+  #info {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    overflow: hidden;
+    gap: 0.5em;
+    align-items: center;
+
+    #info-content {
+      display: flex;
+      gap: 0.5em;
+    }
+
+    #close-info {
+      margin: 0;
+      padding: 0.1em;
+      background: white;
+      aspect-ratio: 1/1;
+      height: 1.25em;
+      border-radius: 100%;
+      font-size: 1.25em;
+      line-height: 1em;
+      align-self: start;
+    }
+
+    h3 {
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .marquee {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 2em;
+        height: 100%;
+        z-index: 100;
+        background: linear-gradient(
+          to right,
+          var(--background) 0%,
+          transparent 100%
+        );
+      }
+    }
+
+    ul.members {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0 1em 0 2em;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+      align-items: center;
+    }
+  }
+
+  /* reduce motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    ul.members {
+      animation: none;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .maplibregl-map {
+    font-family: var(--font-family-body);
+  }
+</style>

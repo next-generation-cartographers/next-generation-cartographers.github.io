@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import Callout from "../components/Callout.astro";
 import Disclaimer from "../components/Disclaimer.astro";
 import LinkCard from "../components/LinkCard.astro";
 import MeetUpList from "../components/MeetupList.astro";
@@ -98,21 +97,9 @@ const updates = (await getCollection("updates")).toSorted(
     }
   </ul>
 
-  <h2 id="members">Members</h2>
-  <p>The members are shown in randomized order on every page load.</p>
-  <Memberslist />
-
-  <Callout style={{ marginTop: "2em" }}>
-    <span class="monospace text-bold">Note</span>
-    <p>
-      If you want to be added to the this section please contact us or create a
-      pull request on our
-      <a
-        href="https://github.com/next-generation-cartographers/next-generation-cartographers.github.io"
-        >github repository</a
-      >.
-    </p>
-  </Callout>
+  <div id="members">
+    <Memberslist />
+  </div>
 
   <style>
     p.teaser {
