@@ -58,7 +58,7 @@ const centroids = featureCollection(
 </members-map>
 
 <script>
-  import maplibregl, { LngLat } from "maplibre-gl";
+  import maplibregl, { LngLat, type LngLatLike } from "maplibre-gl";
   import { style } from "../lib/map-style";
 
   class MembersMap extends HTMLElement {
@@ -77,12 +77,22 @@ const centroids = featureCollection(
         infoElement!.style.display = "none";
       });
 
+      const initialViewCandidates = [
+        { center: [-40, 30], zoom: 1.5 },
+        { center: [96, 20], zoom: 1.6 },
+        { center: [-71, 0], zoom: 1.7 },
+      ] satisfies { center: LngLatLike; zoom: number }[];
+
+      const initialView =
+        initialViewCandidates[
+          Math.floor(Math.random() * initialViewCandidates.length)
+        ];
       const map = new maplibregl.Map({
         container: "members-map",
         style: style,
-        center: [-40, 30],
+        center: initialView.center,
         bearing: 180,
-        zoom: 1.5,
+        zoom: initialView.zoom,
         scrollZoom: false,
         boxZoom: false,
         doubleClickZoom: false,
