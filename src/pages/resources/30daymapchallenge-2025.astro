@@ -57,9 +57,8 @@ import {
       font-size: 80%;
       background: linear-gradient(
         to bottom,
-        var(--background) 0% 50%,
-        rgba(242, 247, 255, 0.9) 60%,
-        rgba(242, 247, 255, 0.2) 90%,
+        var(--background) 50%,
+        color-mix(in srgb, var(--background) 90%, transparent 10%) 60%,
         transparent 100%
       );
       padding: 10px;
