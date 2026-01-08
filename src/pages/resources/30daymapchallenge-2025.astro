@@ -12,6 +12,9 @@ import {
     {
       frontmatter.map((map) => (
         <div class="map-item">
+          <p class="map-title">
+            Day {map.day}, {map.topic} by {map.author}
+          </p>
           <a href={map.linkedInUrl} target="_blank" rel="noopener noreferrer">
             <img
               src={`/src/data/30daymapchallenge/2025/${map.imageFileName}`}
@@ -23,5 +26,43 @@ import {
     }
   </div>
 
-  <style></style>
+  <style>
+    .maps-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      justify-items: stretch;
+
+      margin-top: 20px;
+    }
+
+    .map-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+
+    .map-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-item .map-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-size: 80%;
+      background: linear-gradient(
+        to bottom,
+        var(--background) 0% 15%,
+        rgba(242, 247, 255, 0.9) 20%,
+        transparent 30%
+      );
+      padding: 10px;
+      margin: 0;
+    }
+  </style>
 </Layout>
