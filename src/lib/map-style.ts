@@ -29,22 +29,6 @@ export const style: StyleSpecification = {
       paint: { "background-color": landmassColor },
     },
     {
-      id: "water-shadow",
-      type: "fill",
-      source: "openmaptiles",
-      "source-layer": "water",
-      filter: ["!=", ["get", "brunnel"], "tunnel"],
-      paint: { "fill-color": "rgb(0, 100, 255)", "fill-translate": [0, 0.5] },
-    },
-    {
-      id: "water-reflection",
-      type: "fill",
-      source: "openmaptiles",
-      "source-layer": "water",
-      filter: ["!=", ["get", "brunnel"], "tunnel"],
-      paint: { "fill-color": "hsl(216, 100%, 95%)", "fill-translate": [0, -1] },
-    },
-    {
       id: "water",
       type: "fill",
       source: "openmaptiles",
