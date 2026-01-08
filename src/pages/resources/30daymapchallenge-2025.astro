@@ -12,10 +12,10 @@ import {
     {
       frontmatter.map((map) => (
         <div class="map-item">
-          <p class="map-title">
-            Day {map.day}, {map.topic} by {map.author}
-          </p>
           <a href={map.linkedInUrl} target="_blank" rel="noopener noreferrer">
+            <p class="map-title">
+              Day {map.day}, {map.topic} by {map.author}
+            </p>
             <img
               src={`/src/data/30daymapchallenge/2025/${map.imageFileName}`}
               alt={`Map for day ${map.day}: ${map.topic} by ${map.author}`}
