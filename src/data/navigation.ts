@@ -33,7 +33,7 @@ export const navigationLinks: NavigationItem[] = [
     children: [
       { href: "/resources/papers", label: "Papers and Publications" },
       {
-        href: "/resources/30daymapchallenge-2025",
+        href: "/resources/30daymapchallenge/2025",
         label: "30 Day Map Challenge 2025",
       },
       { href: "/resources/branding", label: "Branding" },

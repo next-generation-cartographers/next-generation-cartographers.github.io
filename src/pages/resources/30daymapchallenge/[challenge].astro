@@ -1,35 +1,35 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import {
-  frontmatter,
-  Content,
-} from "../../data/30daymapchallenge/2025/maps.md";
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
-// TODO: switch to a collection for proper typing
-// in combination with a dynamic slug for potential
-// upcoming challenges?
-type MapContribution = {
-  day: number;
-  author: string;
-  linkedInUrl: string;
-  imageFileName: string;
-  topic: string;
-};
+export async function getStaticPaths() {
+  const challenges = await getCollection("thirtyDayMapChallenges");
+  return challenges.map((challenge) => ({
+    params: { challenge: challenge.id.split("/").at(0) },
+    props: { challenge },
+  }));
+}
+
+const { challenge } = Astro.props;
+const { Content } = await render(challenge);
 ---
 
 <Layout>
   <Content />
   <div class="maps-gallery">
     {
-      frontmatter.map((map: MapContribution) => (
+      challenge.data.maps.map((d) => (
         <div class="map-item">
-          <a href={map.linkedInUrl} target="_blank" rel="noopener noreferrer">
+          <a href={d.linkedInUrl} target="_blank" rel="noopener noreferrer">
             <p class="map-title">
-              Day {map.day}, {map.topic} by {map.author}
+              Day {d.day}, {d.topic} by {d.author}
             </p>
-            <img
-              src={`/src/data/30daymapchallenge/2025/${map.imageFileName}`}
-              alt={`Map for day ${map.day}: ${map.topic} by ${map.author}`}
+            <Image
+              src={d.image}
+              width={250}
+              height={250}
+              alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
             />
           </a>
         </div>
