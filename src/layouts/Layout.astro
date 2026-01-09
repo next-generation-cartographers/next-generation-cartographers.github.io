@@ -31,6 +31,8 @@ const { metaTitle, metaDescription } = Astro.props;
     <main class="content">
       <slot />
     </main>
+    <slot name="aside-right" />
+    <slot name="aside-left" />
     <Footer />
   </body>
 </html>
@@ -38,10 +40,13 @@ const { metaTitle, metaDescription } = Astro.props;
 <style is:global>
   .content {
     --gap: clamp(1rem, 6vw, 3rem);
+    --aside-size: 12rem;
+
     --full: minmax(var(--gap), 1fr);
-    --content: min(var(--max-width), 100% - var(--gap) * 2);
     --popout: minmax(0, 2rem);
     --feature: minmax(0, 5rem);
+    --aside: minmax(0, var(--aside-size));
+    --content: min(var(--max-width), 100% - var(--gap) * 2);
 
     display: grid;
     grid-template-columns:
@@ -54,15 +59,15 @@ const { metaTitle, metaDescription } = Astro.props;
       var(--full) [full-end];
   }
   .content > * {
-    grid-column: content;
+    grid-column: content-start / content-end;
   }
   .popout {
-    grid-column: popout;
+    grid-column: popout-start / popout-end;
   }
   .feature {
-    grid-column: feature;
+    grid-column: feature-start / feature-end;
   }
   .full {
-    grid-column: full;
+    grid-column: full-start / full-end;
   }
 </style>

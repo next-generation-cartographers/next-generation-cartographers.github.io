@@ -32,7 +32,7 @@ const { Content } = await render(tutorial);
 
 <Layout metaTitle={tutorial.data.title}>
   <article class="full">
-    <header class="full">
+    <header>
       <h2 id={tutorial.id}>{tutorial.data.title}</h2>
       <div class="tutorial-info">
         <div>
@@ -44,7 +44,7 @@ const { Content } = await render(tutorial);
         </div>
         <hr />
         <div>
-          Topcis
+          Topics
           <ul class="keywords">
             {tutorial.data.keywords?.map((keyword) => <li>{keyword}</li>)}
           </ul>
@@ -67,14 +67,22 @@ const { Content } = await render(tutorial);
   }
 </style>
 <style>
-  header {
-    margin-bottom: var(--spacing-lg);
-    padding: 15vmin 0 var(--spacing);
-    font-family: var(--font-family-headline);
+  article {
+    header {
+      margin-bottom: var(--spacing-lg);
+      padding: 15vmin 0 var(--spacing);
+      font-family: var(--font-family-headline);
+    }
+    h2,
+    h3,
+    h4,
+    h5 {
+      scroll-margin-top: var(--spacing-lg);
+    }
   }
 
   @media screen and (min-width: 768px) {
-    header {
+    article header {
       padding: 15vmin 10% 3em 10%;
       container-type: inline-size;
     }
@@ -115,7 +123,7 @@ const { Content } = await render(tutorial);
     li {
       padding: 0.2em 0.4em;
       border-radius: var(--border-radius-xs);
-      background-color: rgb(var(--secondary));
+      border: 1px solid rgb(var(--primary));
     }
   }
 
