@@ -6,7 +6,12 @@ import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import "../styles/global.css";
 
-const { pageTitle } = Astro.props;
+interface Props {
+  metaTitle?: string;
+  metaDescription?: string;
+}
+
+const { metaTitle, metaDescription } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,8 +22,9 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>
-      {`${pageTitle ? `${pageTitle} · ` : ""}Next Generation Cartographers`}
+      {`${metaTitle ? `${metaTitle} · ` : ""}Next Generation Cartographers`}
     </title>
+    <meta name="description" content={metaDescription} />
   </head>
   <body>
     <Navigation />
