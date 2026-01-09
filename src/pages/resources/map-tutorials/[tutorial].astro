@@ -16,7 +16,7 @@ const authors = await getEntries(tutorial.data.authors);
 const { Content } = await render(tutorial);
 ---
 
-<Layout>
+<Layout metaTitle={tutorial.data.title}>
   <article class="full">
     <header class="full">
       <h2 id={tutorial.id}>{tutorial.data.title}</h2>
