@@ -2,16 +2,30 @@
 import { getCollection, getEntries, render } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import Time from "../../../components/Time.astro";
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import TableOfContents from "../../../components/table-of-contents.astro";
 
 export async function getStaticPaths() {
   const tutorials = await getCollection("tutorials");
-  return tutorials.map((tutorial) => ({
+  const headings = await Promise.all(
+    tutorials.map(async (tutorial) => {
+      const data = await render(tutorial);
+      return data.headings;
+    })
+  );
+  return tutorials.map((tutorial, idx) => ({
     params: { tutorial: tutorial.id.replace("resources/tutorials/", "") },
-    props: { tutorial },
+    props: { tutorial, headings: headings[idx] },
   }));
 }
 
-const { tutorial } = Astro.props;
+type Props = {
+  tutorial: CollectionEntry<"tutorials">;
+  headings: MarkdownHeading[];
+};
+
+const { tutorial, headings } = Astro.props;
 const authors = await getEntries(tutorial.data.authors);
 const { Content } = await render(tutorial);
 ---
@@ -40,11 +54,11 @@ const { Content } = await render(tutorial);
         {tutorial.data.summary}
       </p>
     </header>
+    <TableOfContents slot="aside-left" {headings} />
+    <div class="content">
+      <Content />
+    </div>
   </article>
-
-  <div class="content">
-    <Content />
-  </div>
 </Layout>
 
 <style is:global>
