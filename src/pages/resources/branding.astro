@@ -16,15 +16,25 @@ import Layout from "../../layouts/Layout.astro";
   </p>
 
   <h2>Idea / Concept</h2>
-  <svg width="40" height="40">
-    <path d="M 5 35 A 20 20 0 1 1 35 35 Z" fill="currentColor"></path>
-    <line
-      x1="0"
-      x2="40"
-      transform="translate(0, 39)"
-      stroke-width="4"
-      stroke="currentColor"></line>
-  </svg>
+  <div
+    style="display: flex; justify-content: center; padding: var(--spacing-lg); background-color: rgb(var(--secondary)); border-radius: var(--border-radius-sm); margin-bottom: var(--spacing);"
+  >
+    <svg
+      width="40"
+      height="40"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M 5 35 A 20 20 0 1 1 35 35 Z" fill="currentColor"></path>
+      <line
+        x1="0"
+        x2="40"
+        transform="translate(0, 39)"
+        stroke-width="4"
+        stroke="currentColor"></line>
+    </svg>
+  </div>
+
   <p>
     The sunrise symbolizes an optimistic future – each new day entails hope and
     opportunities . As <NgcLogo /> we want to promote this perspective on the future
@@ -48,111 +58,97 @@ import Layout from "../../layouts/Layout.astro";
     </li>
     <li>
       <LinkCard
-        url="https://github.com/floriankarsten/space-grotesk/releases"
-        title="Font: Cabinet Grotesk"
-        text="Download the headline font Cabine Grotesk"
+        url="https://github.com/evilmartians/grotesk/tree/main/fonts/otf"
+        title="Font: Martian Grotesk"
+        text="Download the main font Martian Grotesk by Evil Martians."
       />
     </li>
-    <li>
-      <LinkCard
-        url="https://github.com/adobe-fonts/source-sans/releases/"
-        title="Font: Source Sans"
-        text="Download the body copy font Source Sans."
-      />
-    </li>
+  </ul>
 
-    <h2>Marks</h2>
-    <p>
-      All marks can be downloaded via github (see
-      <a href="#resources">resources</a>). There are two types of marks: the
-      logomark and the logotype. Both types exist in two color variants: the
-      primary color variant and a light and a dark monochrome variant.
-    </p>
-    <h3>Logotype</h3>
-    <div class="marks-grid">
-      <div style="display: flex; flex-direction: column">
-        <img class="mark" src="/assets/ngc-marks/ngc-rgb-logotype-4c.svg" />
-      </div>
+  <h2>Marks</h2>
+  <p>
+    All marks can be downloaded via github (see
+    <a href="#resources">resources</a>). There are two types of marks: the
+    logomark and the logotype. Both types exist in two color variants: the
+    primary color variant and a light and a dark monochrome variant.
+  </p>
+  <h3>Logotype</h3>
+  <div class="marks-grid">
+    <div style="display: flex; flex-direction: column">
+      <img class="mark" src="/assets/ngc-marks/ngc-rgb-logotype-4c.svg" />
     </div>
-    <p>
-      The Logotype should be used whenever possible. For applications where the
-      subline of the logotype is no longer readable the logomark is preferred.
-    </p>
-    <h3>Logomark</h3>
-    <div class="marks-grid">
-      <div style="display: flex; flex-direction: column">
+  </div>
+  <p>
+    The Logotype should be used whenever possible. For applications where the
+    subline of the logotype is no longer readable the logomark is preferred.
+  </p>
+  <h3>Logomark</h3>
+  <div class="marks-grid">
+    <div style="display: flex; flex-direction: column">
+      <img class="mark small" src="/assets/ngc-marks/ngc-rgb-logomark-4c.svg" />
+    </div>
+  </div>
+
+  <h3>Monochrome variants</h3>
+  <p>
+    Two monochrome version of the marks exist: the dark variant for light
+    backgrounds, the light variant for dark backgrounds.
+  </p>
+  <div class="marks-grid">
+    <div>
+      <h4>Dark monochrome</h4>
+      <div style="display: flex; flex-direction: column; gap: 1em">
+        <img class="mark" src="/assets/ngc-marks/ngc-rgb-logotype-black.svg" />
         <img
           class="mark small"
-          src="/assets/ngc-marks/ngc-rgb-logomark-4c.svg"
+          src="/assets/ngc-marks/ngc-rgb-logomark-black.svg"
         />
       </div>
     </div>
-
-    <h3>Monochrome variants</h3>
-    <p>
-      Two monochrome version of the marks exist: the dark variant for light
-      backgrounds, the light variant for dark backgrounds.
-    </p>
-    <div class="marks-grid">
-      <div>
-        <h4>Dark monochrome</h4>
-        <div style="display: flex; flex-direction: column; gap: 1em">
-          <img
-            class="mark"
-            src="/assets/ngc-marks/ngc-rgb-logotype-black.svg"
-          />
-          <img
-            class="mark small"
-            src="/assets/ngc-marks/ngc-rgb-logomark-black.svg"
-          />
-        </div>
-      </div>
-      <div>
-        <h4>Light monochrome</h4>
-        <div style="display: flex; flex-direction: column; gap: 1em">
-          <img
-            class="mark"
-            src="/assets/ngc-marks/ngc-rgb-logotype-white.svg"
-          />
-          <img
-            class="mark small"
-            src="/assets/ngc-marks/ngc-rgb-logomark-white.svg"
-          />
-        </div>
+    <div>
+      <h4>Light monochrome</h4>
+      <div style="display: flex; flex-direction: column; gap: 1em">
+        <img class="mark" src="/assets/ngc-marks/ngc-rgb-logotype-white.svg" />
+        <img
+          class="mark small"
+          src="/assets/ngc-marks/ngc-rgb-logomark-white.svg"
+        />
       </div>
     </div>
+  </div>
 
-    <h2>Typography</h2>
-    <p>
-      The headline font is <em>Cabinet Grotesk</em> and the body copy font is
-      <em>Plus Jakarta Sans</em>. Both fonts can be downloaded (see
-      <a href="#resources">resources</a>).
-    </p>
-    <h3>Headline font</h3>
-    <p
-      style="
+  <h2>Typography</h2>
+  <p>
+    The font is <em>Martian Grotesk</em>, it can be downloaded (see
+    <a href="#resources">resources</a>) for free. Use the expanded and bold
+    fonts for headlines for body copy the regular font.
+  </p>
+  <h3>Headline font</h3>
+  <p
+    style="
           margin: 1em 0 0;
           font-family: var(--font-family-headline);
           font-size: 36px;
+          font-stretch: 200%;
+          font-weight: 800;
           line-height: 1.25;
         "
-    >
-      The quick brown fox jumps over the lazy dog.
-    </p>
-    <p class="muted">Cabinet Grotesk, Bold, 36px</p>
-    <h3>Bodycopy font</h3>
-    <p
-      style="
+  >
+    The quick brown fox jumps over the lazy dog.
+  </p>
+  <p class="muted">Martian Grotesk, Bold, Expanded, 36px</p>
+  <h3>Bodycopy font</h3>
+  <p
+    style="
           margin: 1em 0 0;
           font-family: var(--font-family-body);
           font-size: 36px;
           line-height: 1.25;
         "
-    >
-      The quick brown fox jumps over the lazy dog.
-    </p>
-    <p class="muted">Plus Jakarta Sans, Regular, 36px</p>
-  </ul>
+  >
+    The quick brown fox jumps over the lazy dog.
+  </p>
+  <p class="muted">Martian Grotesk, Regular, Normal, 36px</p>
 </Layout>
 
 <style>
