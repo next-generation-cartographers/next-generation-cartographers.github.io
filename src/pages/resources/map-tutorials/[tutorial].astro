@@ -31,46 +31,44 @@ const { Content } = await render(tutorial);
 ---
 
 <Layout metaTitle={tutorial.data.title}>
-  <article class="full">
-    <header>
-      <h2 id={tutorial.id}>{tutorial.data.title}</h2>
-      <div class="tutorial-info">
-        <div>
-          <div>{authors.map((a) => a.data.name).join(", ")}</div>
-          <Time
-            datetime={tutorial.data.publicationDate.toISOString()}
-            format="date"
-          />
-        </div>
-        <hr />
-        <div>
-          Topics
-          <ul class="keywords">
-            {tutorial.data.keywords?.map((keyword) => <li>{keyword}</li>)}
-          </ul>
-        </div>
+  <header slot="site-header">
+    <h1 id={tutorial.id}>{tutorial.data.title}</h1>
+    <div class="tutorial-info">
+      <div>
+        <div>{authors.map((a) => a.data.name).join(", ")}</div>
+        <Time
+          datetime={tutorial.data.publicationDate.toISOString()}
+          format="date"
+        />
       </div>
-      <p class="summary">
-        {tutorial.data.summary}
-      </p>
-    </header>
-    <TableOfContents slot="aside-left" {headings} />
-    <div class="content">
-      <Content />
+      <hr />
+      <div>
+        Topics
+        <ul class="keywords">
+          {tutorial.data.keywords?.map((keyword) => <li>{keyword}</li>)}
+        </ul>
+      </div>
     </div>
-  </article>
+    <p class="summary">
+      {tutorial.data.summary}
+    </p>
+  </header>
+  <TableOfContents slot="aside-left" {headings} />
+
+  <Content />
 </Layout>
 
 <style is:global>
-  .content {
-    padding-top: 0;
+  article > header {
+    max-width: 70rem;
+    margin: 0 auto var(--spacing-lg);
   }
 </style>
+
 <style>
   article {
-    header {
+    > header {
       margin-bottom: var(--spacing-lg);
-      padding: 15vmin 0 var(--spacing);
       font-family: var(--font-family-headline);
     }
     h2,
@@ -88,7 +86,7 @@ const { Content } = await render(tutorial);
     }
   }
 
-  h2 {
+  h1 {
     margin-top: 0;
     text-transform: uppercase;
     font-size: 6em;
