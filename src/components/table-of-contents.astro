@@ -5,20 +5,62 @@ type Props = {
   headings: MarkdownHeading[];
 };
 
-const { headings } = Astro.props;
+const { headings } = Astro.props as Props;
+
+type TocItem = {
+  text: string;
+  slug: string;
+  depth: number;
+  children: TocItem[];
+};
+
+function buildTree(headings: MarkdownHeading[]): TocItem[] {
+  const root: TocItem[] = [];
+  const stack: TocItem[] = [];
+
+  for (const h of headings) {
+    const node: TocItem = {
+      text: h.text,
+      slug: h.slug,
+      depth: h.depth,
+      children: [],
+    };
+
+    while (stack.length && stack[stack.length - 1].depth >= node.depth) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      root.push(node);
+    } else {
+      stack[stack.length - 1].children.push(node);
+    }
+
+    stack.push(node);
+  }
+
+  return root;
+}
+
+const toc = buildTree(headings || []);
 ---
 
 <aside class="aside-left">
   <header>Table of Contents</header>
-  <ul>
-    {
-      headings.map((d) => (
-        <li>
-          <a href={`#${d.slug}`}>{d.text}</a>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    (function render(items) {
+      return (
+        <ul>
+          {items.map((item) => (
+            <li class={`depth-${item.depth}`}>
+              <a href={`#${item.slug}`}>{item.text}</a>
+              {item.children.length > 0 ? render(item.children) : null}
+            </li>
+          ))}
+        </ul>
+      );
+    })(toc)
+  }
 </aside>
 
 <style>
@@ -27,12 +69,24 @@ const { headings } = Astro.props;
     top: var(--spacing-lg);
     padding-left: var(--spacing-lg);
   }
+
+  header {
+    font-weight: bold;
+  }
+
   a {
     scroll-behavior: smooth;
+    text-decoration: none;
   }
 
   ul {
-    padding-left: 0;
+    padding-left: 0.5em;
     list-style-type: none;
+  }
+  aside > ul {
+    padding-left: 0;
+    & > li:not(:first-child) {
+      margin-top: var(--spacing-xs);
+    }
   }
 </style>
