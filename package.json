@@ -8,7 +8,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "pnpm dlx tsx scripts/optimize-images.ts"
   },
   "author": "Jakob Listabarth",
   "dependencies": {
