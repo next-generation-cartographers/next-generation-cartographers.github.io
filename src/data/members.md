@@ -1,29 +1,123 @@
-- [Chelsea Nestel](https://library.uoregon.edu/directory/nestel) _(**Co-chair**; University of Oregon,&nbsp;US)_
-- [Katarzyna Słomska-Przech](https://ihpan.edu.pl/en/employees/researcher/katarzyna-slomska-przech-2/) _(**Co-chair**; Polska Akademia Nauk,&nbsp;PL)_
-- [Merve Keskin](https://drmervekeskin.com) _(University of Salzburg,&nbsp;AT)_
-- [Jakob Listabarth](<https://fis.tu-dresden.de/portal/de/researchers/jakob-listabarth(a6ce5107-8ec5-4fa1-82bc-f05f6d72bb14).html>) _(TU Dresden,&nbsp;DE)_
-- [Florian Ledermann](https://cartography.tuwien.ac.at/florian-ledermann/) _(TU Wien,&nbsp;AT)_
-- [Nianhua Liu](https://www.asg.ed.tum.de/en/lfk/team/members/nianhua-liu/) _(TU Munich,&nbsp;DE)_
-- [Héctor Ochoa Ortiz](https://odeco-research.eu/?p=3170) _(University of Camerino,&nbsp;IT)_
-- [Ester Scheck](https://cartography.tuwien.ac.at/ester-scheck/) _(TU Wien,&nbsp;AT)_
-- [Sacha Schlumpf](https://sacha-schlumpf.ch/) _(TU Wien,&nbsp;AT)_
-- [Zulfa Nur’aini ‘Afifah](https://zulfanaa.github.io/portfolio/) _(University of Augsburg,&nbsp;DE)_
-- [Juliane Cron](https://www.asg.ed.tum.de/lfk/team/members/juliane-cron/) _(TU Munich,&nbsp;DE)_
-- Andrea Miletić _(Faculty of Geodesy, University of Zagreb,&nbsp;HR)_
-- [Bella Mironova](https://github.com/bella-mir) _(National Research University HSE,&nbsp;RU)_
-- [Camila Narbaitz Sarsur](https://www.cnscartography.com/) _(AR)_
-- Dajana Snopková _(Department of Geography, Masaryk University,&nbsp;CZ)_
-- [Estelle Sérèmes](https://es1010.github.io/Prive/?v=2) _(Agroparistech,&nbsp;FR)_
-- [Iga Ajdacka](http://geoinformatics.uw.edu.pl/iga-ajdacka/) _(University of Warsaw,&nbsp;PL)_
-- [Jakub Wabiński](https://www.linkedin.com/in/jakub-wabi%C5%84ski-engd-40a5b7a9/) _(Military University of Technology,&nbsp;PL)_
-- [Lydia Yoder](https://www.yodermapping.com/) _(US)_
-- [Mert Turunç](https://blog.atr0p.dev) _(Istanbul Technical University,&nbsp;TR)_
-- Nat Slaughter
-- Natalia Ipatow
-- [Nicolás Martínez Heredia](https://cartography.tuwien.ac.at/staff/nicolas-martinez-heredia/) _(TU Wien,&nbsp;AT)_
-- Nina Polous _(Uni Graz,&nbsp;AT)_
-- Sagnik Mukherjee _(GeoSN,&nbsp;DE)_
-- [Samuel Darkwah Manu](https://sammyhawkrad.github.io) _(TU Dresden,&nbsp;DE)_
-- [Tatiana Pozdnyakova](https://readymag.website/u1754210549/tanyapozdniakova/)
-- Wangshu Wang _(TU Munich,&nbsp;DE)_
-- [Zihan Liu](https://www.asg.ed.tum.de/lfk/team/members/zihan-liu/) _(TU Munich,&nbsp;DE)_
+---
+members:
+  - name: "Chelsea Nestel"
+    website: "https://library.uoregon.edu/directory/nestel"
+    affiliation: "University of Oregon"
+    country: "US"
+  - name: "Katarzyna Słomska-Przech"
+    website: "https://ihpan.edu.pl/en/employees/researcher/katarzyna-slomska-przech-2/"
+    affiliation: "Polska Akademia Nauk"
+    country: "PL"
+  - name: "Merve Keskin"
+    website: "https://drmervekeskin.com"
+    affiliation: "University of Salzburg"
+    country: "AT"
+  - name: "Jakob Listabarth"
+    website: "https://fis.tu-dresden.de/portal/de/researchers/jakob-listabarth(a6ce5107-8ec5-4fa1-82bc-f05f6d72bb14).html"
+    affiliation: "TU Dresden"
+    country: "DE"
+  - name: "Florian Ledermann"
+    website: "https://cartography.tuwien.ac.at/florian-ledermann/"
+    affiliation: "TU Wien"
+    country: "AT"
+  - name: "Nianhua Liu"
+    website: "https://www.asg.ed.tum.de/en/lfk/team/members/nianhua-liu/"
+    affiliation: "TU Munich"
+    country: "DE"
+  - name: "Héctor Ochoa Ortiz"
+    website: "https://odeco-research.eu/?p=3170"
+    affiliation: "University of Camerino"
+    country: "IT"
+  - name: "Ester Scheck"
+    website: "https://cartography.tuwien.ac.at/ester-scheck/"
+    affiliation: "TU Wien"
+    country: "AT"
+  - name: "Sacha Schlumpf"
+    website: "https://sacha-schlumpf.ch/"
+    affiliation: "TU Wien"
+    country: "AT"
+  - name: "Zulfa Nur’aini ‘Afifah"
+    website: "https://zulfanaa.github.io/portfolio/"
+    affiliation: "University of Augsburg"
+    country: "DE"
+  - name: "Juliane Cron"
+    website: "https://www.asg.ed.tum.de/lfk/team/members/juliane-cron/"
+    affiliation: "TU Munich"
+    country: "DE"
+  - name: "Andrea Miletić"
+    website: null
+    affiliation: "Faculty of Geodesy, University of Zagreb"
+    country: "HR"
+  - name: "Bella Mironova"
+    website: "https://github.com/bella-mir"
+    affiliation: "National Research University HSE"
+    country: "RU"
+  - name: "Camila Narbaitz Sarsur"
+    website: "https://www.cnscartography.com/"
+    affiliation: ""
+    country: "AR"
+  - name: "Dajana Snopková"
+    website: null
+    affiliation: "Department of Geography, Masaryk University"
+    country: "CZ"
+  - name: "Estelle Sérèmes"
+    website: "https://es1010.github.io/Prive/?v=2"
+    affiliation: "Agroparistech"
+    country: "FR"
+  - name: "Iga Ajdacka"
+    website: "http://geoinformatics.uw.edu.pl/iga-ajdacka/"
+    affiliation: "University of Warsaw"
+    country: "PL"
+  - name: "Jakub Wabiński"
+    website: "https://www.linkedin.com/in/jakub-wabi%C5%84ski-engd-40a5b7a9/"
+    affiliation: "Military University of Technology"
+    country: "PL"
+  - name: "Lydia Yoder"
+    website: "https://www.yodermapping.com/"
+    affiliation: ""
+    country: "US"
+  - name: "Mert Turunç"
+    website: "https://blog.atr0p.dev"
+    affiliation: "Istanbul Technical University"
+    country: "TR"
+  - name: "Nat Slaughter"
+    website: null
+    affiliation: ""
+    country: ""
+  - name: "Natalia Ipatow"
+    website: null
+    affiliation: ""
+    country: ""
+  - name: "Nicolás Martínez Heredia"
+    website: "https://cartography.tuwien.ac.at/staff/nicolas-martinez-heredia/"
+    affiliation: "TU Wien"
+    country: "AT"
+  - name: "Nina Polous"
+    website: null
+    affiliation: "Uni Graz"
+    country: "AT"
+  - name: "Sagnik Mukherjee"
+    website: null
+    affiliation: "GeoSN"
+    country: "DE"
+  - name: "Samuel Darkwah Manu"
+    website: "https://sammyhawkrad.github.io"
+    affiliation: "TU Dresden"
+    country: "DE"
+  - name: "Tatiana Pozdnyakova"
+    website: "https://readymag.website/u1754210549/tanyapozdniakova/"
+    affiliation: ""
+    country: ""
+  - name: "Wangshu Wang"
+    website: null
+    affiliation: "TU Munich"
+    country: "DE"
+  - name: "Zihan Liu"
+    website: "https://www.asg.ed.tum.de/lfk/team/members/zihan-liu/"
+    affiliation: "TU Munich"
+    country: "DE"
+---
+
+## Members
+
+As NGC we advocate for young cartographers across the globe. Here is a list of our current members. We would love to expand our network even further, so please don't hesitate to reach out if you are interested in joining!

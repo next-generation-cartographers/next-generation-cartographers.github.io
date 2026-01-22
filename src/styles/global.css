@@ -125,25 +125,6 @@ code {
   color: var(--muted);
 }
 
-details {
-  border: 1px solid var(--muted);
-  border-radius: var(--border-radius-sm);
-  padding: 0.5em 2em 0;
-  margin-top: 2em;
-  max-width: var(--width-prose);
-}
-
-summary {
-  font-weight: bold;
-  margin: -0.5em -2em 0;
-  padding: var(--spacing-xs) var(--spacing);
-}
-
-details[open] summary {
-  border-bottom: 1px solid var(--muted);
-  margin-bottom: var(--spacing-xs);
-}
-
 ul.link-list {
   padding-left: 0;
   list-style: none;
