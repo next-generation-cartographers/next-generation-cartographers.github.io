@@ -75,11 +75,10 @@ const { Content } = await render(challenge);
         isButton: true,
         appendTo: "bar",
         tagName: "div",
-        html: "<a>Show on LinkedIn</a>",
+        html: "<a>Read more on LinkedIn</a>",
         onInit: (el, pswp) => {
           const linkEl = el.querySelector("a");
           if (!linkEl) return;
-          linkEl.setAttribute("target", "_blank");
           linkEl.setAttribute("rel", "noopener noreferrer");
           const update = () => {
             const idx = pswp.currIndex;
