@@ -19,24 +19,87 @@ const { Content } = await render(challenge);
   <Content />
   <div class="maps-gallery">
     {
-      challenge.data.maps.map((d) => (
-        <div class="map-item">
-          <a href={d.linkedInUrl} target="_blank" rel="noopener noreferrer">
-            <p class="map-title">
-              Day {d.day}, {d.topic} by {d.author}
-            </p>
-            <Image
-              src={d.image}
-              width={250}
-              height={250}
-              densities={[1, 2]}
-              alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
-            />
-          </a>
-        </div>
-      ))
+      challenge.data.maps.map((d) => {
+        const imageUrl = typeof d.image === "string" ? d.image : d.image?.src;
+        return (
+          <div class="map-item">
+            <a
+              href={imageUrl || "#"}
+              data-pswp-src={imageUrl}
+              data-pswp-width={d.image?.width}
+              data-pswp-height={d.image?.height}
+              data-linkedin={d.linkedInUrl}
+              data-cropped="true"
+            >
+              <p class="map-title">
+                Day {d.day}, {d.topic} by {d.author}
+              </p>
+              <Image
+                src={d.image}
+                width={250}
+                loading={"lazy"}
+                height={250}
+                densities={[1, 2]}
+                alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
+              />
+            </a>
+          </div>
+        );
+      })
     }
   </div>
+
+  <script>
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: ".maps-gallery",
+      children: "a[data-pswp-src]",
+      padding: { top: 40, bottom: 40, left: 40, right: 40 },
+      pswpModule: () => import("photoswipe"),
+      counter: false,
+      zoom: false,
+      bgOpacity: 0.95,
+    });
+
+    lightbox.on("uiRegister", () => {
+      // build an array of linkedin urls that match the gallery order
+      const linkedInUrls = Array.from(
+        document.querySelectorAll(".maps-gallery a[data-pswp-src]"),
+      ).map((a) => a.getAttribute("data-linkedin") || "");
+
+      // register a LinkedIn button in the PhotoSwipe UI
+      lightbox.pswp?.ui?.registerElement({
+        name: "linkedin-button",
+        order: 9,
+        isButton: true,
+        appendTo: "bar",
+        tagName: "div",
+        html: "<a>Show on LinkedIn</a>",
+        onInit: (el, pswp) => {
+          const linkEl = el.querySelector("a");
+          if (!linkEl) return;
+          linkEl.setAttribute("target", "_blank");
+          linkEl.setAttribute("rel", "noopener noreferrer");
+          const update = () => {
+            const idx = pswp.currIndex;
+            const url = linkedInUrls[idx] || "";
+            if (url) {
+              linkEl.setAttribute("href", url);
+              el.style.display = "";
+            } else {
+              linkEl.removeAttribute("href");
+              el.style.display = "none";
+            }
+          };
+          update();
+          pswp.on("change", update);
+        },
+      });
+    });
+
+    lightbox.init();
+  </script>
 
   <style>
     .maps-gallery {
@@ -77,6 +140,23 @@ const { Content } = await render(challenge);
       padding-top: 20px;
       margin: 0;
       height: fit-content;
+    }
+  </style>
+
+  <style is:global>
+    .pswp__button--linkedin-button {
+      height: 60px;
+      align-self: center;
+      width: auto;
+      display: flex;
+      align-items: center;
+      a {
+        color: white;
+        text-decoration: none;
+        border: 2px solid white;
+        padding: var(--spacing-xs);
+        border-radius: var(--border-radius-sm);
+      }
     }
   </style>
 </Layout>
