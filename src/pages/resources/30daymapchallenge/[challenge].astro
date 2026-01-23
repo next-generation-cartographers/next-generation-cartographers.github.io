@@ -51,6 +51,16 @@ const { Content } = await render(challenge);
       })
     }
   </div>
+  <p>
+    The maps in this challenge were created by (in chronological order):
+    {
+      challenge.data.maps
+        .map((d) => d.author)
+        .filter((v, i, a) => a.indexOf(v) === i)
+        .join(", ")
+    }.
+  </p>
+</Layout>
 
 <script>
   import PhotoSwipeLightbox from "photoswipe/lightbox";
