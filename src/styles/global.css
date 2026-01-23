@@ -177,7 +177,8 @@ button {
 }
 
 .pswp {
-  --pswp-bg: color-mix(in srgb, rgb(var(--primary)) 15%, black 100%);
+  --pswp-bg: var(--background);
+  --pswp-icon-color: rgb(var(--primary));
 }
 
 .pswp__icn-shadow {

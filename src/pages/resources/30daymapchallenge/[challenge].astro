@@ -72,7 +72,7 @@ const { Content } = await render(challenge);
     pswpModule: () => import("photoswipe"),
     counter: false,
     zoom: false,
-    bgOpacity: 0.95,
+    bgOpacity: 0.975,
   });
 
   lightbox.on("uiRegister", () => {
@@ -212,10 +212,11 @@ const { Content } = await render(challenge);
     width: auto;
     display: flex;
     align-items: center;
+    font-size: smaller;
+    font-weight: bold;
     a {
-      color: white;
       text-decoration: none;
-      border: 2px solid white;
+      border: 2px solid rgb(var(--primary));
       padding: var(--spacing-xs);
       border-radius: var(--border-radius-sm);
     }
