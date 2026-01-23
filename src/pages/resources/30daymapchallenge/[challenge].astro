@@ -17,145 +17,197 @@ const { Content } = await render(challenge);
 
 <Layout>
   <Content />
-  <div class="maps-gallery">
+  <div class="maps-gallery feature">
     {
       challenge.data.maps.map((d) => {
         const imageUrl = typeof d.image === "string" ? d.image : d.image?.src;
         return (
-          <div class="map-item">
-            <a
-              href={imageUrl || "#"}
-              data-pswp-src={imageUrl}
-              data-pswp-width={d.image?.width}
-              data-pswp-height={d.image?.height}
-              data-linkedin={d.linkedInUrl}
-              data-cropped="true"
-            >
-              <p class="map-title">
-                Day {d.day}, {d.topic} by {d.author}
-              </p>
-              <Image
-                src={d.image}
-                width={250}
-                loading={"lazy"}
-                height={250}
-                densities={[1, 2]}
-                alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
-              />
-            </a>
-          </div>
+          <a
+            class="map-item"
+            href={imageUrl || "#"}
+            data-pswp-src={imageUrl}
+            data-pswp-width={d.image?.width}
+            data-pswp-height={d.image?.height}
+            data-linkedin={d.linkedInUrl}
+            data-cropped="true"
+          >
+            <footer>
+              <div>
+                <div class="day">{d.day}</div>
+                <div class="topic">{d.topic}</div>
+              </div>
+              <div class="author">{d.author}</div>
+            </footer>
+            <Image
+              src={d.image}
+              width={250}
+              loading={"lazy"}
+              height={250}
+              densities={[1, 2]}
+              alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
+            />
+          </a>
         );
       })
     }
   </div>
 
-  <script>
-    import PhotoSwipeLightbox from "photoswipe/lightbox";
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
 
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: ".maps-gallery",
-      children: "a[data-pswp-src]",
-      padding: { top: 40, bottom: 40, left: 40, right: 40 },
-      pswpModule: () => import("photoswipe"),
-      counter: false,
-      zoom: false,
-      bgOpacity: 0.95,
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: ".maps-gallery",
+    children: "a[data-pswp-src]",
+    padding: { top: 40, bottom: 40, left: 40, right: 40 },
+    pswpModule: () => import("photoswipe"),
+    counter: false,
+    zoom: false,
+    bgOpacity: 0.95,
+  });
+
+  lightbox.on("uiRegister", () => {
+    // build an array of linkedin urls that match the gallery order
+    const linkedInUrls = Array.from(
+      document.querySelectorAll(".maps-gallery a[data-pswp-src]"),
+    ).map((a) => a.getAttribute("data-linkedin") || "");
+
+    // register a LinkedIn button in the PhotoSwipe UI
+    lightbox.pswp?.ui?.registerElement({
+      name: "linkedin-button",
+      order: 9,
+      isButton: true,
+      appendTo: "bar",
+      tagName: "div",
+      html: "<a>Read more on LinkedIn</a>",
+      onInit: (el, pswp) => {
+        const linkEl = el.querySelector("a");
+        if (!linkEl) return;
+        linkEl.setAttribute("rel", "noopener noreferrer");
+        const update = () => {
+          const idx = pswp.currIndex;
+          const url = linkedInUrls[idx] || "";
+          if (url) {
+            linkEl.setAttribute("href", url);
+            el.style.display = "";
+          } else {
+            linkEl.removeAttribute("href");
+            el.style.display = "none";
+          }
+        };
+        update();
+        pswp.on("change", update);
+      },
     });
+  });
 
-    lightbox.on("uiRegister", () => {
-      // build an array of linkedin urls that match the gallery order
-      const linkedInUrls = Array.from(
-        document.querySelectorAll(".maps-gallery a[data-pswp-src]"),
-      ).map((a) => a.getAttribute("data-linkedin") || "");
+  lightbox.init();
+</script>
 
-      // register a LinkedIn button in the PhotoSwipe UI
-      lightbox.pswp?.ui?.registerElement({
-        name: "linkedin-button",
-        order: 9,
-        isButton: true,
-        appendTo: "bar",
-        tagName: "div",
-        html: "<a>Read more on LinkedIn</a>",
-        onInit: (el, pswp) => {
-          const linkEl = el.querySelector("a");
-          if (!linkEl) return;
-          linkEl.setAttribute("rel", "noopener noreferrer");
-          const update = () => {
-            const idx = pswp.currIndex;
-            const url = linkedInUrls[idx] || "";
-            if (url) {
-              linkEl.setAttribute("href", url);
-              el.style.display = "";
-            } else {
-              linkEl.removeAttribute("href");
-              el.style.display = "none";
-            }
-          };
-          update();
-          pswp.on("change", update);
-        },
-      });
-    });
+<style>
+  .maps-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing);
+    justify-items: stretch;
+    margin: var(--spacing) 0;
+  }
 
-    lightbox.init();
-  </script>
+  a.map-item {
+    display: grid;
+    grid-template-rows: 1fr [footer] auto;
+    grid-template-columns: 1fr;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
 
-  <style>
-    .maps-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--spacing-xs);
-      justify-items: stretch;
-
-      margin-top: var(--spacing);
-    }
-
-    .map-item {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 1/1;
-    }
-
-    .map-item img {
+    img {
+      grid-column: 1 / 1;
+      grid-row: 1 / -1;
+      object-fit: cover;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: top;
+      object-position: 50% 0%;
     }
 
-    .map-item .map-title {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      font-size: 80%;
-      background: linear-gradient(
-        to top,
-        color-mix(in srgb, var(--background) 95%, transparent 5%) 50%,
-        color-mix(in srgb, var(--background) 85%, transparent 5%) 60%,
-        transparent 100%
-      );
-      padding: 8px;
-      padding-top: 20px;
-      margin: 0;
-      height: fit-content;
-    }
-  </style>
-
-  <style is:global>
-    .pswp__button--linkedin-button {
-      height: 60px;
-      align-self: center;
-      width: auto;
+    footer {
+      grid-column: 1 / -1;
+      padding: var(--spacing);
+      z-index: 10;
+      font-size: smaller;
+      color: rgb(var(--primary));
       display: flex;
+      gap: var(--spacing-xs);
+      flex-direction: column;
       align-items: center;
-      a {
-        color: white;
-        text-decoration: none;
-        border: 2px solid white;
-        padding: var(--spacing-xs);
-        border-radius: var(--border-radius-sm);
+      grid-row: footer;
+      position: relative;
+      padding-top: var(--spacing-lg);
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        backdrop-filter: blur(2px);
+        mask-image: linear-gradient(to top, black 30%, transparent 100%);
+        pointer-events: none;
+      }
+
+      > div:first-child {
+        --height: 1.75em;
+        line-height: var(--height);
+        height: var(--height);
+        display: flex;
+        /* gap: var(--spacing-xs); */
+        align-items: center;
+        background-color: white;
+        border-top-left-radius: calc(var(--height) / 2);
+        border-bottom-left-radius: calc(var(--height) / 2);
+        border-top-right-radius: var(--border-radius-xs);
+        border-bottom-right-radius: var(--border-radius-xs);
+
+        .topic {
+          padding: 0 var(--spacing-xs);
+        }
+
+        .day {
+          padding: 0;
+          background-color: rgb(var(--primary));
+          color: white;
+          font-family: var(--font-family-headline);
+          font-weight: bold;
+          text-align: center;
+          height: var(--height);
+          aspect-ratio: 1/1;
+          border-radius: 100%;
+        }
+      }
+
+      .author {
+        font-family: var(--font-family-headline);
+        font-weight: bold;
+        background-color: white;
+        padding: var(--spacing-xxs) var(--spacing-xs);
+        border-radius: var(--border-radius-xs);
       }
     }
-  </style>
-</Layout>
+  }
+</style>
+
+<style is:global>
+  .pswp__button--linkedin-button {
+    height: 60px;
+    align-self: center;
+    width: auto;
+    display: flex;
+    align-items: center;
+    a {
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      padding: var(--spacing-xs);
+      border-radius: var(--border-radius-sm);
+    }
+  }
+</style>

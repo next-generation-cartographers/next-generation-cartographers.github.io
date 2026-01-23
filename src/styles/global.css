@@ -18,7 +18,8 @@
   );
 
   --spacing: 1.5em;
-  --spacing-xs: 0.5em;
+  --spacing-xs: calc(var(--spacing) / 3);
+  --spacing-xxs: calc(var(--spacing-xs) / 2);
   --spacing-lg: calc(var(--spacing) * 4);
 
   --border-radius-xs: 0.25rem;
