@@ -154,16 +154,6 @@ const { Content } = await render(challenge);
       position: relative;
       padding-top: var(--spacing-lg);
 
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        backdrop-filter: blur(2px);
-        mask-image: linear-gradient(to top, black 30%, transparent 100%);
-        pointer-events: none;
-      }
-
       > div:first-child {
         --height: 1.75em;
         line-height: var(--height);
