@@ -43,5 +43,24 @@ const updates = defineCollection({
   }),
 });
 
+const thirtyDayMapChallenges = defineCollection({
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./src/data/30daymapchallenge",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      maps: z.array(
+        z.object({
+          day: z.number(),
+          topic: z.string(),
+          author: z.string(),
+          linkedInUrl: z.string().url(),
+          image: image(),
+        })
+      ),
+    }),
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { events, updates, papers };
+export const collections = { events, updates, papers, thirtyDayMapChallenges };

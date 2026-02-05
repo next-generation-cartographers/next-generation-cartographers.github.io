@@ -1,0 +1,220 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const challenges = await getCollection("thirtyDayMapChallenges");
+  return challenges.map((challenge) => ({
+    params: { challenge: challenge.id.split("/").at(0) },
+    props: { challenge },
+  }));
+}
+
+const { challenge } = Astro.props;
+const { Content } = await render(challenge);
+---
+
+<Layout>
+  <Content />
+  <div class="maps-gallery feature">
+    {
+      challenge.data.maps.map((d) => {
+        const imageUrl = typeof d.image === "string" ? d.image : d.image?.src;
+        return (
+          <a
+            class="map-item"
+            href={imageUrl || "#"}
+            data-pswp-src={imageUrl}
+            data-pswp-width={d.image?.width}
+            data-pswp-height={d.image?.height}
+            data-linkedin={d.linkedInUrl}
+            data-cropped="true"
+          >
+            <footer>
+              <div>
+                <div class="day">{d.day}</div>
+                <div class="topic">{d.topic}</div>
+              </div>
+              <div class="author">{d.author}</div>
+            </footer>
+            <Image
+              src={d.image}
+              width={250}
+              loading={"lazy"}
+              height={250}
+              densities={[1, 2]}
+              alt={`Map for day ${d.day}: ${d.topic} by ${d.author}`}
+            />
+          </a>
+        );
+      })
+    }
+  </div>
+  <p>
+    The maps in this challenge were created by (in chronological order):
+    {
+      challenge.data.maps
+        .map((d) => d.author)
+        .filter((v, i, a) => a.indexOf(v) === i)
+        .join(", ")
+    }.
+  </p>
+</Layout>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: ".maps-gallery",
+    children: "a[data-pswp-src]",
+    padding: { top: 40, bottom: 40, left: 40, right: 40 },
+    pswpModule: () => import("photoswipe"),
+    counter: false,
+    zoom: false,
+    bgOpacity: 0.975,
+  });
+
+  lightbox.on("uiRegister", () => {
+    // build an array of linkedin urls that match the gallery order
+    const linkedInUrls = Array.from(
+      document.querySelectorAll(".maps-gallery a[data-pswp-src]"),
+    ).map((a) => a.getAttribute("data-linkedin") || "");
+
+    // register a LinkedIn button in the PhotoSwipe UI
+    lightbox.pswp?.ui?.registerElement({
+      name: "linkedin-button",
+      order: 9,
+      isButton: true,
+      appendTo: "bar",
+      tagName: "div",
+      html: "<a>Read more on LinkedIn</a>",
+      onInit: (el, pswp) => {
+        const linkEl = el.querySelector("a");
+        if (!linkEl) return;
+        linkEl.setAttribute("rel", "noopener noreferrer");
+        const update = () => {
+          const idx = pswp.currIndex;
+          const url = linkedInUrls[idx] || "";
+          if (url) {
+            linkEl.setAttribute("href", url);
+            el.style.display = "";
+          } else {
+            linkEl.removeAttribute("href");
+            el.style.display = "none";
+          }
+        };
+        update();
+        pswp.on("change", update);
+      },
+    });
+  });
+
+  lightbox.init();
+</script>
+
+<style>
+  .maps-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing);
+    justify-items: stretch;
+    margin: var(--spacing) 0;
+  }
+
+  a.map-item {
+    display: grid;
+    grid-template-rows: 1fr [footer] auto;
+    grid-template-columns: 1fr;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+
+    img {
+      grid-column: 1 / 1;
+      grid-row: 1 / -1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-position: 50% 0%;
+    }
+
+    footer {
+      grid-column: 1 / -1;
+      padding: var(--spacing);
+      z-index: 10;
+      font-size: smaller;
+      color: rgb(var(--primary));
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-direction: column;
+      align-items: center;
+      grid-row: footer;
+      position: relative;
+      padding-top: var(--spacing-lg);
+
+      > div:first-child {
+        --height: 1.75em;
+        line-height: var(--height);
+        height: var(--height);
+        display: flex;
+        /* gap: var(--spacing-xs); */
+        align-items: center;
+        background-color: white;
+        border-top-left-radius: calc(var(--height) / 2);
+        border-bottom-left-radius: calc(var(--height) / 2);
+        border-top-right-radius: var(--border-radius-xs);
+        border-bottom-right-radius: var(--border-radius-xs);
+
+        .topic {
+          padding: 0 var(--spacing-xs);
+        }
+
+        .day {
+          padding: 0;
+          background-color: rgb(var(--primary));
+          color: white;
+          font-family: var(--font-family-headline);
+          font-weight: bold;
+          text-align: center;
+          height: var(--height);
+          aspect-ratio: 1/1;
+          border-radius: 100%;
+        }
+      }
+
+      .author {
+        font-family: var(--font-family-headline);
+        font-weight: bold;
+        background-color: white;
+        padding: var(--spacing-xxs) var(--spacing-xs);
+        border-radius: var(--border-radius-xs);
+      }
+
+      > div:first-child,
+      .author {
+        filter: drop-shadow(0 2px 4px rgba(45, 45, 45, 0.4));
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  .pswp__button--linkedin-button {
+    height: 60px;
+    align-self: center;
+    width: auto;
+    display: flex;
+    align-items: center;
+    font-size: smaller;
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      padding: var(--spacing-xs);
+      border-radius: var(--border-radius-sm);
+      background-color: rgb(var(--primary));
+      color: var(--background);
+    }
+  }
+</style>
