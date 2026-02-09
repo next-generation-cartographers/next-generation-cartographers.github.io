@@ -63,6 +63,41 @@ const toc = buildTree(headings || []);
   }
 </aside>
 
+<script>
+  // Highlight the active TOC item based on which heading is visible
+  const toc = document.querySelector(".aside-left");
+  if (toc) {
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const idToLi = new Map(
+      links.map((a) => [a.getAttribute("href").slice(1), a.parentElement]),
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length === 0) return;
+        // pick the heading closest to the top
+        visible.sort(
+          (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+        );
+        const id = visible[0].target.id;
+
+        toc
+          .querySelectorAll("li.active")
+          .forEach((li) => li.classList.remove("active"));
+        const targetLi = idToLi.get(id);
+        if (targetLi) targetLi.classList.add("active");
+      },
+      { root: null, rootMargin: "0px 0px -70% 0px", threshold: 0.01 },
+    );
+
+    const headingEls = Array.from(
+      document.querySelectorAll("main article [id]"),
+    ).filter((el) => idToLi.has(el.id));
+    headingEls.forEach((h) => observer.observe(h));
+  }
+</script>
+
 <style>
   aside {
     position: sticky;
@@ -87,5 +122,12 @@ const toc = buildTree(headings || []);
     & > li:not(:first-child) {
       margin-top: var(--spacing-xs);
     }
+    ul {
+      font-size: 0.85rem;
+    }
+  }
+  .active > a {
+    font-weight: 700;
+    color: rgb(var(--primary));
   }
 </style>
