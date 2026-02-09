@@ -12,7 +12,7 @@ export async function getStaticPaths() {
     tutorials.map(async (tutorial) => {
       const data = await render(tutorial);
       return data.headings;
-    })
+    }),
   );
   return tutorials.map((tutorial, idx) => ({
     params: { tutorial: tutorial.id.replace("resources/tutorials/", "") },
