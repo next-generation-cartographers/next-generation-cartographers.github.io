@@ -35,7 +35,9 @@ const { metaTitle, metaDescription } = Astro.props;
         <div class="content">
           <slot name="aside-right" />
           <slot name="aside-left" />
-          <slot />
+          <div class="main-content">
+            <slot />
+          </div>
         </div>
       </article>
     </main>
@@ -85,9 +87,11 @@ const { metaTitle, metaDescription } = Astro.props;
 
   .aside-left {
     grid-column: full-start / content-start;
+    padding-inline-end: var(--spacing);
   }
 
   .aside-right {
     grid-column: content-end / full-end;
+    padding-inline-start: var(--spacing);
   }
 </style>
