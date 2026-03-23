@@ -2,7 +2,7 @@
 interface Props {
   isInteractive?: boolean;
   decoration?: string;
-  style?: Record<string, string>;
+  style?: Record<string, string | number>;
 }
 const { isInteractive = false, decoration = "", style = {} } = Astro.props;
 ---
