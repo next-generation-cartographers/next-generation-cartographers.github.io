@@ -1,0 +1,73 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./Card.astro";
+import SocialLink from "./SocialLink.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  author: CollectionEntry<"authors">;
+}
+const { author } = Astro.props;
+---
+
+<Card>
+  <div style={{ display: "flex", gap: "1.5em", alignItems: "center" }}>
+    {
+      author.data.avatar && (
+        <Image
+          src={author.data.avatar}
+          width={200}
+          height={200}
+          alt={`Avatar of ${author.data.name}`}
+          class="avatar"
+        />
+      )
+    }
+    <div>
+      <div>
+        <span class="author-name">{author.data.name}</span>
+        {author.data.pronouns && <span>{author.data.pronouns}</span>}
+      </div>
+      <div class="affiliation">{author.data.affiliation}</div>
+      {
+        author.data.website && (
+          <div>
+            <a
+              href={author.data.website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {author.data.website}
+            </a>
+          </div>
+        )
+      }
+      <ul>
+        {
+          author.data.socials?.map((social) => (
+            <li>
+              <SocialLink social={social} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Card>
+
+<style>
+  .author-name {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: var(--font-family-headline);
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: var(--spacing) 0 0;
+  }
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>

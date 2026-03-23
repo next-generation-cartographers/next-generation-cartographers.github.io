@@ -6,7 +6,11 @@ import Link from "../../components/Link.astro";
 import Time from "../../components/Time.astro";
 import { getEntries } from "astro:content";
 
-const tutorials = await getCollection("tutorials");
+const tutorials = (await getCollection("tutorials")).toSorted(
+  (a, b) =>
+    new Date(b.data.publicationDate).getTime() -
+    new Date(a.data.publicationDate).getTime(),
+);
 ---
 
 <Layout>
