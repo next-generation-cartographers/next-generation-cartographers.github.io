@@ -69,7 +69,7 @@ const toc = buildTree(headings || []);
   if (toc) {
     const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
     const idToLi = new Map(
-      links.map((a) => [a.getAttribute("href").slice(1), a.parentElement]),
+      links.map((a) => [a.getAttribute("href")?.slice(1), a.parentElement]),
     );
 
     const observer = new IntersectionObserver(
