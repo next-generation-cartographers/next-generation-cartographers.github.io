@@ -3,6 +3,7 @@
   --secondary: 0, 255, 0;
 
   --muted: color-mix(in srgb, rgb(var(--primary)), white 60%);
+  --muted-background: color-mix(in srgb, rgb(var(--primary)), white 90%);
   --background: color-mix(in srgb, rgb(var(--primary)), white 95%);
 
   --primary-gradient-white: linear-gradient(
@@ -20,6 +21,7 @@
   --spacing: 1.5em;
   --spacing-xs: calc(var(--spacing) / 3);
   --spacing-xxs: calc(var(--spacing-xs) / 2);
+  --spacing-md: calc(var(--spacing) * 2);
   --spacing-lg: calc(var(--spacing) * 4);
 
   --border-radius-xs: 0.25rem;
@@ -111,8 +113,8 @@ ol ol {
 
 code {
   font-family: var(--font-family-headline), monospace;
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 0.2em;
+  background-color: var(--muted-background);
+  padding: 0 var(--spacing-xxs);
   border-radius: var(--border-radius-xs);
 }
 
@@ -159,4 +161,12 @@ button {
 
 .pswp__icn-shadow {
   display: none;
+}
+
+kbd {
+  font-family: var(--font-family-headline);
+  padding: 0 var(--spacing-xxs);
+  border: 1px solid var(--muted);
+  border-radius: var(--border-radius-xs);
+  background: var(--muted-background);
 }

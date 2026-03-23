@@ -1,10 +1,11 @@
 ---
-import { getCollection, getEntries, render } from "astro:content";
-import Layout from "../../../layouts/Layout.astro";
-import Time from "../../../components/Time.astro";
-import type { CollectionEntry } from "astro:content";
 import type { MarkdownHeading } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntries, render } from "astro:content";
+import AuthorCard from "../../../components/AuthorCard.astro";
 import TableOfContents from "../../../components/table-of-contents.astro";
+import Time from "../../../components/Time.astro";
+import Layout from "../../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const tutorials = await getCollection("tutorials");
@@ -56,12 +57,21 @@ const { Content } = await render(tutorial);
   <TableOfContents slot="aside-left" {headings} />
 
   <Content />
+
+  <section>
+    <h2>About the author{authors.length > 1 ? "s" : ""}</h2>
+    {authors.map((d) => <AuthorCard author={d} />)}
+  </section>
 </Layout>
 
 <style is:global>
   article > header {
     max-width: 70rem;
     margin: 0 auto var(--spacing-lg);
+  }
+
+  .main-content p img {
+    margin: var(--spacing) 0;
   }
 </style>
 
