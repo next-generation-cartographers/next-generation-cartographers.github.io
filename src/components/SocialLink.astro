@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  social: NonNullable<CollectionEntry<"authors">["data"]["socials"]>[number];
+}
+const { social } = Astro.props;
+const [platform, handle] = social.split(":");
+---
+
+<div>
+  {platform}
+  <a href={social} target="_blank" rel="noopener noreferrer">
+    @{handle}
+  </a>
+</div>

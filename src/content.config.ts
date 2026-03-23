@@ -79,15 +79,16 @@ const tutorials = defineCollection({
 
 const authors = defineCollection({
   loader: glob({ pattern: "**/*.yml", base: "./src/data/authors" }),
-  schema: z.object({
-    name: z.string(),
-    pronouns: z.string().optional(),
-    affiliation: z.string().optional(),
-    avatar: z.string().optional(),
-    bio: z.string().optional(),
-    website: z.string().url().optional(),
-    socials: z.array(z.string().url()).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      pronouns: z.string().optional(),
+      affiliation: z.string().optional(),
+      avatar: image().optional(),
+      bio: z.string().optional(),
+      website: z.string().url().optional(),
+      socials: z.array(z.string().url()).optional(),
+    }),
 });
 
 // 4. Export a single `collections` object to register your collection(s)

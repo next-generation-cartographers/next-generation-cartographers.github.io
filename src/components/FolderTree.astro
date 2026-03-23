@@ -1,0 +1,39 @@
+---
+type TFiles = {
+  name: string;
+  children?: TFiles[];
+};
+
+interface Props {
+  tree: TFiles[];
+}
+const { tree } = Astro.props;
+---
+
+<ul>
+  {
+    tree.map((item) => (
+      <li>
+        {item.name}
+        {item.children && item.children.length > 0 && (
+          <Astro.self tree={item.children} />
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  div {
+    background: var(--muted);
+    padding: var(--spacing);
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 1em;
+    border-left: 1px solid rgb(var(--primary));
+    li {
+      margin: 0.5em 0;
+    }
+  }
+</style>
