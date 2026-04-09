@@ -4,6 +4,8 @@ description: "A step-by-step tutorial on creating schematized polygons using the
 publicationDate: 2026-02-06
 authors:
   - jakob-listabarth
+reviewers:
+  - jakob-listabarth
 summary: |
   In this tutorial, you'll learn how to create schematized polygons using the open source vector software Graphite. Whether you're a beginner or an experienced designer, this guide will walk you through the process of creating visually appealing and functional schematized polygons for your maps.
 keywords:
