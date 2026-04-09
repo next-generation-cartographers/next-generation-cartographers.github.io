@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Card from "./Card.astro";
 import SocialLink from "./SocialLink.astro";
-import { Image } from "astro:assets";
+import Avatar from "./Avatar.astro";
 
 interface Props {
   author: CollectionEntry<"authors">;
@@ -14,12 +14,9 @@ const { author } = Astro.props;
   <div style={{ display: "flex", gap: "1.5em", alignItems: "center" }}>
     {
       author.data.avatar && (
-        <Image
+        <Avatar
           src={author.data.avatar}
-          width={200}
-          height={200}
           alt={`Avatar of ${author.data.name}`}
-          class="avatar"
         />
       )
     }
@@ -65,9 +62,5 @@ const { author } = Astro.props;
     list-style-type: none;
     padding-left: 0;
     margin: var(--spacing) 0 0;
-  }
-  .avatar {
-    border-radius: 50%;
-    object-fit: cover;
   }
 </style>
