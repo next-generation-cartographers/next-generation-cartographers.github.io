@@ -29,6 +29,9 @@ type Props = {
 
 const { tutorial, headings } = Astro.props;
 const authors = await getEntries(tutorial.data.authors);
+const reviewers = tutorial.data.reviewers
+  ? await getEntries(tutorial.data.reviewers)
+  : undefined;
 const { Content } = await render(tutorial);
 ---
 
@@ -77,6 +80,27 @@ const { Content } = await render(tutorial);
   <TableOfContents slot="aside-left" {headings} />
 
   <Content />
+
+  {
+    reviewers && (
+      <section>
+        <h2>Reviewers</h2>
+        We would like to thank{" "}
+        {reviewers.map((d, i) => (
+          <>
+            {reviewers.length > 1 && i === reviewers.length - 1
+              ? "and "
+              : reviewers.length === 1 || i === 0
+                ? ""
+                : ", "}
+            <strong>{d.data.name}</strong>
+          </>
+        ))}{" "}
+        for reviewing this tutorial and for providing their valuable time and
+        feedback.
+      </section>
+    )
+  }
 
   <section>
     <h2>About the author{authors.length > 1 ? "s" : ""}</h2>
