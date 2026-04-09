@@ -10,10 +10,12 @@ import "../styles/global.css";
 interface Props {
   metaTitle?: string;
   metaDescription?: string;
+  metaImage?: string;
+  metaUrl?: string;
   style?: any;
 }
 
-const { metaTitle, metaDescription, style } = Astro.props;
+const { metaTitle, metaDescription, metaImage, metaUrl, style } = Astro.props;
 ---
 
 <!doctype html>
@@ -27,6 +29,41 @@ const { metaTitle, metaDescription, style } = Astro.props;
       {`${metaTitle ? `${metaTitle} · ` : ""}Next Generation Cartographers`}
     </title>
     <meta name="description" content={metaDescription} />
+
+    {metaUrl && <link rel="canonical" href={metaUrl} />}
+
+    {
+      metaImage && (
+        <>
+          <meta property="og:image" content={metaImage} />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta name="twitter:image" content={metaImage} />
+        </>
+      )
+    }
+
+    {
+      metaTitle && (
+        <>
+          <meta property="og:title" content={metaTitle} />
+          <meta name="twitter:title" content={metaTitle} />
+        </>
+      )
+    }
+
+    {
+      metaDescription && (
+        <>
+          <meta property="og:description" content={metaDescription} />
+          <meta name="twitter:description" content={metaDescription} />
+        </>
+      )
+    }
+
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <Navigation />
