@@ -1,7 +1,7 @@
 ---
 import "@fontsource-variable/source-sans-3/wght-italic.css";
 import "@fontsource-variable/source-sans-3/wght.css";
-import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/space-grotesk/wght.css";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import "photoswipe/style.css";
@@ -10,13 +10,14 @@ import "../styles/global.css";
 interface Props {
   metaTitle?: string;
   metaDescription?: string;
+  style?: any;
 }
 
-const { metaTitle, metaDescription } = Astro.props;
+const { metaTitle, metaDescription, style } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style={style}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -87,11 +88,11 @@ const { metaTitle, metaDescription } = Astro.props;
 
   .aside-left {
     grid-column: full-start / content-start;
-    padding-inline-end: var(--spacing);
+    padding-inline-end: var(--spacing-lg);
   }
 
   .aside-right {
     grid-column: content-end / full-end;
-    padding-inline-start: var(--spacing);
+    padding-inline-start: var(--spacing-lg);
   }
 </style>

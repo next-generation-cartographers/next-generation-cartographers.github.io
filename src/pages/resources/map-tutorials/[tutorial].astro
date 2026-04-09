@@ -31,7 +31,13 @@ const authors = await getEntries(tutorial.data.authors);
 const { Content } = await render(tutorial);
 ---
 
-<Layout metaTitle={tutorial.data.title}>
+<Layout
+  metaTitle={tutorial.data.title}
+  style={{
+    "--background": "var(--tutorial-background)",
+    "--text-color": "var(--long-text-color)",
+  }}
+>
   <header slot="site-header">
     <h1 id={tutorial.id}>{tutorial.data.title}</h1>
     <div class="tutorial-info">
