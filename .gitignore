@@ -1,3 +1,6 @@
+# Ignore pre built downloaded assets
+public/fonts/
+
 # build output
 dist/
 # generated types

@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
-import Link from "../../components/Link.astro";
 import Time from "../../components/Time.astro";
 import { getEntries } from "astro:content";
+import Link from "../../components/Link.astro";
 
 const tutorials = (await getCollection("tutorials")).toSorted(
   (a, b) =>
@@ -25,35 +25,26 @@ const tutorials = (await getCollection("tutorials")).toSorted(
       tutorials.map(async (d) => {
         const authors = await getEntries(d.data.authors);
         return (
-          <li>
-            <Card>
-              <div class="card-content">
-                <div class="thumbnail">
-                  {d.data.bannerImage ? (
-                    <img
-                      src={d.data.bannerImage}
-                      alt={`Banner image for ${d.data.title}`}
-                    />
-                  ) : (
-                    <div class="placeholder" />
-                  )}
-                </div>
-                <div class="tutorial-info">
-                  <h3>{d.data.title}</h3>
-                  <div>
-                    <Time
-                      datetime={d.data.publicationDate.toISOString()}
-                      format="date"
-                    />{" "}
-                    · <span>{authors.map((a) => a.data.name).join(", ")}</span>
+          <a href={`/resources/map-tutorials/${d.id}`}>
+            <li>
+              <Card>
+                <div class="card-content">
+                  <div class="tutorial-info">
+                    <h3>{d.data.title}</h3>
+                    <div>
+                      <Time
+                        datetime={d.data.publicationDate.toISOString()}
+                        format="date"
+                      />{" "}
+                      ·{" "}
+                      <span>{authors.map((a) => a.data.name).join(", ")}</span>
+                    </div>
+                    <Link>Read more</Link>
                   </div>
-                  <Link href={`/resources/map-tutorials/${d.id}`}>
-                    Read more
-                  </Link>
                 </div>
-              </div>
-            </Card>
-          </li>
+              </Card>
+            </li>
+          </a>
         );
       })
     }
@@ -69,24 +60,12 @@ const tutorials = (await getCollection("tutorials")).toSorted(
   }
   li {
     max-width: unset;
+
+    a {
+      text-decoration: none;
+    }
   }
   .card-content {
-    gap: var(--spacing);
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-
-    .thumbnail {
-      aspect-ratio: 16 / 9;
-      width: 50%;
-      height: auto;
-      > div {
-        background-color: var(--muted);
-        border-radius: var(--border-radius-xs);
-        width: 100%;
-        height: 100%;
-      }
-    }
     .tutorial-info {
       align-self: flex-end;
       display: flex;
@@ -97,11 +76,6 @@ const tutorials = (await getCollection("tutorials")).toSorted(
       h3 {
         font-size: x-large;
       }
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .card-content {
-      flex-direction: row;
     }
   }
   h3 {
