@@ -5,6 +5,8 @@ description: "When making a map, you can guide the readers to what matters most 
 publicationDate: 2026-03-20
 authors:
   - sacha-schlumpf
+reviewers:
+  - jakob-listabarth
 summary: |
   When making a map, you can guide the readers to what matters most by having a clear visual hierarchy. This tutorial helps you design an effective hierarchy.
 keywords:

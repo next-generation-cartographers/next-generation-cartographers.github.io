@@ -70,6 +70,7 @@ const tutorials = defineCollection({
   schema: z.object({
     title: z.string(),
     authors: z.array(reference("authors")),
+    reviewers: z.array(reference("authors")).optional(),
     keywords: z.array(z.string()).optional(),
     publicationDate: z.date(),
     summary: z.string(),
