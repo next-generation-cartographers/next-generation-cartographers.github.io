@@ -5,6 +5,9 @@
   "description": "Next Generation Cartographers' website.",
   "main": "index.js",
   "scripts": {
+    "download-fonts": "pnpm dlx tsx ./scripts/bootstrap-fonts.ts",
+    "predev": "pnpm download-fonts",
+    "postinstall": "pnpm download-fonts",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -27,5 +30,8 @@
     "sharp": "^0.34.4",
     "typescript": "^5.9.2"
   },
-  "packageManager": "pnpm@10.26.1"
+  "packageManager": "pnpm@10.26.1",
+  "devDependencies": {
+    "@myriaddreamin/typst-ts-node-compiler": "0.7.0-rc2"
+  }
 }

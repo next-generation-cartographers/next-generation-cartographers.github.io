@@ -7,6 +7,7 @@ import TableOfContents from "../../../components/table-of-contents.astro";
 import Time from "../../../components/Time.astro";
 import Layout from "../../../layouts/Layout.astro";
 import Avatar from "../../../components/Avatar.astro";
+import { resolveImageUrl } from "../../../lib/resolveImageUrls";
 
 export async function getStaticPaths() {
   const tutorials = await getCollection("tutorials");
@@ -33,10 +34,14 @@ const reviewers = tutorial.data.reviewers
   ? await getEntries(tutorial.data.reviewers)
   : undefined;
 const { Content } = await render(tutorial);
+const ogImageEndpoint =
+  "og/" + tutorial.id.replace("resources/tutorials/", "").replace(/\//g, "-");
 ---
 
 <Layout
   metaTitle={tutorial.data.title}
+  metaDescription={tutorial.data.summary}
+  metaImage={resolveImageUrl(ogImageEndpoint)}
   style={{
     "--background": "var(--tutorial-background)",
     "--text-color": "var(--long-text-color)",
