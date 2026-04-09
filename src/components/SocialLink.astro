@@ -1,16 +1,44 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   social: NonNullable<CollectionEntry<"authors">["data"]["socials"]>[number];
 }
 const { social } = Astro.props;
 const [platform, handle] = social.split(":");
+let baseUrl: string;
+switch (platform) {
+  case "instagram":
+    baseUrl = "https://www.instagram.com/";
+    break;
+  case "linkedin":
+    baseUrl = "https://www.linkedin.com/in/";
+    break;
+  case "twitter":
+    baseUrl = "https://twitter.com/";
+    break;
+  case "github":
+    baseUrl = "https://github.com/";
+    break;
+  default:
+    baseUrl = "";
+    break;
+}
+if (!baseUrl) {
+  throw new Error(`Unsupported social platform: ${platform}`);
+}
 ---
 
 <div>
-  {platform}
-  <a href={social} target="_blank" rel="noopener noreferrer">
+  <Icon class="icon" name={`ph:${platform}-logo`} />
+  <a href={`${baseUrl}${handle}`} target="_blank" rel="noopener noreferrer">
     @{handle}
   </a>
 </div>
+
+<style>
+  .icon {
+    vertical-align: -20%;
+  }
+</style>
