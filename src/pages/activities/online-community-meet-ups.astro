@@ -10,7 +10,9 @@ import MeetUpList from "../../components/MeetupList.astro";
 
   <h2>Upcoming Meet-ups</h2>
 
-  <MeetUpList filter="upcoming" />
+  <div class="popout">
+    <MeetUpList filter="upcoming" />
+  </div>
 
   <h2>Past Meet-ups</h2>
   <MeetUpList filter="past" />

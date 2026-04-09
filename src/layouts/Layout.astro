@@ -74,8 +74,9 @@ const { metaTitle, metaDescription, metaImage, metaUrl, style } = Astro.props;
           <slot name="aside-right" />
           <slot name="aside-left" />
           <div class="main-content">
-            <slot />
+            <slot name="constrained-content" />
           </div>
+          <slot />
         </div>
       </article>
     </main>

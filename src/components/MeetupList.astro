@@ -11,7 +11,7 @@ const { filter } = Astro.props;
 
 const meetUps = (
   await getCollection("events", (data) =>
-    data.id.startsWith("online-community-meet-up")
+    data.id.startsWith("online-community-meet-up"),
   )
 ).toSorted((a, b) => {
   const aDate = new Date(a.data.dateTime?.start ?? "");
@@ -23,12 +23,12 @@ const filteredMeetUps =
   filter === "upcoming"
     ? meetUps
         .filter(
-          (event) => new Date(event.data.dateTime?.start ?? "") > new Date()
+          (event) => new Date(event.data.dateTime?.start ?? "") > new Date(),
         )
         .toReversed()
     : filter === "past"
       ? meetUps.filter(
-          (event) => new Date(event.data.dateTime?.start ?? "") < new Date()
+          (event) => new Date(event.data.dateTime?.start ?? "") < new Date(),
         )
       : meetUps;
 ---
@@ -87,6 +87,7 @@ const filteredMeetUps =
     gap: var(--spacing-xs);
   }
   .empty-list {
+    margin: var(--spacing) 0;
     padding: var(--spacing);
     border: 1px dashed rgb(var(--primary));
     border-radius: var(--border-radius-sm);

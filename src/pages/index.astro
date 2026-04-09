@@ -9,7 +9,7 @@ import NgcLogo from "../components/NgcLogo.astro";
 import Layout from "../layouts/Layout.astro";
 
 const updates = (await getCollection("updates")).toSorted(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
 ---
 
@@ -51,7 +51,7 @@ const updates = (await getCollection("updates")).toSorted(
     we organize frequent online community meet-ups:
   </p>
 
-  <div class="feature">
+  <div class="popout">
     <MeetUpList filter="upcoming" />
   </div>
 
