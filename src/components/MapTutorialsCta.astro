@@ -1,0 +1,41 @@
+---
+import Card from "./Card.astro";
+import Link from "./Link.astro";
+---
+
+<div class="popout">
+  <Card>
+    <div class="card-content">
+      <div>
+        👉 <strong
+          >Feel like contributing to awesome free and easy-to-follow map
+          tutorials?</strong
+        >
+      </div>
+      <p>
+        It's great to have you on board! Check out our guidelines for
+        contributing and submit your tutorial to be featured on our website.
+      </p>
+
+      <div style={{ display: "flex", gap: "var(--spacing-xs)" }}>
+        <Link href="/resources/map-tutorials/how-to/write-a-map-tutorial">
+          How to contribute</Link
+        >
+        <Link href="/resources/map-tutorials/how-to/review-a-map-tutorial">
+          How to review</Link
+        >
+      </div>
+    </div>
+  </Card>
+</div>
+
+<style>
+  div.popout {
+    margin: var(--spacing) 0;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+  }
+</style>

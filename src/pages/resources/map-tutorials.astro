@@ -5,6 +5,7 @@ import Card from "../../components/Card.astro";
 import Time from "../../components/Time.astro";
 import { getEntries } from "astro:content";
 import Link from "../../components/Link.astro";
+import MapTutorialsCta from "../../components/MapTutorialsCta.astro";
 
 const tutorials = (await getCollection("tutorials")).toSorted(
   (a, b) =>
@@ -19,6 +20,13 @@ const tutorials = (await getCollection("tutorials")).toSorted(
     On this page you can find tutorials published by <span class="inline-logo"
       >NGC</span
     >'s network of map makers.
+  </p>
+  <MapTutorialsCta />
+  <p>
+    Whether you're a beginner looking to create your first map or an experienced
+    cartographer seeking new techniques--with the NGC map tutorials we hope to
+    cover a wide range of topics and skill levels. The project just got started
+    -- help making it even cooler and let's learn from another!
   </p>
   <ul class="feature">
     {
@@ -39,7 +47,9 @@ const tutorials = (await getCollection("tutorials")).toSorted(
                       ·{" "}
                       <span>{authors.map((a) => a.data.name).join(", ")}</span>
                     </div>
-                    <Link>Read more</Link>
+                    <Link href={`/resources/map-tutorials/${d.id}`}>
+                      Read more
+                    </Link>
                   </div>
                 </div>
               </Card>
