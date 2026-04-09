@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src?: ImageMetadata;
+  alt: string;
+  size?: number;
+}
+const { src, alt, size = 200 } = Astro.props;
+---
+
+<>
+  {
+    src ? (
+      <Image src={src} width={size} height={size} alt={alt} class="avatar" />
+    ) : (
+      <div
+        class="placeholder avatar"
+        style={{ width: `${size}px`, height: `${size}px` }}
+      />
+    )
+  }
+</>
+
+<style>
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .placeholder {
+    background-color: rgb(var(--primary));
+  }
+</style>

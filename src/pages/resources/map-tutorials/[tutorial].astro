@@ -6,6 +6,7 @@ import AuthorCard from "../../../components/AuthorCard.astro";
 import TableOfContents from "../../../components/table-of-contents.astro";
 import Time from "../../../components/Time.astro";
 import Layout from "../../../layouts/Layout.astro";
+import Avatar from "../../../components/Avatar.astro";
 
 export async function getStaticPaths() {
   const tutorials = await getCollection("tutorials");
@@ -42,7 +43,20 @@ const { Content } = await render(tutorial);
     <h1 id={tutorial.id}>{tutorial.data.title}</h1>
     <div class="tutorial-info">
       <div>
-        <div>{authors.map((a) => a.data.name).join(", ")}</div>
+        <div class="authors">
+          {
+            authors.map((a) => (
+              <div class="author-chip">
+                <Avatar
+                  src={a.data.avatar}
+                  size={20}
+                  alt={`Avatar of ${a.data.name}`}
+                />
+                <div>{a.data.name}</div>
+              </div>
+            ))
+          }
+        </div>
         <Time
           datetime={tutorial.data.publicationDate.toISOString()}
           format="date"
@@ -137,5 +151,11 @@ const { Content } = await render(tutorial);
 
   .summary {
     font-size: 1.5em;
+  }
+
+  .author-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
   }
 </style>
