@@ -84,7 +84,9 @@ const ogImageEndpoint =
   </header>
   <TableOfContents slot="aside-left" {headings} />
 
-  <Content />
+  <div slot="constrained-content">
+    <Content />
+  </div>
 
   {
     reviewers && (
