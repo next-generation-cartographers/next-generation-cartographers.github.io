@@ -13,7 +13,7 @@ export const navigationLinks: NavigationItem[] = [
         label: "Terms of Reference",
       },
       {
-        href: "https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/c93c4b538c1127c7eddd17bf96c7863675d70940/code-of-conduct.pdf",
+        href: "https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/main/code-of-conduct.pdf",
         label: "Code of Conduct",
       },
     ],
