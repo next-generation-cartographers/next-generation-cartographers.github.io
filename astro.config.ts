@@ -9,4 +9,7 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://next-generation-cartographers.github.io/",
   integrations: [mdx(), icon()],
+  vite: {
+    assetsInclude: ["**/*.ai"],
+  },
 });

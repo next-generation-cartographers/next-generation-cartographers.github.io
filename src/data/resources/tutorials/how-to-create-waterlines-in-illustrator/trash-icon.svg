@@ -1,0 +1,10 @@
+<svg width=".75em" height=".75em" fill="none" stroke="currentColor" viewBox="0 0 10 10">
+  <path d="M1.5,1.82h6.8v6.85c0,.46-.37.83-.83.83H2.33c-.46,0-.83-.37-.83-.83V1.82h0Z" stroke-miterlimit="10"/>
+  <line x1=".64" y1="1.82" x2="9.17" y2="1.82" stroke-miterlimit="10"/>
+  <g>
+    <line x1="3.17" y1="2.93" x2="3.17" y2="8.38" stroke-miterlimit="10"/>
+    <line x1="4.9" y1="2.93" x2="4.9" y2="8.38" stroke-miterlimit="10"/>
+    <line x1="6.64" y1="2.93" x2="6.64" y2="8.38" stroke-miterlimit="10"/>
+  </g>
+  <path d="M3.92.51h1.97c.41,0,.75.34.75.75v.56h-3.47v-.56c0-.41.34-.75.75-.75Z" stroke-miterlimit="10"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg width=".75em" height=".75em" viewbox="0 0 10 10" stroke="currentColor" fill="none">
+  <rect x="1" y="1" height="8" width="8" />
+  <g transform="translate(5, 5)">
+    <line x1="-2" x2="2" />
+    <line y1="-2" y2="2" />
+  </g>
+</svg>
