@@ -5,16 +5,24 @@ import { getCollection, render } from "astro:content";
 import { getEventDuration } from "../../../lib/getEventDuration";
 
 export async function getStaticPaths() {
-  const events = await getCollection("events", (event) =>
-    event.id.startsWith("icc-2025/")
-  );
-  return events.map((event) => ({
-    params: { event: event.id.replace("icc-2025/", "") },
-    props: { event },
-  }));
+  const events = await getCollection("events");
+  const conferences = await getCollection("conferences");
+
+  return conferences.flatMap((conference) => {
+    const conferenceEvents = events.filter(
+      (e) => e.id.startsWith(conference.id + "/") && e.draft !== true,
+    );
+    return conferenceEvents.map((event) => ({
+      params: {
+        conference: conference.id,
+        event: event.id.split("/")[1],
+      },
+      props: { event, conference },
+    }));
+  });
 }
 
-const { event } = Astro.props;
+const { event, conference } = Astro.props;
 const { Content } = await render(event);
 ---
 
@@ -31,7 +39,10 @@ const { Content } = await render(event);
           <strong>
             {
               event.data.dateTime
-                ? getEventDuration(event.data.dateTime, "PST")
+                ? getEventDuration(
+                    event.data.dateTime,
+                    conference.data.timezone,
+                  )
                 : "tba"
             }</strong
           >

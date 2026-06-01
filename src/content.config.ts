@@ -18,6 +18,18 @@ const events = defineCollection({
     type: z.string(),
     index: z.number().optional(),
     url: z.string().url().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+const conferences = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/conferences" }),
+  schema: z.object({
+    name: z.string(),
+    location: z.string(),
+    date: z.date(),
+    url: z.string().url().optional(),
+    timezone: z.string(),
   }),
 });
 
@@ -57,10 +69,16 @@ const thirtyDayMapChallenges = defineCollection({
           author: z.string(),
           linkedInUrl: z.string().url(),
           image: image(),
-        })
+        }),
       ),
     }),
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { events, updates, papers, thirtyDayMapChallenges };
+export const collections = {
+  events,
+  conferences,
+  updates,
+  papers,
+  thirtyDayMapChallenges,
+};

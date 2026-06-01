@@ -1,25 +1,37 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { Content } from "../../data/icc-2025.md";
 
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Card from "../../components/Card.astro";
 import { getEventDuration } from "../../lib/getEventDuration";
 
-const iccEvents = await getCollection("events", (data) =>
-  data.id.startsWith("icc-2025")
+const { conference } = Astro.props;
+
+export async function getStaticPaths() {
+  const conferences = await getCollection("conferences");
+  return conferences.map((conference) => ({
+    params: { conference: conference.id },
+    props: { conference },
+  }));
+}
+
+const events = await getCollection(
+  "events",
+  (event) => event.id.startsWith(conference.id) && event.data.draft !== true,
 );
+
+const { Content } = await render(conference);
 ---
 
 <Layout>
-  <h1 id="next-generation-cartographers">ICC 2025 activities</h1>
+  <h1 id="next-generation-cartographers">{conference.data.name} activities</h1>
   <Content />
 
   <div class="grid">
     {
-      iccEvents
+      events
         .toSorted((a, b) => {
-          const getTime = (d: (typeof iccEvents)[number]) =>
+          const getTime = (d: (typeof events)[number]) =>
             !d.data.dateTime ? 0 : new Date(d.data.dateTime.start).getTime();
           return getTime(a) - getTime(b);
         })
@@ -36,7 +48,10 @@ const iccEvents = await getCollection("events", (data) =>
                     <span class="monospace">Datetime</span>
                     <strong>
                       {event.data.dateTime
-                        ? getEventDuration(event.data.dateTime, "PST")
+                        ? getEventDuration(
+                            event.data.dateTime,
+                            conference.data.timezone,
+                          )
                         : "tba"}
                     </strong>
                   </div>

@@ -21,6 +21,7 @@ export const navigationLinks: NavigationItem[] = [
   {
     label: "Activities",
     children: [
+      { href: "/activities/eurocarto-2026", label: "EuroCarto 2026" },
       {
         href: "/activities/online-community-meet-ups",
         label: "Online Community Meet-Ups",
