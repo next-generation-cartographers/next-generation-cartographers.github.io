@@ -4,10 +4,11 @@ summary: "Next Generation Cartographers will participate in EuroCarto 2026 and w
 date: 2026-06-01
 ---
 
-Like in previous years, Next Generation Cartographers will be present at the ICA's regional cartographic conference for Europe: EuroCarto 2026. The conference will take place in Brno, Czech Republic from September 8-11, 2026. There are 3 NGC-related activities planned:
+Like in previous years, Next Generation Cartographers will be present at the ICA's regional cartographic conference for Europe: EuroCarto 2026. The conference will take place in Brno, Czech Republic from September 8-11, 2026. There are 4 NGC-related activities planned:
 
 - In-person meet-up for NGC members and anyone interested. The venue will be announced closer to the conference date.
 - A Mentor-Match workshop for early-career cartographers and students, which will be held prior to the conference. You can register [here](https://arcg.is/1GiKvX2) for the event.
+- A workshop on ethical data practices in cartography. For this workshop you can register [here](https://www.termino.gv.at/meet/en/b/37a74fe1db1fb29ce316db8f875bf45f-573491)
 - A Workshop on NGC map tutorials, a fresh initiative by NGC. This workshop will as well be held on Tuesday, 8. September 2026 - 9:00 to 11:00,
   prior to the conference. You can register for the event [here](https://www.termino.gv.at/meet/b/2aa0663daedddab4723eac2aa1d65987-573437).
 
