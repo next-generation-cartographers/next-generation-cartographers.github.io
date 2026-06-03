@@ -3,10 +3,11 @@ import type { MarkdownHeading } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection, getEntries, render } from "astro:content";
 import AuthorCard from "../../../components/AuthorCard.astro";
+import Avatar from "../../../components/Avatar.astro";
 import TableOfContents from "../../../components/table-of-contents.astro";
 import Time from "../../../components/Time.astro";
+import TutorialTeaser from "../../../components/TutorialTeaser.astro";
 import Layout from "../../../layouts/Layout.astro";
-import Avatar from "../../../components/Avatar.astro";
 import { resolveImageUrl } from "../../../lib/resolveImageUrls";
 
 export async function getStaticPaths() {
@@ -112,6 +113,17 @@ const ogImageEndpoint =
   <section>
     <h2>About the author{authors.length > 1 ? "s" : ""}</h2>
     {authors.map((d) => <AuthorCard author={d} />)}
+  </section>
+
+  <section class="feature">
+    <div class="content">
+      <h2>Latest Tutorials</h2>
+      <p>
+        Browse our latest tutorials on various topics related to cartography,
+        GIS, and map making.
+      </p>
+    </div>
+    <TutorialTeaser />
   </section>
 </Layout>
 
