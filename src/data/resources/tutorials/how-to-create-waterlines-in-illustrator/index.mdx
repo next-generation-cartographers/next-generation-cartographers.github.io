@@ -2,7 +2,7 @@
 title: "How to draw waterlines in Illustrator
 "
 description: "This tutorial shows you how to create waterlines in Illustrator. The focus is on a simple, nondestructive workflow using Illustrator's appearance panel."
-publicationDate: 2026-03-19
+publicationDate: 2026-05-20
 authors:
   - jakob-listabarth
 reviewers:
@@ -15,12 +15,12 @@ keywords:
   - aesthetics
 ---
 
-import Callout from "../../../../components/Callout.astro";
-import FolderTree from "../../../../components/FolderTree.astro";
-import Figure from "../../../../components/Figure.astro";
 import DuplicateIcon from "duplicate-icon.svg";
 import FxIcon from "fx-icon.svg";
 import TrashIcon from "trash-icon.svg";
+import Callout from "../../../../components/Callout.astro";
+import Figure from "../../../../components/Figure.astro";
+import FolderTree from "../../../../components/FolderTree.astro";
 import outlinesFile from "./outlines-new-zealand.ai";
 
 ## Introduction
@@ -53,6 +53,25 @@ There are several reasons for employing waterlines in your maps:
 
 Obviously, we need something to apply the waterlines to.
 For this I usually download and process data in QGIS and then export it as svg, to open it in Illustrator.
+
+<Callout style={{ margin: "var(--spacing) 0" }}>
+  <header style="font-weight: bold;">
+    On importing GIS data into Illustrator
+  </header>
+  This process of importing vector data generated in a GIS into Illustrator is
+  not as smooth as it sounds: such vector files often have a complex structure
+  of clipping masks, groups and subgroups. Another difficulty are that some
+  design options result in multiple layers for a single feature. One example for
+  this are halos of labels: usually, the halo results in a separate layer (the
+  text with no fill and just the e.g., white stroke) from the actual label (the
+  text in a separate layer with a fill applied to it). However, this tutorial is
+  about waterlines not on how to work with GIS exported files in Illustrator.
+  Therefore, I will not go into details here. I recently, found [this
+  script](https://www.google.com/url?q=https://www.no-nonsens.nl/qgis-to-illustrator-post-processing/&sa=D&source=docs&ust=1780495235165998&usg=AOvVaw3Wz5MB4E6RIjk6KPoT-OPY)
+  which I tested a bit and seems to be a great tool to get you started with GIS
+  exported files in Illustrator.
+</Callout>
+
 Sometimes, in particular if I aim for a very stylized look, I trace (and optionally schematize) the outlines manually in Illustrator.
 
 I will also use a manually schematized outline for this tutorial. If you want to follow along, you can download the Illustrator file below <a href={outlinesFile} download="outlines-new-zealand.ai">here</a>.
@@ -130,6 +149,14 @@ When you add a stroke or a fill to a path (left side), the stroke is applied dir
   ![Difference between adding a stroke to paths (left) and to a group
   (right)](stroke-path-vs-group.svg)
 </Figure>
+
+<Callout style={{ margin: "var(--spacing) 0" }}>
+  <header style="font-weight: bold;">
+    Pitfall: Order of elements in the appearance panel
+  </header>
+    In case you tried to follow along this example you might have ended up with something that looks quite different. If this is the case, I bet it is because of a different order of elements in the appearance panel. Note, that if you have a path that is part of a group, you can have a stroke applied to the path itself, and a stroke applied to the group. The order of these two strokes in the appearance panel will determine how they are rendered: if the stroke applied to the path is above the stroke applied to the group, it will be rendered on top of it. If it's below, it will be rendered underneath it. If the group is selected, all its individual paths are displayed as `Contents` in the Appearance panel. Try to move the `Contents` item up and down in the appearance panel to see how it changes the rendering.
+
+</Callout>
 
 With the example above, I wanted to show that certain visual styles can only be achieved by adding strokes (and fills or effects) to groups or layers instead of individual paths.
 
