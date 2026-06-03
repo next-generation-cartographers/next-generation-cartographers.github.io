@@ -2,7 +2,7 @@
 title: "How to improve the visual hierarchy of your maps
 "
 description: "When making a map, you can guide the readers to what matters most by having a clear visual hierarchy. This tutorial helps you design an effective hierarchy."
-publicationDate: 2026-03-20
+publicationDate: 2026-06-03
 authors:
   - sacha-schlumpf
 reviewers:
@@ -10,26 +10,31 @@ reviewers:
 summary: |
   When making a map, you can guide the readers to what matters most by having a clear visual hierarchy. This tutorial helps you design an effective hierarchy.
 keywords:
-  - schematized maps
-  - vector graphics
+  - map design
+  - visual hierarchy
+  - design principles
 ---
 
 What is visual hierarchy? And why does it matter?
 Let’s take this map as an example. Have a look:
 
-![[Instagram Post from Genzette](https://www.instagram.com/p/DEhj5N_zB8W/)](./625898420_18089730611012988_7581338140825957255_n.jpg)
+![[Instagram Post from Genzette](https://www.instagram.com/p/DEhj5N_zB8W/)](./625898420_18089730611012988_7581338140825957255_n.webp)
 
 Some elements really grab the attention: the title, and the blue frame around the map. And, as the size of the numbers seems to depend on the countries’ sizes, you might notice the 82 in Germany before the 74 in Slovenia.
 
 But the biggest problem here: 82 and 74 do not correspond to Germany and Slovenia: they are percentage values for Berlin and Ljubljana, the capital cities. Which you understand by reading the subtitle. However, as I noticed when showing the map to students: many will miss the subtitle, and therefore, completely misunderstand the values.
 
-That’s due to bad visual hierarchy. It’s an important concept in many fields of design, including cartography, where visual hierarchy is defined as “graphical implementation of a ranked order of map elements such that the most important elements have the greatest visual prominence”[<sup>1</sup>](#ref-1).
+That’s due to bad visual hierarchy. It’s an important concept in many fields of design, including cartography, where visual hierarchy is defined by the University Consortium for Geographic Information Science as “graphical implementation of a ranked order of map elements such that the most important elements have the greatest visual prominence”[<sup>1</sup>](#ref-1).
 
-## Step 1: Think of your map as elements
+On this map, the visual hierarchy can be rethought. Let’s have a look.
+
+## Step 1: Think of your map as an ensemble of elements
 
 You can think about a map as an ensemble of different elements. For the surrounding elements, it can be easy. Here we have: a logo, title, sub-title, frame (around the map), source, and hashtag. Let’s do the same for the map. What elements make the map, a map? Here, it would be: countries' colors, countries' borders, numbers, and arrows.
 
-Try to do the same with your map!
+Try to do the same with your map! Or, as an exercise, you can try redesigning this map:
+
+![A scientific Map](./research_gis-map.webp)
 
 ## Step 2: What is the function of these elements?
 
@@ -45,7 +50,7 @@ By doing this, you think of the **purpose** (function) of each of your elements.
 
 Once you’ve identified the function of all your elements, ask yourself, is that function really necessary? By doing this, instead of wondering “does my map need a north arrow?”, you start asking “does my map need an additional element which helps locate the depicted area?” Which is way less abstract! This will sometimes lead you to the answer that, no, this function is not needed on my map. If the function is not necessary, then you don’t need to include that element on your map. Get rid of that north arrow!
 
-In our example, not only does the blue frame grab too much attention, but it is probably not even needed at all.
+In our example, not only does the blue frame grab too much attention, but it is probably not even needed at all, or at least could be thinner and still fulfill its purpose of framing the map
 
 ## Step 4: If yes, how important is this function?
 
@@ -71,11 +76,13 @@ Basically, using many tricks, you can give some elements more (or less) importan
 - Grouping (e.g., in a legend, you can highlight one important category by distancing it from the others, which are grouped)
 - Etc.
 
-Think of your map as two layers: your key information and your base map. The base map should not grab the attention! It only supports your information. The base map is not the core of your map: it serves to locate the data you are showing. Make it subtle. Create enough contrast between these two layers!
+You can find more details and examples of these visual variables on [this website](https://gistbok-ltb.ucgis.org/current/concept/CV-03-007). If you want to go deeper, you might be interested in the book Semiology of Graphic by Jacques Bertin!
+
+In general, think of your map as two visual layers: your key information and your base map. The base map should not grab the attention! It only supports your information. The base map is not the core of your map: it serves to locate the data you are showing. Make it subtle. Create enough contrast between these two layers!
 
 Here is my attempt at redesigning the map with a better visual hierarchy. I got rid of the frame, categorized the values, and most importantly, the data is now clearly associated with the capital cities, which are named! As this is key information to understand the map, a subtitle was likely not enough.
 
-![Redesigned map](./re-design.png)
+![Redesigned map](./re-design.webp)
 
 Visual hierarchy is a fascinating topic. Try to play with it when making maps!
 
