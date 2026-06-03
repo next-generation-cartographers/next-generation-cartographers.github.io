@@ -1,0 +1,60 @@
+---
+import { getCollection, getEntries } from "astro:content";
+import Card from "./Card.astro";
+import Link from "./Link.astro";
+
+const tutorials = (await getCollection("tutorials"))
+  .slice(0, 3)
+  .toSorted((a, b) => {
+    const aDate = new Date(a.data.publicationDate ?? "");
+    const bDate = new Date(b.data.publicationDate ?? "");
+    return bDate.getTime() - aDate.getTime();
+  });
+---
+
+<div class="feature">
+  <ul>
+    {
+      tutorials.map(async (tutorial) => {
+        const authors = await getEntries(tutorial.data.authors);
+        return (
+          <Card isInteractive>
+            <div class="card-content">
+              <h3 id={tutorial.id}>{tutorial.data.title}</h3>
+              <span>
+                {authors.map((author) => author.data.name).join(", ")}
+              </span>
+
+              <Link href={`/resources/map-tutorials/${tutorial.id}`}>Read</Link>
+            </div>
+          </Card>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
+    padding-left: 0;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--spacing-xs);
+  }
+  .empty-list {
+    margin: var(--spacing) 0;
+    padding: var(--spacing);
+    border: 1px dashed rgb(var(--primary));
+    border-radius: var(--border-radius-sm);
+  }
+</style>
