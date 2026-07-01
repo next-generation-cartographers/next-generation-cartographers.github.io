@@ -16,6 +16,10 @@ export const navigationLinks: NavigationItem[] = [
         href: "https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/main/code-of-conduct.pdf",
         label: "Code of Conduct",
       },
+      {
+        href: "/about/research-agenda",
+        label: "Research Agenda",
+      },
     ],
   },
   {
