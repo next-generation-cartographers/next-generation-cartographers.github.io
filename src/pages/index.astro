@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Disclaimer from "../components/Disclaimer.astro";
 import LinkCard from "../components/LinkCard.astro";
 import MeetUpList from "../components/MeetupList.astro";
+import ConferencesList from "../components/ConferencesList.astro";
 import Memberslist from "../components/Memberslist.astro";
 import UpdatesList from "../components/UpdatesList.astro";
 import NgcLogo from "../components/NgcLogo.astro";
@@ -46,10 +47,9 @@ const updates = (await getCollection("updates")).toSorted(
   <h2 id="upcoming-events-and-networking-opportunities">
     Upcoming events and networking opportunities
   </h2>
-  <p>
-    Currently, no in-person meeting opportunities are planned. In the meantime
-    we organize frequent online community meet-ups:
-  </p>
+  <div class="popout">
+    <ConferencesList filter="upcoming" />
+  </div>
 
   <div class="popout">
     <MeetUpList filter="upcoming" />
