@@ -27,7 +27,12 @@ const conferences = defineCollection({
   schema: z.object({
     name: z.string(),
     location: z.string(),
-    date: z.date(),
+    date: z
+      .object({
+        start: z.coerce.date(),
+        end: z.coerce.date(),
+      })
+      .optional(),
     url: z.string().url().optional(),
     timezone: z.string(),
   }),
