@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import Card from "./Card.astro";
+import Link from "./Link.astro";
+import Time from "./Time.astro";
+
+interface Props {
+  filter?: "upcoming" | "past" | "all";
+}
+const { filter } = Astro.props;
+
+const conferences = (await getCollection("conferences")).toSorted((a, b) => {
+  const aDate = new Date(a.data.date?.start ?? "");
+  const bDate = new Date(b.data.date?.start ?? "");
+  return bDate.getTime() - aDate.getTime();
+});
+
+const filteredConferences =
+  filter === "upcoming"
+    ? conferences
+        .filter((event) => new Date(event.data.date?.end ?? "") > new Date())
+        .toReversed()
+    : filter === "past"
+      ? conferences.filter(
+          (event) => new Date(event.data.date?.end ?? "") < new Date(),
+        )
+      : conferences;
+---
+
+{
+  filter === "upcoming" && filteredConferences.length === 0 && (
+    <div class="empty-list">
+      <p>
+        Currently, no in-person meeting opportunities are planned. In the
+        meantime we organize frequent online community meet-ups.
+      </p>
+    </div>
+  )
+}
+
+<ul>
+  {
+    filteredConferences.map((event) => (
+      <Card decoration='"C"' isInteractive={filter === "upcoming"}>
+        <div class="card-content">
+          <h3 id={event.id}>{event.data.name}</h3>
+          <div class="date-range">
+            {event.data.date?.start ? (
+              <Time
+                datetime={new Date(event.data.date.start).toISOString()}
+                format="long"
+                showTime={false}
+              />
+            ) : (
+              "tba"
+            )}
+
+            {event.data.date?.end && (
+              <>
+                <span class="separator"> — </span>
+                <Time
+                  datetime={new Date(event.data.date.end).toISOString()}
+                  format="long"
+                  showTime={false}
+                />
+              </>
+            )}
+          </div>
+          {/* NEW VERSION */}
+          {filter === "upcoming" && (
+            <Link href={`activities/${event.id}`}>More info</Link>
+          )}
+        </div>
+      </Card>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-left: 0;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--spacing-xs);
+  }
+  .empty-list {
+    margin: var(--spacing) 0;
+    padding: var(--spacing);
+    border: 1px dashed rgb(var(--primary));
+    border-radius: var(--border-radius-sm);
+  }
+</style>
