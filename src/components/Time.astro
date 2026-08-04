@@ -2,6 +2,7 @@
 interface Props {
   datetime: string;
   format?: "short" | "long" | "date" | "time";
+  showTime?: boolean;
   class?: string;
   [key: string]: any; // Allow other attributes to be spread onto the <time> element
 }
@@ -10,11 +11,18 @@ const {
   datetime,
   format = "long",
   class: className = "",
+  showTime = true,
   ...rest
 } = Astro.props;
 ---
 
-<time datetime={datetime} class={className} data-format={format} {...rest}>
+<time
+  datetime={datetime}
+  class={className}
+  data-format={format}
+  data-show-time={showTime ? "true" : "false"}
+  {...rest}
+>
   <span id="localtime">{datetime}</span>
 </time>
 
@@ -24,6 +32,8 @@ const {
     const span = element.querySelector("#localtime");
     const dt = element.getAttribute("datetime");
     const format = element.getAttribute("data-format") || "long";
+    const showTime = element.getAttribute("data-show-time") === "true";
+
     if (dt && span) {
       try {
         const date = new Date(dt);
@@ -45,12 +55,15 @@ const {
             options = {
               day: "numeric",
               year: "numeric",
-              minute: "2-digit",
-              hour: "2-digit",
-              hour12: true,
               month: "short",
-              timeZoneName: "short",
             };
+            // Only add time if showTime is true
+            if (showTime) {
+              options.hour = "2-digit";
+              options.minute = "2-digit";
+              options.hour12 = true;
+              options.timeZoneName = "short";
+            }
         }
         span.textContent = date.toLocaleString(undefined, options);
       } catch (error) {
