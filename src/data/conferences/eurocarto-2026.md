@@ -1,7 +1,9 @@
 ---
 name: "EuroCarto 2026"
 location: "Brno, Czech Republic"
-date: 2026-09-08
+date:
+  start: "2026-09-08"
+  end: "2026-09-11"
 url: "https://eurocarto2026.org/"
 timezone: "CET"
 ---
