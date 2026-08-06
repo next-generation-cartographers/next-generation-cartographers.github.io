@@ -133,4 +133,12 @@ const { metaTitle, metaDescription, metaImage, metaUrl, style } = Astro.props;
     grid-column: content-end / full-end;
     padding-inline-start: var(--spacing-lg);
   }
+
+  /* Collapse asides into the content flow on smaller screens */
+  @media screen and (max-width: 1024px) {
+    .aside-left,
+    .aside-right {
+      grid-column: content-start / content-end;
+    }
+  }
 </style>
