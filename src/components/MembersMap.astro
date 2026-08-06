@@ -58,7 +58,7 @@ const centroids = featureCollection(
 </members-map>
 
 <script>
-  import maplibregl, { LngLat, type LngLatLike } from "maplibre-gl";
+  import { Map, LngLat, type LngLatLike } from "maplibre-gl";
   import { style } from "../lib/map-style";
 
   class MembersMap extends HTMLElement {
@@ -87,7 +87,7 @@ const centroids = featureCollection(
         initialViewCandidates[
           Math.floor(Math.random() * initialViewCandidates.length)
         ];
-      const map = new maplibregl.Map({
+      const map = new Map({
         container: "members-map",
         style: style,
         center: initialView.center,

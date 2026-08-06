@@ -11,5 +11,8 @@ export default defineConfig({
   integrations: [mdx(), icon()],
   vite: {
     assetsInclude: ["**/*.ai"],
+    optimizeDeps: {
+      exclude: ["maplibre-gl"],
+    },
   },
 });
