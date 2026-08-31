@@ -8,6 +8,8 @@ dateTime:
 
 Join us for a casual meet-up to connect and exchange with fellow young and early career cartographers.
 
-You can come for dinner or just for a drink. Just so everyone knows, we'll each be taking care of our own bills.
+We will meet at [Tyršův sad park](https://osm.org/go/0Jv17C2vI--?way=26975763) at 6:30 pm for some fun outdoor activities. Then, at 7:30 pm we will head to [U Lucerny](https://osm.org/go/0Jv16QvZ~?node=1528351597) for an icebreaker game, dinner and/or drinks. Feel free to join us for either activity.
 
-Info on the location will be shared soon! We're looking forward to seeing you there!
+Just so everyone is aware, we will each be paying our own restaurant bill.
+
+We're looking forward to seeing you there!
