@@ -13,7 +13,7 @@ export const navigationLinks: NavigationItem[] = [
         label: "Terms of Reference",
       },
       {
-        href: "https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/main/code-of-conduct.pdf",
+        href: "https://icaci.org/files/documents/reference_docs/ICA_Code_of_Conduct_20260228_EN.pdf",
         label: "Code of Conduct",
       },
       {

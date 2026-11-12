@@ -53,7 +53,7 @@ We will make sure to repost all submissions on LinkedIn.
 
 ### Are there any requirements for the maps I want to submit?
 There is only one, but it is important: 
-all the maps need to adhere to [our Code of Conduct](https://github.com/next-generation-cartographers/ngc-code-of-conduct/blob/main/code-of-conduct.pdf).
+all the maps need to adhere to [our Code of Conduct](https://icaci.org/files/documents/reference_docs/ICA_Code_of_Conduct_20260228_EN.pdf).
 
 ### I want to get feedback and/or share my maps or the process. Where can I do this?
 That’s exactly what our dedicated Discord channel is for. 
