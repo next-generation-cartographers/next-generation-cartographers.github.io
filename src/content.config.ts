@@ -75,7 +75,7 @@ const thirtyDayMapChallenges = defineCollection({
           linkedInUrl: z.string().url(),
           image: image(),
         }),
-      ),
+      ).default([]),
     }),
 });
 
